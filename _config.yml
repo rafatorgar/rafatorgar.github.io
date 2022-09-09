@@ -7,7 +7,7 @@ lang: en-US # default lang
 timezone: Europe/Madrid # set your timezone
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
 repo: https://github.com/rafatorgar/rafatorgar.github.io # site repo [optional]
-mode: default theme "dark" | "light"
+mode: dark # default theme "dark" | "light"
 
 # Profile settings
 author:
@@ -24,7 +24,7 @@ author:
 
 # URL settings
 url: "/home/" #
-baseurl:
+baseurl: "/home/"
 permalink: /:title/
 google_analytics: # leave it blank if not wish
 fb_appid:

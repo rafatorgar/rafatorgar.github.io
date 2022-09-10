@@ -1,5 +1,19 @@
 @charset "utf-8";
 
+// ROBOTO FLEX
+
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("https://pixelambacht.nl/remote/RobotoFlex[slnt,wdth,wght,opsz].woff2")
+      format("woff2 supports variations"),
+    url("https://pixelambacht.nl/remote/RobotoFlex[slnt,wdth,wght,opsz].woff2")
+      format("woff2-variations");
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+}
+
+// ROBOTO
+
 @font-face {
   font-family: "Roboto";
   font-style: normal;

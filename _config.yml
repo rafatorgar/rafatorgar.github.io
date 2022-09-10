@@ -25,8 +25,8 @@ author:
   avatar: /assets/img/avatar.jpg # change with your own avatar
 
 # URL settings
-url: "/home/" #
-baseurl: "/home/"
+url: "/" #
+baseurl: "/"
 permalink: /:title/
 google_analytics: # leave it blank if not wish
 fb_appid:

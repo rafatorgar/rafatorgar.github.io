@@ -1,24 +1,6 @@
-@font-face {
-  src: url("https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2");
-  font-family: "Compressa VF";
-  font-style: normal;
-}
-html {
-  height: 100%;
-}
-body {
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background-color: #211d26;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  align-items: center;
-}
 
 h1 {
-  font-family: "Compressa VF";
+  font-family: "Roboto Flex";
   text-rendering: optimizeSpeed;
   color: #d11b3d;
   width: 100%;

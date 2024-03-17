@@ -312,17 +312,17 @@
     font-weight: $bold-weight;
     line-height: 1.1;
     color: $black;
-    text-shadow: 1px 0px 0px $text-link-blue;
+    text-shadow: 1px 0px 0px $text-link-secondary;
   }
   .phrase {
     color: $text-base-color;
   }
   .solution {
-    color: $text-link-blue;
+    color: $text-link-secondary;
     letter-spacing: 0.5px;
   }
   .solution:hover {
-    color: $text-link-blue-active;
+    color: $text-link-secondary-active;
   }
 }
 

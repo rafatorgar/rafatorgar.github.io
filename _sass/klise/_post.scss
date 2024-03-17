@@ -88,7 +88,7 @@
   }
 
   a {
-    color: $text-link-blue;
+    color: $text-link-secondary;
     text-decoration: none;
     &[target="_blank"]::after {
       content: " \2197";
@@ -100,11 +100,11 @@
     }
 
     &:hover {
-      color: $text-link-blue-active;
+      color: $text-link-secondary-active;
     }
 
     &:focus {
-      color: $text-link-blue;
+      color: $text-link-secondary;
     }
   }
 
@@ -144,7 +144,7 @@
 
     &:hover {
       .anchor-head {
-        color: $text-link-blue;
+        color: $text-link-secondary;
         opacity: 1;
       }
     }
@@ -210,7 +210,7 @@
     &:hover,
     &:focus {
       .post-title {
-        color: $text-link-blue-active;
+        color: $text-link-secondary-active;
         opacity: 0.9;
       }
     }

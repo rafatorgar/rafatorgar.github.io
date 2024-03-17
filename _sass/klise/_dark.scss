@@ -29,12 +29,12 @@ body[data-theme="dark"] {
   // Post
   .page-content {
     a {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-secondary;
 
       &:hover,
       &:active,
       &:focus {
-        color: $dark-text-link-blue-active;
+        color: $dark-text-link-secondary-active;
       }
     }
 
@@ -48,7 +48,7 @@ body[data-theme="dark"] {
     h5,
     h6 {
       .anchor-head {
-        color: $dark-text-link-blue;
+        color: $dark-text-link-secondary;
       }
     }
   }
@@ -93,11 +93,11 @@ body[data-theme="dark"] {
     text-decoration-color: $dark-smoke;
 
     &:hover {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-secondary;
     }
 
     &:focus {
-      outline-color: $dark-text-link-blue-active;
+      outline-color: $dark-text-link-secondary-active;
     }
   }
 
@@ -189,7 +189,7 @@ body[data-theme="dark"] {
       &:hover,
       &:focus {
         .post-title {
-          color: $dark-text-link-blue-active;
+          color: $dark-text-link-secondary-active;
         }
       }
 
@@ -223,16 +223,16 @@ body[data-theme="dark"] {
   .not-found {
     .title {
       color: $dark-white;
-      text-shadow: 1px 0px 0px $dark-text-link-blue;
+      text-shadow: 1px 0px 0px $dark-text-link-secondary;
     }
     .phrase {
       color: $dark-text-base-color;
     }
     .solution {
-      color: $dark-text-link-blue;
+      color: $dark-text-link-secondary;
     }
     .solution:hover {
-      color: $dark-text-link-blue-active;
+      color: $dark-text-link-secondary-active;
     }
   }
 

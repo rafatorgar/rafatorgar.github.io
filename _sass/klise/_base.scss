@@ -234,11 +234,11 @@ a {
   text-decoration-color: $smoke;
 
   &:hover {
-    color: $text-link-blue;
+    color: $text-link-secondary;
   }
 
   &:focus {
-    outline: 3px solid rgba(0, 54, 199, 0.6);
+    outline: 3px solid rgba(106, 37, 164, 0.6);
     outline-offset: 2px;
   }
 }

@@ -13,10 +13,9 @@ mode: dark # default theme "dark" | "light"
 author:
   name: Rafa Torres García # author name
   bio: >- # tell to the world
-    Hi, I am Rafa, a creative product-oriented engineer,
-    my daily slogan is: "It is not how much you know, but how fast you learn".
-
-    Co-Founder & CTO at <a href="https://voicit.es" target="_blank" rel="noopener">@Voicit</a>
+    Hi, I am Rafa, a creative engineer.<br>
+    Co-Founder & CPTO at <a href="https://voicit.es" target="_blank" rel="noopener">@Voicit</a><br>
+    <i>It is not how much you know, but how fast you learn<\i>
   username: rafatorgar # general username
   github: rafatorgar # github username
   twitter: rafatorresgar # twitter username

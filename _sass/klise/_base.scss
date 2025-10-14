@@ -366,3 +366,30 @@ mark,
     }
   }
 }
+
+// Author tags - Minimalist outlined style (moved here for better priority)
+.author-tags {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.love-tag {
+  display: inline-block !important;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: transparent !important;
+  border: 1px solid rgba(128, 128, 128, 0.3) !important;
+  color: #434648 !important;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: rgba(128, 128, 128, 0.6) !important;
+    background-color: rgba(128, 128, 128, 0.05) !important;
+  }
+}

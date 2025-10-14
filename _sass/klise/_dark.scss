@@ -259,13 +259,24 @@ body[data-theme="dark"] {
   // Author tags dark theme - Minimalist outlined style
   .author-tags {
     .love-tag {
-      border-color: rgba(200, 200, 200, 0.2);
-      color: $dark-text-base-color;
+      border-color: rgba(200, 200, 200, 0.2) !important;
+      color: #c7bebe !important;
 
       &:hover {
-        border-color: rgba(200, 200, 200, 0.4);
-        background-color: rgba(200, 200, 200, 0.05);
+        border-color: rgba(200, 200, 200, 0.4) !important;
+        background-color: rgba(200, 200, 200, 0.05) !important;
       }
+    }
+  }
+
+  // Additional specificity for dark theme tags
+  body[data-theme="dark"] .author-tags .love-tag {
+    border-color: rgba(200, 200, 200, 0.2) !important;
+    color: #c7bebe !important;
+
+    &:hover {
+      border-color: rgba(200, 200, 200, 0.4) !important;
+      background-color: rgba(200, 200, 200, 0.05) !important;
     }
   }
 }

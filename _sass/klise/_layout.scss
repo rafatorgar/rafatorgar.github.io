@@ -264,6 +264,53 @@
   }
 }
 
+// See more posts button
+.see-more-posts {
+  margin-top: 15px;
+  margin-left: 0; // Left-aligned below the entire posts table
+
+  .btn-see-more {
+    color: $text-base-color;
+    text-decoration: none;
+    font-size: $small-font-size;
+    font-weight: normal;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Author tags - Minimalist outlined style
+.author-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.love-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  color: $text-base-color;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: rgba(128, 128, 128, 0.6);
+    background-color: rgba(128, 128, 128, 0.05);
+  }
+}
+
 // Footer
 .footer {
   margin-top: 8em;

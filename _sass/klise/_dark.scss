@@ -244,4 +244,28 @@ body[data-theme="dark"] {
       }
     }
   }
+
+  // See more posts button dark theme
+  .see-more-posts {
+    .btn-see-more {
+      color: $dark-text-base-color;
+
+      &:hover {
+        color: $dark-white;
+      }
+    }
+  }
+
+  // Author tags dark theme - Minimalist outlined style
+  .author-tags {
+    .love-tag {
+      border-color: rgba(200, 200, 200, 0.2);
+      color: $dark-text-base-color;
+
+      &:hover {
+        border-color: rgba(200, 200, 200, 0.4);
+        background-color: rgba(200, 200, 200, 0.05);
+      }
+    }
+  }
 }

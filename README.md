@@ -25,7 +25,7 @@ This is my personal blog where I share insights about:
 - **Theme**: Custom modified Klise theme
 - **Hosting**: GitHub Pages
 - **Styling**: SCSS with custom components
-- **Features**: 
+- **Features**:
   - Dark/Light mode toggle
   - Responsive design
   - Search functionality
@@ -35,12 +35,14 @@ This is my personal blog where I share insights about:
 ## 🎨 Features
 
 ### Design
+
 - **Minimalist aesthetic** with clean typography
 - **Dark/Light theme** toggle
 - **Responsive design** optimized for all devices
 - **Custom components**: Interest tags, post previews, archive view
 
 ### Functionality
+
 - **Blog posts** with proper SEO meta tags
 - **Archive page** with search capabilities
 - **Tag system** for organizing content
@@ -50,6 +52,7 @@ This is my personal blog where I share insights about:
 ## 🏃‍♂️ Quick Start
 
 ### Prerequisites
+
 - Ruby (2.6+)
 - Bundler
 - Git
@@ -73,11 +76,13 @@ bundle exec jekyll serve --livereload
 ### Adding New Posts
 
 Posts should be created in the `_posts` directory with the format:
+
 ```
 YYYY-MM-DD-post-slug.md
 ```
 
 Example front matter:
+
 ```yaml
 ---
 title: "Your Post Title"
@@ -110,12 +115,14 @@ rafatorgar.github.io/
 ## 🎯 Content Strategy
 
 ### Blog Topics
+
 - **Startup Journey**: Behind-the-scenes of building Voicit
 - **Product Insights**: CTO/CPO perspective on product development
 - **Technical Content**: Engineering solutions and architectural decisions
 - **Personal Growth**: Lessons learned in entrepreneurship
 
 ### Writing Style
+
 - **Authentic**: Real experiences without startup glamour
 - **Practical**: Actionable insights and lessons
 - **Technical**: In-depth when relevant, accessible when needed
@@ -131,6 +138,7 @@ Industrial Design Engineer turned entrepreneur. Currently building voice-based f
 **Interests**: Graphic Design • 3D Printing • 3D Modelling • Coding • Photography • Cycling • Swimming • Running
 
 **Connect with me**:
+
 - LinkedIn: [Rafa Torres García](https://linkedin.com/in/rafatorgar)
 - Email: hello@rafatorresgarcia.com
 - Company: [Voicit](https://voicit.es)
@@ -147,7 +155,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*Last updated: October 2025*
+_Last updated: October 2025_
 
 ## License
 

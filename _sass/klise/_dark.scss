@@ -278,5 +278,12 @@ body[data-theme="dark"] {
       border-color: rgba(200, 200, 200, 0.4) !important;
       background-color: rgba(200, 200, 200, 0.05) !important;
     }
+
+    // Clickable tags in dark theme
+    &.clickable-tag:hover {
+      border-color: rgba(200, 200, 200, 0.6) !important;
+      background-color: rgba(200, 200, 200, 0.1) !important;
+      transform: translateY(-1px);
+    }
   }
 }

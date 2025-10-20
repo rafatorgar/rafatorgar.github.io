@@ -9,7 +9,7 @@
 
 .notransition {
   -webkit-transition: none;
-  -moz-transition: none; 
+  -moz-transition: none;
   -ms-transition: none;
   -o-transition: none;
   transition: none;
@@ -391,5 +391,16 @@ mark,
   &:hover {
     border-color: rgba(128, 128, 128, 0.6) !important;
     background-color: rgba(128, 128, 128, 0.05) !important;
+  }
+
+  // Clickable tags styling
+  &.clickable-tag {
+    cursor: pointer;
+    
+    &:hover {
+      border-color: rgba(128, 128, 128, 0.8) !important;
+      background-color: rgba(128, 128, 128, 0.1) !important;
+      transform: translateY(-1px);
+    }
   }
 }

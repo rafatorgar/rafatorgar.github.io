@@ -1,5 +1,5 @@
 ---
-title: "From Zero to Startup: How I Accidentally Started Building Something People Actually Want"
+title: "From Zero to Startup: How I Accidentally Started Building Something People Actually Use"
 date: 2025-10-14 16:30:00 +0200
 tags:
   [startup, entrepreneurship, voicit, product-management, CTO, founder-journey]

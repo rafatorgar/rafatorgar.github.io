@@ -1,6 +1,6 @@
 ---
 title: "From Industrial Engineer to Full-Stack CPTO: How I Accidentally Learned to Code and Lead Tech"
-date: 2025-10-21 14:30:00 +0200
+date: 2025-10-21 09:00:00 +0200
 tags:
   [
     programming,

@@ -14,7 +14,7 @@ $bold-weight: 700;
 
 //Light Colors
 $text-base-color: #434648;
-$text-link-secondary: #8A2BE2;
+$text-link-secondary: #8a2be2;
 $text-link-secondary-active: #bf88f8;
 
 $black: #0d122b;
@@ -61,3 +61,26 @@ $on-widescreen: 1152px;
 // Import sass files
 @import "klise/fonts", "klise/base", "klise/layout", "klise/post",
   "klise/miscellaneous", "klise/syntax", "klise/dark";
+
+// Custom highlight styles using brand colors
+mark {
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    $text-link-secondary 60%
+  );
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+// Dark mode override
+[data-theme="dark"] {
+  mark {
+    background: linear-gradient(
+      180deg,
+      transparent 60%,
+      $dark-text-link-secondary 60%
+    );
+  }
+}

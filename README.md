@@ -4,7 +4,7 @@
 [![Jekyll](https://img.shields.io/badge/Jekyll-v3.10.0-red)](https://jekyllrb.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> Personal blog and portfolio of Rafa Torres García - Co-Founder & CPTO at [Voicit](https://voicit.es)
+> Personal blog and portfolio of Rafa Torres García - Co-Founder & CPTO at [Voicit](https://voicit.com)
 
 ## 🚀 Live Site
 
@@ -14,7 +14,7 @@ Visit the blog at: **[rafatorgar.github.io](https://rafatorgar.github.io)**
 
 This is my personal blog where I share insights about:
 
-- **Startup Journey**: Real experiences building [Voicit](https://voicit.es) from idea to 2.5k MRR
+- **Startup Journey**: Real experiences building [Voicit](https://voicit.com) from idea to 2.5k MRR
 - **Product Management**: Lessons learned as CTO/CPO in a growing startup
 - **Engineering**: Technical insights from an Industrial Design Engineer perspective
 - **Entrepreneurship**: Honest takes on the startup ecosystem, pivots, and growth
@@ -131,7 +131,7 @@ rafatorgar.github.io/
 ## 👨‍💻 About Me
 
 **Rafa Torres García**  
-Co-Founder & CPTO at [Voicit](https://voicit.es)
+Co-Founder & CPTO at [Voicit](https://voicit.com)
 
 Industrial Design Engineer turned entrepreneur. Currently building voice-based feedback solutions for HR teams. Previously worked on drones, ventilators, and various hardware/software projects.
 
@@ -141,7 +141,7 @@ Industrial Design Engineer turned entrepreneur. Currently building voice-based f
 
 - LinkedIn: [Rafa Torres García](https://linkedin.com/in/rafatorgar)
 - Email: hello@rafatorresgarcia.com
-- Company: [Voicit](https://voicit.es)
+- Company: [Voicit](https://voicit.com)
 
 ## 📄 License
 

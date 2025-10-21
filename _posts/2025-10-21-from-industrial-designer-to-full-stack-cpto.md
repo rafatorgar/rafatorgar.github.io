@@ -19,7 +19,7 @@ image: "/assets/img/engineer-to-cto.jpg"
 
 I failed programming in my first year of Industrial Design Engineering. Not just struggled - **completely failed**. If someone had told me then that I'd end up as CTO/CPO of a tech startup, writing full-stack code and making architectural decisions, I would have laughed.
 
-This is the story of how an industrial engineer who couldn't understand basic programming concepts accidentally became the technical leader of [Voicit](https://voicit.ai), our HR tech startup. It's not the typical "I always loved coding" narrative. It's messier, more real, and hopefully more useful for other engineers wondering if they can make a similar transition.
+This is the story of how an industrial engineer who couldn't understand basic programming concepts accidentally became the technical leader of [Voicit](https://voicit.com), our HR tech startup. It's not the typical "I always loved coding" narrative. It's messier, more real, and hopefully more useful for other engineers wondering if they can make a similar transition.
 
 ## The First Failure: When Programming Made No Sense
 

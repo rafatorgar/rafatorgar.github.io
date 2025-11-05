@@ -84,3 +84,473 @@ mark {
     );
   }
 }
+
+// Git Timeline Styles (replaces old timeline)
+.git-timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: $gray;
+    font-size: 1.1rem;
+  }
+}
+
+.git-graph {
+  position: relative;
+  padding: 2rem 0;
+  overflow: visible;
+}
+
+.timeline-axis {
+  position: relative;
+  
+  // Main vertical line - centered on the page
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, $gray, lighten($gray, 20%));
+    z-index: 1;
+    border-radius: 1.5px;
+  }
+}
+
+.commit-node {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 100%;
+  min-height: 60px;
+  
+  &.major {
+    .commit-dot {
+      width: 20px;
+      height: 20px;
+      border-width: 4px;
+    }
+    
+    .commit-info h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+  }
+  
+  &.current {
+    .commit-dot {
+      animation: pulse 2s infinite;
+    }
+  }
+  
+  // Left side positioning - text goes to the left of center line
+  &.left {
+    .commit-info {
+      position: absolute;
+      right: 50%;
+      margin-right: 2rem;
+      text-align: right;
+      width: 300px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  
+  // Right side positioning - text goes to the right of center line
+  &.right {
+    .commit-info {
+      position: absolute;
+      left: 50%;
+      margin-left: 2rem;
+      text-align: left;
+      width: 300px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  
+  // Center positioning for start/end
+  &.center {
+    .commit-info {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      text-align: center;
+      width: 200px;
+      top: 50%;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.commit-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid $white;
+  border-radius: 50%;
+  z-index: 10;
+  background: $gray;
+  
+  &.main,
+  &.design,
+  &.frontend,
+  &.fullstack,
+  &.startup,
+  &.leadership {
+    background: $gray;
+    border-color: $white;
+  }
+  
+  &.current {
+    background: $text-base-color;
+    border-color: $white;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.start {
+    background: $white;
+    border: 2px solid $white;
+    box-shadow: 0 0 0 1px $gray;
+  }
+}
+
+.commit-info {
+  
+  h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $text-base-color;
+    line-height: 1.4;
+  }
+  
+  .commit-date {
+    font-size: 0.9rem;
+    color: $gray;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}
+
+.branch-split {
+  position: relative;
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  .branch {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 2rem;
+      height: 2px;
+      background: $gray;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 2px;
+      background: $gray;
+    }
+  }
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: $gray;
+    font-size: 1.1rem;
+  }
+}
+
+.git-graph {
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.timeline-axis {
+  position: relative;
+  padding-left: 2rem;
+  
+  // Main vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    height: calc(100% - 3.5rem);
+    width: 2px;
+    background: $gray;
+    z-index: 1;
+  }
+}
+
+.commit-node {
+  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: flex-start;
+  
+  &.major {
+    .commit-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 3px;
+    }
+    
+    .commit-info h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+  
+  &.current {
+    .commit-dot {
+      animation: pulse 2s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.commit-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border: 2px solid $white;
+  border-radius: 50%;
+  z-index: 2;
+  background: $gray;
+  
+  &.main,
+  &.design,
+  &.frontend,
+  &.fullstack,
+  &.startup,
+  &.leadership {
+    background: $gray;
+    border-color: $white;
+  }
+  
+  &.current {
+    background: $text-base-color;
+    border-color: $white;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.start {
+    background: $white;
+    border: 2px solid $white;
+    box-shadow: 0 0 0 1px $gray;
+  }
+}
+
+.commit-node {
+  &.start {
+    .commit-info {
+      text-align: center;
+      margin-left: -4rem;
+      width: 8rem;
+      
+      h4 {
+        font-style: italic;
+        opacity: 0.8;
+      }
+      
+      .commit-date {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.commit-info {
+  margin-left: 1rem;
+  min-width: 0;
+  flex: 1;
+  
+  h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-base-color;
+    line-height: 1.3;
+  }
+  
+  .commit-date {
+    font-size: 0.85rem;
+    color: $gray;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}
+
+.branch-split {
+  position: relative;
+  margin: 1rem 0;
+  
+  .branch {
+    position: relative;
+    margin-left: 2rem;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0;
+      width: 2rem;
+      height: 2px;
+      background: $gray;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: $gray;
+    }
+  }
+  
+  .design-branch {
+    &::before, &::after { background: #ff6b6b; }
+  }
+  
+  .frontend-branch {
+    &::before, &::after { background: #4ecdc4; }
+  }
+  
+  .fullstack-branch {
+    &::before, &::after { background: #45b7d1; }
+  }
+  
+  .leadership-branch {
+    &::before, &::after { background: #f9ca24; }
+  }
+}
+
+// Dark mode git timeline
+[data-theme="dark"] {
+  .timeline-axis::before {
+    background: $dark-gray;
+  }
+  
+  .commit-dot {
+    background: $dark-gray;
+    border-color: $dark-light;
+    
+    &.main,
+    &.design,
+    &.frontend,
+    &.fullstack,
+    &.startup,
+    &.leadership {
+      background: $dark-gray;
+      border-color: $dark-light;
+    }
+    
+    &.current {
+      background: $dark-text-base-color;
+      border-color: $dark-light;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    }
+    
+    &.start {
+      background: $dark-light;
+      border-color: $dark-light;
+      box-shadow: 0 0 0 1px $dark-gray;
+    }
+  }
+  
+  .commit-info {
+    h4 {
+      color: $dark-text-base-color;
+    }
+    
+    .commit-date {
+      color: $dark-gray;
+    }
+  }
+  
+  .branch-split .branch {
+    &::before, &::after {
+      background: $dark-gray;
+    }
+  }
+  
+  .timeline-header p {
+    color: $dark-gray;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .git-timeline-container {
+    padding: 1rem 0;
+  }
+  
+  .git-graph {
+    padding: 1rem;
+  }
+  
+  .commit-info {
+    h4 {
+      font-size: 0.9rem;
+    }
+    
+    .commit-date {
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -66,12 +66,13 @@ $on-widescreen: 1152px;
 mark {
   background: linear-gradient(
     180deg,
-    transparent 60%,
-    $text-link-secondary 60%
+    transparent 70%,
+    rgba($text-link-secondary, 0.3) 70%
   );
   background-color: transparent;
-  padding: 0;
+  padding: 0 2px;
   color: inherit;
+  border-radius: 2px;
 }
 
 // Dark mode override
@@ -79,8 +80,8 @@ mark {
   mark {
     background: linear-gradient(
       180deg,
-      transparent 60%,
-      $dark-text-link-secondary 60%
+      transparent 70%,
+      rgba($dark-text-link-secondary, 0.3) 70%
     );
   }
 }

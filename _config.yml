@@ -41,6 +41,9 @@ highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
 
+# Post settings
+future: true # allow posts with today's or future dates to be published
+
 # Default front matter
 defaults:
   - scope:

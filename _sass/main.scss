@@ -95,13 +95,13 @@ mark {
 .timeline-header {
   text-align: center;
   margin-bottom: 3rem;
-  
+
   h2 {
     margin-bottom: 0.5rem;
     font-size: 2.5rem;
     font-weight: 600;
   }
-  
+
   p {
     color: $gray;
     font-size: 1.1rem;
@@ -116,10 +116,10 @@ mark {
 
 .timeline-axis {
   position: relative;
-  
+
   // Main vertical line - centered on the page
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -137,26 +137,26 @@ mark {
   margin-bottom: 4rem;
   width: 100%;
   min-height: 60px;
-  
+
   &.major {
     .commit-dot {
       width: 20px;
       height: 20px;
       border-width: 4px;
     }
-    
+
     .commit-info h4 {
       font-size: 1.3rem;
       font-weight: 700;
     }
   }
-  
+
   &.current {
     .commit-dot {
       animation: pulse 2s infinite;
     }
   }
-  
+
   // Left side positioning - text goes to the left of center line
   &.left {
     .commit-info {
@@ -169,7 +169,7 @@ mark {
       transform: translateY(-50%);
     }
   }
-  
+
   // Right side positioning - text goes to the right of center line
   &.right {
     .commit-info {
@@ -182,7 +182,7 @@ mark {
       transform: translateY(-50%);
     }
   }
-  
+
   // Center positioning for start/end
   &.center {
     .commit-info {
@@ -197,9 +197,18 @@ mark {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .commit-dot {
@@ -213,7 +222,7 @@ mark {
   border-radius: 50%;
   z-index: 10;
   background: $gray;
-  
+
   &.main,
   &.design,
   &.frontend,
@@ -223,13 +232,13 @@ mark {
     background: $gray;
     border-color: $white;
   }
-  
+
   &.current {
     background: $text-base-color;
     border-color: $white;
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   &.start {
     background: $white;
     border: 2px solid $white;
@@ -238,7 +247,6 @@ mark {
 }
 
 .commit-info {
-  
   h4 {
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
@@ -246,7 +254,7 @@ mark {
     color: $text-base-color;
     line-height: 1.4;
   }
-  
+
   .commit-date {
     font-size: 0.9rem;
     color: $gray;
@@ -261,12 +269,12 @@ mark {
   width: 100%;
   display: flex;
   justify-content: center;
-  
+
   .branch {
     position: relative;
-    
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
@@ -275,9 +283,9 @@ mark {
       height: 2px;
       background: $gray;
     }
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
@@ -292,13 +300,13 @@ mark {
 .timeline-header {
   text-align: center;
   margin-bottom: 3rem;
-  
+
   h2 {
     margin-bottom: 0.5rem;
     font-size: 2.5rem;
     font-weight: 600;
   }
-  
+
   p {
     color: $gray;
     font-size: 1.1rem;
@@ -314,10 +322,10 @@ mark {
 .timeline-axis {
   position: relative;
   padding-left: 2rem;
-  
+
   // Main vertical line
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 1rem;
     top: 0.5rem;
@@ -333,20 +341,20 @@ mark {
   margin-bottom: 3rem;
   display: flex;
   align-items: flex-start;
-  
+
   &.major {
     .commit-dot {
       width: 16px;
       height: 16px;
       border-width: 3px;
     }
-    
+
     .commit-info h4 {
       font-size: 1.2rem;
       font-weight: 700;
     }
   }
-  
+
   &.current {
     .commit-dot {
       animation: pulse 2s infinite;
@@ -355,9 +363,18 @@ mark {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .commit-dot {
@@ -370,7 +387,7 @@ mark {
   border-radius: 50%;
   z-index: 2;
   background: $gray;
-  
+
   &.main,
   &.design,
   &.frontend,
@@ -380,13 +397,13 @@ mark {
     background: $gray;
     border-color: $white;
   }
-  
+
   &.current {
     background: $text-base-color;
     border-color: $white;
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   &.start {
     background: $white;
     border: 2px solid $white;
@@ -400,12 +417,12 @@ mark {
       text-align: center;
       margin-left: -4rem;
       width: 8rem;
-      
+
       h4 {
         font-style: italic;
         opacity: 0.8;
       }
-      
+
       .commit-date {
         opacity: 0.6;
       }
@@ -417,7 +434,7 @@ mark {
   margin-left: 1rem;
   min-width: 0;
   flex: 1;
-  
+
   h4 {
     margin: 0 0 0.25rem 0;
     font-size: 1rem;
@@ -425,7 +442,7 @@ mark {
     color: $text-base-color;
     line-height: 1.3;
   }
-  
+
   .commit-date {
     font-size: 0.85rem;
     color: $gray;
@@ -437,13 +454,13 @@ mark {
 .branch-split {
   position: relative;
   margin: 1rem 0;
-  
+
   .branch {
     position: relative;
     margin-left: 2rem;
-    
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: -2rem;
       top: 0;
@@ -451,9 +468,9 @@ mark {
       height: 2px;
       background: $gray;
     }
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;
@@ -462,21 +479,33 @@ mark {
       background: $gray;
     }
   }
-  
+
   .design-branch {
-    &::before, &::after { background: #ff6b6b; }
+    &::before,
+    &::after {
+      background: #ff6b6b;
+    }
   }
-  
+
   .frontend-branch {
-    &::before, &::after { background: #4ecdc4; }
+    &::before,
+    &::after {
+      background: #4ecdc4;
+    }
   }
-  
+
   .fullstack-branch {
-    &::before, &::after { background: #45b7d1; }
+    &::before,
+    &::after {
+      background: #45b7d1;
+    }
   }
-  
+
   .leadership-branch {
-    &::before, &::after { background: #f9ca24; }
+    &::before,
+    &::after {
+      background: #f9ca24;
+    }
   }
 }
 
@@ -485,11 +514,11 @@ mark {
   .timeline-axis::before {
     background: $dark-gray;
   }
-  
+
   .commit-dot {
     background: $dark-gray;
     border-color: $dark-light;
-    
+
     &.main,
     &.design,
     &.frontend,
@@ -499,36 +528,37 @@ mark {
       background: $dark-gray;
       border-color: $dark-light;
     }
-    
+
     &.current {
       background: $dark-text-base-color;
       border-color: $dark-light;
       box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
     }
-    
+
     &.start {
       background: $dark-light;
       border-color: $dark-light;
       box-shadow: 0 0 0 1px $dark-gray;
     }
   }
-  
+
   .commit-info {
     h4 {
       color: $dark-text-base-color;
     }
-    
+
     .commit-date {
       color: $dark-gray;
     }
   }
-  
+
   .branch-split .branch {
-    &::before, &::after {
+    &::before,
+    &::after {
       background: $dark-gray;
     }
   }
-  
+
   .timeline-header p {
     color: $dark-gray;
   }
@@ -539,16 +569,16 @@ mark {
   .git-timeline-container {
     padding: 1rem 0;
   }
-  
+
   .git-graph {
     padding: 1rem;
   }
-  
+
   .commit-info {
     h4 {
       font-size: 0.9rem;
     }
-    
+
     .commit-date {
       font-size: 0.8rem;
     }

@@ -64,24 +64,15 @@ $on-widescreen: 1152px;
 
 // Custom highlight styles using brand colors
 mark {
-  background: linear-gradient(
-    180deg,
-    transparent 70%,
-    rgba($text-link-secondary, 0.3) 70%
-  );
-  background-color: transparent;
-  padding: 0 2px;
+  background-color: rgba($text-link-secondary, 0.15);
+  padding: 2px 4px;
   color: inherit;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 // Dark mode override
 [data-theme="dark"] {
   mark {
-    background: linear-gradient(
-      180deg,
-      transparent 70%,
-      rgba($dark-text-link-secondary, 0.3) 70%
-    );
+    background-color: rgba($dark-text-link-secondary, 0.15);
   }
 }

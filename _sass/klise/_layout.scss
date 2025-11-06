@@ -218,9 +218,10 @@
 // Content
 .posts-item-note {
   font-size: $base-font-size;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 5px;
-  color: $black;
+  color: $text-base-color;
+  opacity: 0.7;
 }
 
 // List of posts
@@ -236,9 +237,10 @@
 
   .post-item-date {
     min-width: 96px;
-    color: $black;
-    font-weight: 700;
+    color: $text-base-color;
+    font-weight: 400;
     padding-right: 10px;
+    opacity: 0.6;
 
     @include media-query($on-mobile) {
       font-size: 16px;
@@ -250,7 +252,7 @@
     border: 0;
     padding: 0;
     font-size: $base-font-size;
-    font-weight: normal;
+    font-weight: 600;
     letter-spacing: 0.1px;
 
     a {

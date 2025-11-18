@@ -1,0 +1,20 @@
+{% if page.lang_ref %}
+<div class="language-switcher">
+  {% assign posts = site.posts | where: "lang_ref", page.lang_ref %} {% for post
+  in posts %} {% if post.lang != page.lang %}
+  <a
+    href="{{ post.url | relative_url }}"
+    class="lang-switch-btn"
+    title="{% if post.lang == 'es' %}Leer en Español{% else %}Read in English{% endif %}"
+  >
+    {% if post.lang == 'es' %}
+    <span class="lang-icon">🇪🇸</span>
+    <span class="lang-text">ES</span>
+    {% else %}
+    <span class="lang-icon">🇬🇧</span>
+    <span class="lang-text">EN</span>
+    {% endif %}
+  </a>
+  {% endif %} {% endfor %}
+</div>
+{% endif %}

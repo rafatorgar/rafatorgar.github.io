@@ -51,6 +51,14 @@ defaults:
     values:
       layout: post
       comments: false
+      lang: en
+  - scope:
+      path: "_posts/es"
+    values:
+      layout: post
+      comments: false
+      lang: es
+      permalink: /es/:title/
 
 # Jekyll Compose default front matter
 jekyll_compose:

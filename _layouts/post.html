@@ -34,6 +34,7 @@ layout: compress
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="header">
+          {% include language-switcher.html %}
           {% if page.tags and page.tags != empty %}
           <div class="tags">
             {% assign tags = page.tags %}

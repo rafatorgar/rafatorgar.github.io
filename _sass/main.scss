@@ -76,3 +76,57 @@ mark {
     background-color: rgba($dark-text-link-secondary, 0.25);
   }
 }
+
+// Language switcher
+.language-switcher {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -10px;
+
+  .lang-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: rgba($text-link-secondary, 0.1);
+    border-radius: 6px;
+    text-decoration: none;
+    color: $text-base-color;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid rgba($text-link-secondary, 0.2);
+
+    .lang-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .lang-text {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    &:hover {
+      background-color: rgba($text-link-secondary, 0.2);
+      border-color: rgba($text-link-secondary, 0.4);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Dark mode language switcher
+[data-theme="dark"] {
+  .language-switcher {
+    .lang-switch-btn {
+      background-color: rgba($dark-text-link-secondary, 0.15);
+      border-color: rgba($dark-text-link-secondary, 0.25);
+
+      &:hover {
+        background-color: rgba($dark-text-link-secondary, 0.25);
+        border-color: rgba($dark-text-link-secondary, 0.4);
+      }
+    }
+  }
+}

@@ -12,6 +12,8 @@ tags:
   ]
 description: "My real experience using GitHub Copilot for $10/month while others spend $100+. What works, what doesn't, and why I still write code."
 image: "/assets/img/github-copilot-experience.jpg"
+lang: en
+lang_ref: github-copilot-2025
 ---
 
 Let me start a technical debate for developers.

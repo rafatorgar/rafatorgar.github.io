@@ -5,6 +5,8 @@ tags:
   [startup, entrepreneurship, voicit, product-management, CTO, founder-journey]
 description: "The real story behind Voicit: from a voice post-it idea at university to 2.5k MRR in HR tech. Lessons, pivots, and the reality of entrepreneurship without the glamour."
 image: "/assets/img/voicit-journey.jpg"
+lang: en
+lang_ref: from-zero-to-startup-2025
 ---
 
 Everything started by inertia. There was no grand master plan, no disruptive vision that woke me up at 3 AM. I was in my fourth year of Industrial Design Engineering, and I had just landed a collaboration scholarship to develop something that now seems crazy: **building a drone from scratch** - programming, design, manufacturing, everything.

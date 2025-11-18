@@ -12,6 +12,8 @@ tags:
   ]
 description: "The technical story behind building an AI system that extracts critical incidents from interviews and evaluates competencies. Methodology, challenges, and why reasoning models aren't always the answer."
 image: "/assets/img/competency-evaluation.jpg"
+lang: en
+lang_ref: ai-competency-evaluation-2025
 ---
 
 At [Voicit](https://voicit.com), we generate interview reports for selection processes. One of our most complex features is **competency evaluation through critical incidents** - a system that analyzes conversations and determines a candidate's competency level based on behavioral evidence.

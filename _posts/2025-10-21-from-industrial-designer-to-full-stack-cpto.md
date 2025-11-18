@@ -15,6 +15,8 @@ tags:
   ]
 description: "The real story of how I went from failing programming in first year to becoming CPTO of a tech startup. No bootcamp, no CS degree - just necessity, curiosity, and a lot of trial and error."
 image: "/assets/img/engineer-to-cto.jpg"
+lang: en
+lang_ref: industrial-designer-to-cto-2025
 ---
 
 I failed programming in my first year of Industrial Design Engineering. Not just struggled - **completely failed**. If someone had told me then that I'd end up as CTO/CPO of a tech startup, writing full-stack code and making architectural decisions, I would have laughed.

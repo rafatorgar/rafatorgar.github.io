@@ -22,24 +22,24 @@ Esta es la historia técnica de cómo lo construimos, la metodología detrás y 
 
 ## Contexto: Qué problema resolvemos
 
-En Voicit, los usuarios pueden generar informes de entrevista usando **plantillas de informe**. Estas plantillas permiten añadir secciones que extraen información específica: experiencia laboral, rango salarial, skills técnicas, etc.
+En Voicit, los usuarios pueden generar informes de sus entrevistas usando **plantillas de informe**. Estas plantillas permiten añadir secciones que extraen información específica: experiencia laboral, rango salarial, skills técnicas, etc.
 
 Entre estas secciones, algunas son sencillas y otras complejas. La **evaluación de competencias por incidentes críticos** es de las complejas.
 
 Los usuarios pueden seleccionar competencias de nuestro **diccionario de competencias**, que incluye tanto competencias definidas por Voicit como personalizadas que los equipos pueden crear y compartir. Cada competencia tiene:
 
 - Nombre
-- Descripción
+- Definición o descripción
 - Niveles de evaluación (Ej: Básico, Intermedio, Avanzado, Experto)
 
 El resultado para cada competencia incluye:
 
 - **Nivel detectado** con su definición
+- **Justificación del nivel** analizando los patrones y limitaciones detectadas en los incidentes críticos
 - **Incidentes críticos** usados para determinar el nivel
-- **Gaps críticos** o puntos negativos detectados
 - **Recomendaciones** sobre qué profundizar
 
-<mark>El reto era: ¿cómo extraer evidencia conductual de una conversación y mapearla a niveles de competencia de forma fiable?</mark>
+<mark>El reto era: ¿cómo extraer evidencia conductual de una conversación y mapearla a niveles de competencia de forma fiable y útil para combinarlo con los resultados de tests formales?</mark>
 
 ## La arquitectura en tres fases
 
@@ -74,4 +74,143 @@ Cada incidente crítico sigue el modelo **SAR** (Situación-Acción-Resultado) y
 | **timeKeys**          | Localización temporal             | Muy útil para auditar o revisar extractos de audio/video |
 
 Esta clasificación asegura que los incidentes críticos tengan parámetros de calidad suficientes para servir en la evaluación posterior de nivel. Por eso, de momento **no hay una fase intermedia** para evaluar la calidad de los incidentes extraídos: la propia estructura fuerza la calidad.
-...existing code...
+
+### Fase 2: Evaluación del nivel de la competencia
+
+**Objetivo:** Determinar el nivel alcanzado en una competencia específica basándose en los incidentes críticos extraídos en la Fase 1, integrando tanto evidencias positivas como negativas.
+
+**Fundamento metodológico:** Basado en modelos **BEI (Behavioral Event Interview)** y la **Técnica del Incidente Crítico (Flanagan, 1954)**.
+
+El nivel de competencia se deduce de:
+
+1. **Consistencia** de comportamientos observados en distintas situaciones
+2. **Complejidad** de contextos donde se manifiestan los comportamientos
+3. **Grado de autonomía e impacto** demostrado
+4. **Capacidad de aprendizaje** o transferencia a nuevos escenarios
+
+El sistema analiza todos los incidentes críticos (positivos y negativos) y los contrasta con las definiciones de nivel del diccionario de competencias.
+
+**Estructura de salida:**
+
+| Campo                                                   | Rol                                    | Observaciones                                                                                                                                          |
+| ------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `level_label`                                           | Identificador del nivel asignado       | Texto corto (ej: _Básico_, _Intermedio_, _Avanzado_, _Experto_). Debe coincidir exactamente con las etiquetas del diccionario.                         |
+| `level_definition`                                      | Descripción del nivel asignado         | Texto completo explicando características conductuales del nivel (recuperado del diccionario, no generado por IA).                                     |
+| `confidence_score`                                      | Grado de confianza (1–10)              | 1 = muy baja confianza (poca/débil evidencia), 10 = máxima confianza (múltiples incidentes sólidos y consistentes).                                    |
+| `critical_gaps`                                         | Lista de deficiencias críticas         | Identifica áreas sin evidencia o con evidencia insuficiente (ej: _"Falta de resultados medibles"_, _"No se observaron comportamientos de liderazgo"_). |
+| `critical_incidents_justification`                      | Vínculo entre incidentes y nivel       | Lista describiendo cómo cada incidente crítico contribuye (o limita) el nivel asignado.                                                                |
+| `critical_incidents_justification[].incident_id`        | Identificador único del incidente      | ID de la Fase 1, mantiene la trazabilidad.                                                                                                             |
+| `critical_incidents_justification[].content`            | Descripción del incidente y relevancia | Resumen interpretativo describiendo qué comportamiento o hecho fue relevante.                                                                          |
+| `critical_incidents_justification[].relevance_to_level` | Interpretación del impacto en el nivel | Explica cómo el incidente refuerza o limita la competencia respecto al nivel seleccionado.                                                             |
+
+**Criterios clave:**
+
+- Los **incidentes positivos fuertes** refuerzan niveles altos si muestran comportamientos observables con impacto o autonomía
+- Los **incidentes negativos fuertes** pueden limitar el nivel máximo posible si afectan aspectos esenciales (ética, liderazgo, resultados)
+- Si los incidentes son **insuficientes, ambiguos o rutinarios**, se asigna un nivel inferior y se documenta el **gap de evidencia**
+- El `confidence_score` refleja el grado de certeza del modelo (1–10) basándose en cantidad, coherencia e intensidad de incidentes disponibles
+
+<mark>El resultado de esta fase no es narrativo, sino estructurado y explicativo.</mark> Define el nivel alcanzado, los motivos y áreas sin evidencia suficiente. Esto se convierte en la base para la Fase 3.
+
+### Fase 3: Generación del resumen de la competencia
+
+**Objetivo:** Transformar la evaluación estructurada de la Fase 2 en un **resumen narrativo interpretativo** que:
+
+- Presente claramente los hechos que sustentan la evaluación del nivel
+- Sintetice **patrones conductuales**, **consistencia** y **transferibilidad** de la competencia
+- Destaque los **gaps críticos** identificados
+
+Este resumen está diseñado para el **consultor o analista** para apoyar el juicio profesional y el informe final de evaluación.
+
+**Estructura del resumen:**
+
+1. **Nivel asignado y definición**
+
+   - Indica nivel final, descripción y grado de confianza
+
+2. **Justificación del nivel: patrones y limitaciones**
+
+   - Explica comportamientos recurrentes, cómo se relacionan y qué nivel de complejidad o autonomía implican
+   - Limitaciones encontradas, relacionándolas con el nivel de competencia asignado
+
+3. **Evidencias de soporte**
+
+   - Resume comportamientos, contextos y resultados observados en los incidentes críticos más representativos
+   - Qué hizo (comportamiento)
+   - En qué contexto y tarea
+   - Qué resultado obtuvo
+   - Qué aprendizaje o desarrollo mostró
+
+4. **Aspectos a profundizar**
+   - Análisis de aspectos que necesitan explorarse más para mejorar la evaluación de la competencia
+
+## Cómo lo utilizan realmente los equipos
+
+Una parte importante de este análisis de competencias por incidentes críticos es **cómo lo usan los equipos de selección**.
+
+Voicit les ofrece **orientación sobre el nivel de competencia** que pueden usar para:
+
+- Contrastar con sus propias conclusiones
+- Comparar con resultados de tests de competencias
+- Complementar resultados de tests con incidentes críticos detectados
+
+Esto permite una **evaluación final de competencia más completa y objetiva**.
+
+<mark>No se trata de reemplazar el juicio humano, sino de dar a los consultores evidencia estructurada y trazable para tomar mejores decisiones.</mark>
+
+## El aprendizaje sorprendente: los modelos de razonamiento no siempre son mejores
+
+Uno de los hallazgos más interesantes durante el desarrollo: **los LLMs de razonamiento no son necesarios para este tipo de análisis**.
+
+No mejoran los resultados y añaden un delay de tiempo muy alto.
+
+Para análisis conductual estructurado con frameworks claros (como el modelo SAR y diccionarios de competencias), los LLMs tradicionales con buen prompting superan a los modelos de razonamiento tanto en calidad como en velocidad.
+
+Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
+
+## FAQs
+
+**¿La definición del mismo nivel de competencia puede variar entre candidatos?**
+
+**No.** La definición del nivel se mantiene fija, según el diccionario de competencias.
+
+Lo que sí varía es **la justificación**: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
+
+**¿Qué información se genera para una competencia?**
+
+Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
+
+- Nivel detectado y definición
+- Justificación del nivel detectado basada en incidentes críticos
+- Lista de evidencias
+- Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia
+
+## Resumen de implementación
+
+La sección de evaluación de competencia por incidentes críticos extrae **incidentes críticos** que incluyen: impacto, intensidad, razón de intensidad, situación, tarea, comportamiento, resultado, aprendizaje y referencias temporales.
+
+Con estos datos se **evalúa el nivel de competencia** basándose en el diccionario de competencias. La evaluación genera:
+
+- Nivel y definición de la competencia
+- Confianza de la evaluación
+- Limitaciones críticas
+- Justificación del nivel según incidentes críticos
+
+Finalmente, se crea un **resumen para el consultor**, mostrando el nivel asignado y su definición, justificación, incidentes críticos analizados y **recomendaciones para profundizar** basadas en limitaciones detectadas.
+
+## Por qué importa esto
+
+Construir este sistema nos enseñó que **la IA no reemplaza la experiencia, la estructura**.
+
+La metodología (BEI, Técnica del Incidente Crítico) existía mucho antes de los LLMs. Lo que la IA permite es:
+
+1. **Escala** - Analizar horas de conversación en minutos
+2. **Consistencia** - Aplicar el mismo framework uniformemente
+3. **Trazabilidad** - Vincular cada conclusión a evidencia específica
+4. **Aumento** - Dar a los consultores herramientas para tomar mejores decisiones más rápido
+
+La magia no está en la IA. Está en combinar metodología sólida con la capacidad de la IA para procesar y estructurar información a escala.
+
+---
+
+_Esto es parte de nuestra serie documentando cómo construimos [Voicit](https://voicit.com). Si estás trabajando en desafíos similares con IA y análisis estructurado, me encantaría conocer tu enfoque._

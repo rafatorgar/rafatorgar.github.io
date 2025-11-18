@@ -29,17 +29,17 @@ Among these sections, some are simple and others are complex. **Competency evalu
 Users can select competencies from our **competency dictionary**, which includes both Voicit-defined competencies and custom ones that teams can create and share. Each competency has:
 
 - Name
-- Description
+- Definition or description
 - Evaluation levels (e.g., Basic, Intermediate, Advanced, Expert)
 
 The output for each competency includes:
 
 - **Detected level** with its definition
+- **Level justification** analyzing patterns and limitations detected in critical incidents
 - **Critical incidents** used to determine the level
-- **Critical gaps** or negative points detected
 - **Recommendations** on what to probe further
 
-<mark>The challenge was: how do you reliably extract behavioral evidence from a conversation and map it to competency levels?</mark>
+<mark>The challenge was: how do you reliably extract behavioral evidence from a conversation and map it to competency levels in a way that's useful for combining with formal test results?</mark>
 
 ## The Three-Phase Architecture
 

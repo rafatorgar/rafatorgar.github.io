@@ -80,7 +80,7 @@ mark {
 // Language switcher
 .language-switcher {
   margin-bottom: 8px;
-  
+
   .lang-switch-btn {
     display: inline-block;
     padding: 3px 8px;
@@ -93,7 +93,7 @@ mark {
     letter-spacing: 0.3px;
     transition: all 0.2s ease;
     border: 1px solid rgba(128, 128, 128, 0.15);
-    
+
     &:hover {
       background-color: rgba(128, 128, 128, 0.15);
       border-color: rgba(128, 128, 128, 0.25);
@@ -109,7 +109,7 @@ mark {
       background-color: rgba(180, 180, 180, 0.1);
       border-color: rgba(180, 180, 180, 0.15);
       color: rgba(180, 180, 180, 0.7);
-      
+
       &:hover {
         background-color: rgba(180, 180, 180, 0.15);
         border-color: rgba(180, 180, 180, 0.25);

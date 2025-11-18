@@ -81,4 +81,26 @@ Hemos tenido más becarios y otro empleado durante un tiempo. Cada experiencia n
 
 ## Las tres lecciones que más me han marcado
 
-...existing code...
+Si pudiera volver atrás y hablar con mi "yo" de cuando empezamos en el SUP, le diría tres cosas:
+
+### 1. No tiene sentido hacer marketing de algo que no existe
+
+**No inviertas en marketing si no tienes nada.** Suena obvio, pero es fácil caer en la trampa de querer hacer ruido antes de tener sustancia.
+
+### 2. Foco, foco, foco
+
+**Claridad en qué haces, por qué lo haces y para quién.** La dispersión es el enemigo silencioso de las startups.
+
+### 3. El negocio es lo más importante
+
+**Si no hay negocio, no busques inversión.** Reduce costes, valida el modelo, encuentra tracción real. No vale la pena perder meses persiguiendo inversión que solo te dará uno o dos meses más de vida sin haber resuelto lo fundamental.
+
+## ¿Qué sigue?
+
+Seguimos en las trincheras, peleando por crecer, aprendiendo cada día. El emprendimiento no es la montaña rusa glamurosa que venden en las conferencias. Es más como mi proyecto del dron: muchas horas en el taller, ajustes constantes y la satisfacción de ver que, poco a poco, las cosas empiezan a funcionar.
+
+**Voicit está ayudando a equipos de RRHH a crear mejores informes de selección.** Cada día resolvemos problemas reales para personas reales. Y eso, francamente, se siente bastante bien.
+
+---
+
+_Si estás pensando en emprender, si tienes preguntas sobre producto o tecnología, o simplemente quieres charlar sobre startups sin filtros, no dudes en contactarme. El emprendimiento se hace mejor en comunidad._

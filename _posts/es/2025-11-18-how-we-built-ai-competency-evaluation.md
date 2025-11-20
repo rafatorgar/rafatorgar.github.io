@@ -174,15 +174,17 @@ Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
 
 <div class="faq-section">
 
-**¿La definición del mismo nivel de competencia puede variar entre candidatos?**
+¿La definición del mismo nivel de competencia puede variar entre candidatos?
 
-**No.** La definición del nivel se mantiene fija, según el diccionario de competencias.
+No. La definición del nivel se mantiene fija, según el diccionario de competencias.
 
-Lo que sí varía es **la justificación**: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
+Lo que sí varía es la justificación: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
 
----
+</div>
 
-**¿Qué información se genera para una competencia?**
+<div class="faq-section">
+
+¿Qué información se genera para una competencia?
 
 Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
 

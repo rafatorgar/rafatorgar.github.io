@@ -92,16 +92,16 @@ The system analyzes all critical incidents (positive and negative) and contrasts
 
 **Output structure:**
 
-| Field                                                   | Role                                    | Notes                                                                                                                                         |
-| ------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `level_label`                                           | Assigned level identifier               | Short text (e.g., _Basic_, _Intermediate_, _Advanced_, _Expert_). Must match dictionary labels exactly.                                       |
-| `level_definition`                                      | Description of assigned level           | Full text explaining behavioral characteristics of the level (retrieved from dictionary, not AI-generated).                                   |
-| `confidence_score`                                      | Confidence degree (1–10)                | 1 = very low confidence (little/weak evidence), 10 = maximum confidence (multiple solid, consistent incidents).                               |
-| `critical_gaps`                                         | List of critical deficiencies           | Identifies areas without evidence or with insufficient evidence (e.g., _"Lack of measurable results"_, _"No leadership behaviors observed"_). |
-| `critical_incidents_justification`                      | Link between incidents and level        | List describing how each critical incident contributes (or limits) the assigned level.                                                        |
-| `critical_incidents_justification[].incident_id`        | Unique incident identifier              | ID from Phase 1, maintains traceability.                                                                                                      |
-| `critical_incidents_justification[].content`            | Incident description and relevance      | Interpretive summary describing what behavior or fact was relevant.                                                                           |
-| `critical_incidents_justification[].relevance_to_level` | Impact interpretation on assigned level | Explains how the incident reinforces or limits competency relative to selected level.                                                         |
+| Field                                                     | Role                                    | Notes                                                                                                                                         |
+| --------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **level_label**                                           | Assigned level identifier               | Name of existing levels in the competency within the dictionary.                                                                              |
+| **level_definition**                                      | Description of assigned level           | Definition of existing level in the competency within the dictionary.                                                                         |
+| **confidence_score**                                      | Confidence degree (1–10)                | 1 = very low confidence (little/weak evidence), 10 = maximum confidence (multiple solid, consistent incidents).                               |
+| **critical_gaps**                                         | List of critical deficiencies           | Identifies areas without evidence or with insufficient evidence (e.g., _"Lack of measurable results"_, _"No leadership behaviors observed"_). |
+| **critical_incidents_justification**                      | Link between incidents and level        | List describing how each critical incident contributes (or limits) the assigned level.                                                        |
+| **critical_incidents_justification[].incident_id**        | Unique incident identifier              | ID from Phase 1, maintains traceability.                                                                                                      |
+| **critical_incidents_justification[].content**            | Incident description and relevance      | Interpretive summary describing what behavior or fact was relevant.                                                                           |
+| **critical_incidents_justification[].relevance_to_level** | Impact interpretation on assigned level | Explains how the incident reinforces or limits competency relative to selected level.                                                         |
 
 **Key criteria:**
 
@@ -120,35 +120,37 @@ The system analyzes all critical incidents (positive and negative) and contrasts
 - Synthesizes **behavioral patterns**, **consistency**, and **transferability** of the competency
 - Highlights **critical gaps** identified
 
-This summary is designed for the **consultant or analyst** to support professional judgment and the final evaluation report.
+This summary is designed for the **selection consultant or recruiter** to support their professional judgment alongside formal competency tests, to reach a clear conclusion.
 
 **Summary structure:**
 
-1. **Assigned level and definition**
+**Assigned level and definition**
 
-   - Indicates final level, description, and confidence degree
+- Indicates final level along with its description
 
-2. **Level justification: patterns and limitations**
+**Level justification: patterns and limitations**
 
-   - Explains recurring behaviors, how they relate, and what level of complexity or autonomy they imply
-   - Limitations found, relating them to the assigned competency level
+- Explains recurring behaviors, how they relate, and what level of complexity or autonomy they imply
+- Limitations found, relating them to the assigned competency level
 
-3. **Supporting evidence**
+**Supporting evidence**
 
-   - Summarizes behaviors, contexts, and results observed in the most representative critical incidents
-   - What they did (behavior)
-   - In what context and task
-   - What result they obtained
-   - What learning or development they showed
+- Summarizes behaviors, contexts, and results observed in the most representative critical incidents
+- What they did (behavior)
+- In what context and task
+- What result they obtained
+- What learning or development they showed
+- Provides time references to find it in the conversation
 
-4. **Aspects to probe further**
-   - Analysis of aspects needing deeper exploration to improve competency evaluation
+**Aspects to probe further**
 
-## How Teams Actually Use This
+- Analysis of aspects needing deeper exploration to improve competency evaluation
+
+## How Selection Teams Actually Use This
 
 An important part of this critical incident competency analysis is **how selection teams use it**.
 
-Voicit offers them **guidance on competency level** that they can use to:
+Voicit offers them **guidance on competency level** and **evidence from their professional experience** that they can use to:
 
 - Contrast with their own conclusions
 - Compare with competency test results
@@ -170,20 +172,34 @@ This was counterintuitive but consistent across our testing.
 
 ## FAQs
 
-**Can the definition of the same competency level vary between candidates?**
+<div class="faq-container">
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Can the definition of the same competency level vary between candidates?</span>
+      <span class="faq-icon">›</span>
+    </div>
+    <div class="faq-answer">
+      <p><strong>No.</strong> The level definition remains fixed, according to the competency dictionary.</p>
+      <p>What varies is <strong>the justification</strong>: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate.</p>
+    </div>
+  </div>
 
-**No.** The level definition remains fixed, according to the competency dictionary.
-
-What varies is **the justification**: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate.
-
-**What information is generated for a competency?**
-
-Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
-
-- Detected level and definition
-- Justification of detected level based on critical incidents
-- List of evidence
-- Recommendations on what points to probe further to improve competency evaluation
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>What information is generated for a competency?</span>
+      <span class="faq-icon">›</span>
+    </div>
+    <div class="faq-answer">
+      <p>Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:</p>
+      <ul>
+        <li>Detected level and definition</li>
+        <li>Justification of detected level based on critical incidents</li>
+        <li>List of evidence</li>
+        <li>Recommendations on what points to probe further to improve competency evaluation</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ## Implementation Summary
 
@@ -213,4 +229,4 @@ The magic isn't in the AI. It's in combining solid methodology with AI's ability
 
 ---
 
-_This is part of our ongoing series documenting how we build [Voicit](https://voicit.com). If you're working on similar challenges with AI and structured analysis, I'd love to hear your approach._
+_This is another insight on how I've built product at [Voicit](https://voicit.com). If you're working on similar challenges with AI and structured analysis, I'd love to hear your approach._

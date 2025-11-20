@@ -92,16 +92,16 @@ El sistema analiza todos los incidentes críticos (positivos y negativos) y los 
 
 **Estructura de salida:**
 
-| Campo                                                   | Rol                                    | Observaciones                                                                                                                                          |
-| ------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `level_label`                                           | Identificador del nivel asignado       | Texto corto (ej: _Básico_, _Intermedio_, _Avanzado_, _Experto_). Debe coincidir exactamente con las etiquetas del diccionario.                         |
-| `level_definition`                                      | Descripción del nivel asignado         | Texto completo explicando características conductuales del nivel (recuperado del diccionario, no generado por IA).                                     |
-| `confidence_score`                                      | Grado de confianza (1–10)              | 1 = muy baja confianza (poca/débil evidencia), 10 = máxima confianza (múltiples incidentes sólidos y consistentes).                                    |
-| `critical_gaps`                                         | Lista de deficiencias críticas         | Identifica áreas sin evidencia o con evidencia insuficiente (ej: _"Falta de resultados medibles"_, _"No se observaron comportamientos de liderazgo"_). |
-| `critical_incidents_justification`                      | Vínculo entre incidentes y nivel       | Lista describiendo cómo cada incidente crítico contribuye (o limita) el nivel asignado.                                                                |
-| `critical_incidents_justification[].incident_id`        | Identificador único del incidente      | ID de la Fase 1, mantiene la trazabilidad.                                                                                                             |
-| `critical_incidents_justification[].content`            | Descripción del incidente y relevancia | Resumen interpretativo describiendo qué comportamiento o hecho fue relevante.                                                                          |
-| `critical_incidents_justification[].relevance_to_level` | Interpretación del impacto en el nivel | Explica cómo el incidente refuerza o limita la competencia respecto al nivel seleccionado.                                                             |
+| Campo                                                     | Rol                                    | Observaciones                                                                                                                                          |
+| --------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **level_label**                                           | Identificador del nivel asignado       | Nombre de los niveles existentes en la competencia dentro del diccionario.                                                                             |
+| **level_definition**                                      | Descripción del nivel asignado         | Definición del nivel existente en la competencia dentero del diccionario.                                                                              |
+| **confidence_score**                                      | Grado de confianza (1–10)              | 1 = muy baja confianza (poca/débil evidencia), 10 = máxima confianza (múltiples incidentes sólidos y consistentes).                                    |
+| **critical_gaps**                                         | Lista de deficiencias críticas         | Identifica áreas sin evidencia o con evidencia insuficiente (ej: _"Falta de resultados medibles"_, _"No se observaron comportamientos de liderazgo"_). |
+| **critical_incidents_justification**                      | Vínculo entre incidentes y nivel       | Lista describiendo cómo cada incidente crítico contribuye (o limita) el nivel asignado.                                                                |
+| **critical_incidents_justification[].incident_id**        | Identificador único del incidente      | ID de la Fase 1, mantiene la trazabilidad.                                                                                                             |
+| **critical_incidents_justification[].content**            | Descripción del incidente y relevancia | Resumen interpretativo describiendo qué comportamiento o hecho fue relevante.                                                                          |
+| **critical_incidents_justification[].relevance_to_level** | Interpretación del impacto en el nivel | Explica cómo el incidente refuerza o limita la competencia respecto al nivel seleccionado.                                                             |
 
 **Criterios clave:**
 
@@ -120,35 +120,37 @@ El sistema analiza todos los incidentes críticos (positivos y negativos) y los 
 - Sintetice **patrones conductuales**, **consistencia** y **transferibilidad** de la competencia
 - Destaque los **gaps críticos** identificados
 
-Este resumen está diseñado para el **consultor o analista** para apoyar el juicio profesional y el informe final de evaluación.
+Este resumen está diseñado para que el **consultor de selección o reclutador** se apoye en él junto con su juicio profesional y el test formal de competencias, para obtener una conclusión clara.
 
 **Estructura del resumen:**
 
-1. **Nivel asignado y definición**
+**Nivel asignado y definición**
 
-   - Indica nivel final, descripción y grado de confianza
+- Indica nivel final junto con su descripción
 
-2. **Justificación del nivel: patrones y limitaciones**
+**Justificación del nivel: patrones y limitaciones**
 
-   - Explica comportamientos recurrentes, cómo se relacionan y qué nivel de complejidad o autonomía implican
-   - Limitaciones encontradas, relacionándolas con el nivel de competencia asignado
+- Explica comportamientos recurrentes, cómo se relacionan y qué nivel de complejidad o autonomía implican
+- Limitaciones encontradas, relacionándolas con el nivel de competencia asignado
 
-3. **Evidencias de soporte**
+**Evidencias de soporte**
 
-   - Resume comportamientos, contextos y resultados observados en los incidentes críticos más representativos
-   - Qué hizo (comportamiento)
-   - En qué contexto y tarea
-   - Qué resultado obtuvo
-   - Qué aprendizaje o desarrollo mostró
+- Resume comportamientos, contextos y resultados observados en los incidentes críticos más representativos
+- Qué hizo (comportamiento)
+- En qué contexto y tarea
+- Qué resultado obtuvo
+- Qué aprendizaje o desarrollo mostró
+- Ofrece las referencias de tiempo para encontrarlo en la conversación
 
-4. **Aspectos a profundizar**
-   - Análisis de aspectos que necesitan explorarse más para mejorar la evaluación de la competencia
+**Aspectos a profundizar**
 
-## Cómo lo utilizan realmente los equipos
+- Análisis de aspectos que necesitan explorarse más para mejorar la evaluación de la competencia
+
+## Cómo lo utilizan realmente los equipos de selección
 
 Una parte importante de este análisis de competencias por incidentes críticos es **cómo lo usan los equipos de selección**.
 
-Voicit les ofrece **orientación sobre el nivel de competencia** que pueden usar para:
+Voicit les ofrece **orientación sobre el nivel de competencia** y **evidencias sobre su experiencia profesional** que pueden usar para:
 
 - Contrastar con sus propias conclusiones
 - Comparar con resultados de tests de competencias
@@ -170,20 +172,34 @@ Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
 
 ## FAQs
 
-**¿La definición del mismo nivel de competencia puede variar entre candidatos?**
+<div class="faq-container">
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿La definición del mismo nivel de competencia puede variar entre candidatos?</span>
+      <span class="faq-icon">›</span>
+    </div>
+    <div class="faq-answer">
+      <p><strong>No.</strong> La definición del nivel se mantiene fija, según el diccionario de competencias.</p>
+      <p>Lo que sí varía es <strong>la justificación</strong>: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.</p>
+    </div>
+  </div>
 
-**No.** La definición del nivel se mantiene fija, según el diccionario de competencias.
-
-Lo que sí varía es **la justificación**: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
-
-**¿Qué información se genera para una competencia?**
-
-Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
-
-- Nivel detectado y definición
-- Justificación del nivel detectado basada en incidentes críticos
-- Lista de evidencias
-- Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>¿Qué información se genera para una competencia?</span>
+      <span class="faq-icon">›</span>
+    </div>
+    <div class="faq-answer">
+      <p>Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:</p>
+      <ul>
+        <li>Nivel detectado y definición</li>
+        <li>Justificación del nivel detectado basada en incidentes críticos</li>
+        <li>Lista de evidencias</li>
+        <li>Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ## Resumen de implementación
 
@@ -213,4 +229,4 @@ La magia no está en la IA. Está en combinar metodología sólida con la capaci
 
 ---
 
-_Esto es parte de nuestra serie documentando cómo construimos [Voicit](https://voicit.com). Si estás trabajando en desafíos similares con IA y análisis estructurado, me encantaría conocer tu enfoque._
+_Esta es otra píldora de cómo he construido producto en [Voicit](https://voicit.com). Si estás trabajando en desafíos similares con IA y análisis estructurado, me encantaría conocer tu enfoque._

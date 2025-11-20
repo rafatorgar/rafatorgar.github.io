@@ -172,9 +172,9 @@ This was counterintuitive but consistent across our testing.
 
 ## FAQs
 
-<div class="faq-section">
+**Can the definition of the same competency level vary between candidates?**
 
-Can the definition of the same competency level vary between candidates?
+<div class="faq-section">
 
 No. The level definition remains fixed, according to the competency dictionary.
 
@@ -182,9 +182,9 @@ What varies is the justification: it adapts to the critical incidents and eviden
 
 </div>
 
-<div class="faq-section">
+**What information is generated for a competency?**
 
-What information is generated for a competency?
+<div class="faq-section">
 
 Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
 

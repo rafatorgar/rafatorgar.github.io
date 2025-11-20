@@ -174,17 +174,11 @@ Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
 
 **¿La definición del mismo nivel de competencia puede variar entre candidatos?**
 
-<div class="faq-section">
-
 No. La definición del nivel se mantiene fija, según el diccionario de competencias.
 
 Lo que sí varía es la justificación: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
 
-</div>
-
 **¿Qué información se genera para una competencia?**
-
-<div class="faq-section">
 
 Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
 
@@ -192,8 +186,6 @@ Las competencias se analizan basándose en incidentes críticos mencionados en l
 - Justificación del nivel detectado basada en incidentes críticos
 - Lista de evidencias
 - Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia
-
-</div>
 
 ## Resumen de implementación
 

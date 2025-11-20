@@ -260,36 +260,3 @@
 .post-updated-at {
   font-family: "Ubuntu mono", "monospace";
 }
-
-// FAQ Section
-.faq-section {
-  background: rgba(128, 128, 128, 0.05);
-  border-left: 4px solid $text-base-color;
-  padding: 1.5em 2em;
-  margin: 2em 0;
-  border-radius: 4px;
-
-  > p:first-child {
-    margin-top: 0;
-  }
-
-  > p:last-child {
-    margin-bottom: 0;
-  }
-
-  hr {
-    margin: 1.5em 0;
-    border: none;
-    border-top: 1px solid rgba(128, 128, 128, 0.15);
-  }
-
-  strong {
-    color: $black;
-    font-size: 1.05em;
-  }
-
-  ul {
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-  }
-}

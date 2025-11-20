@@ -174,17 +174,11 @@ This was counterintuitive but consistent across our testing.
 
 **Can the definition of the same competency level vary between candidates?**
 
-<div class="faq-section">
-
 No. The level definition remains fixed, according to the competency dictionary.
 
 What varies is the justification: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate.
 
-</div>
-
 **What information is generated for a competency?**
-
-<div class="faq-section">
 
 Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
 
@@ -192,8 +186,6 @@ Competencies are analyzed based on critical incidents mentioned in the conversat
 - Justification of detected level based on critical incidents
 - List of evidence
 - Recommendations on what points to probe further to improve competency evaluation
-
-</div>
 
 ## Implementation Summary
 

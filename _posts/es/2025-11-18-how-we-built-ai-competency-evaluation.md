@@ -172,33 +172,25 @@ Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
 
 ## FAQs
 
-<div class="faq-container">
-  <div class="faq-item">
-    <div class="faq-question">
-      <span>¿La definición del mismo nivel de competencia puede variar entre candidatos?</span>
-      <span class="faq-icon">›</span>
-    </div>
-    <div class="faq-answer">
-      <p><strong>No.</strong> La definición del nivel se mantiene fija, según el diccionario de competencias.</p>
-      <p>Lo que sí varía es <strong>la justificación</strong>: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.</p>
-    </div>
-  </div>
+<div class="faq-section">
 
-  <div class="faq-item">
-    <div class="faq-question">
-      <span>¿Qué información se genera para una competencia?</span>
-      <span class="faq-icon">›</span>
-    </div>
-    <div class="faq-answer">
-      <p>Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:</p>
-      <ul>
-        <li>Nivel detectado y definición</li>
-        <li>Justificación del nivel detectado basada en incidentes críticos</li>
-        <li>Lista de evidencias</li>
-        <li>Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia</li>
-      </ul>
-    </div>
-  </div>
+**¿La definición del mismo nivel de competencia puede variar entre candidatos?**
+
+**No.** La definición del nivel se mantiene fija, según el diccionario de competencias.
+
+Lo que sí varía es **la justificación**: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato.
+
+---
+
+**¿Qué información se genera para una competencia?**
+
+Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
+
+- Nivel detectado y definición
+- Justificación del nivel detectado basada en incidentes críticos
+- Lista de evidencias
+- Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia
+
 </div>
 
 ## Resumen de implementación

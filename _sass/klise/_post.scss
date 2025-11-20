@@ -261,69 +261,35 @@
   font-family: "Ubuntu mono", "monospace";
 }
 
-// FAQ Accordion
-.faq-container {
+// FAQ Section
+.faq-section {
+  background: rgba(128, 128, 128, 0.05);
+  border-left: 4px solid $text-link-secondary-active;
+  padding: 1.5em 2em;
   margin: 2em 0;
+  border-radius: 4px;
 
-  .faq-item {
-    border-bottom: 1px solid $light;
-
-    &:last-child {
-      border-bottom: none;
-    }
+  > p:first-child {
+    margin-top: 0;
   }
 
-  .faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2em 0;
-    cursor: pointer;
-    user-select: none;
-    font-weight: $bold-weight;
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  hr {
+    margin: 1.5em 0;
+    border: none;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+  }
+
+  strong {
+    color: $black;
     font-size: 1.05em;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: $text-link-secondary-active;
-    }
-
-    .faq-icon {
-      margin-left: 1em;
-      transition: transform 0.3s ease;
-      font-size: 0.9em;
-      color: $gray;
-    }
-
-    &.active .faq-icon {
-      transform: rotate(90deg);
-    }
   }
 
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
-    padding: 0 0;
-    opacity: 0;
-
-    &.active {
-      max-height: 1000px;
-      padding: 0 0 1.5em 0;
-      opacity: 1;
-    }
-
-    p {
-      margin: 0;
-      line-height: 1.6;
-      
-      &:first-child {
-        margin-top: 0.5em;
-      }
-    }
-    
-    ul {
-      margin-top: 0.5em;
-    }
+  ul {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
   }
 }

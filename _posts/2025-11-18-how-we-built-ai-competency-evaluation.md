@@ -172,33 +172,25 @@ This was counterintuitive but consistent across our testing.
 
 ## FAQs
 
-<div class="faq-container">
-  <div class="faq-item">
-    <div class="faq-question">
-      <span>Can the definition of the same competency level vary between candidates?</span>
-      <span class="faq-icon">›</span>
-    </div>
-    <div class="faq-answer">
-      <p><strong>No.</strong> The level definition remains fixed, according to the competency dictionary.</p>
-      <p>What varies is <strong>the justification</strong>: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate.</p>
-    </div>
-  </div>
+<div class="faq-section">
 
-  <div class="faq-item">
-    <div class="faq-question">
-      <span>What information is generated for a competency?</span>
-      <span class="faq-icon">›</span>
-    </div>
-    <div class="faq-answer">
-      <p>Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:</p>
-      <ul>
-        <li>Detected level and definition</li>
-        <li>Justification of detected level based on critical incidents</li>
-        <li>List of evidence</li>
-        <li>Recommendations on what points to probe further to improve competency evaluation</li>
-      </ul>
-    </div>
-  </div>
+**Can the definition of the same competency level vary between candidates?**
+
+**No.** The level definition remains fixed, according to the competency dictionary.
+
+What varies is **the justification**: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate.
+
+---
+
+**What information is generated for a competency?**
+
+Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
+
+- Detected level and definition
+- Justification of detected level based on critical incidents
+- List of evidence
+- Recommendations on what points to probe further to improve competency evaluation
+
 </div>
 
 ## Implementation Summary

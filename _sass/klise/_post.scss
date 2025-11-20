@@ -303,17 +303,27 @@
   .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
     padding: 0 0;
+    opacity: 0;
 
     &.active {
-      max-height: 500px;
+      max-height: 1000px;
       padding: 0 0 1.5em 0;
+      opacity: 1;
     }
 
     p {
       margin: 0;
       line-height: 1.6;
+      
+      &:first-child {
+        margin-top: 0.5em;
+      }
+    }
+    
+    ul {
+      margin-top: 0.5em;
     }
   }
 }

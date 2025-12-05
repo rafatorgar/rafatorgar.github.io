@@ -14,7 +14,7 @@ description: "La historia técnica detrás de construir un sistema de IA que ext
 image: "/assets/img/competency-evaluation.jpg"
 lang: es
 lang_ref: ai-competency-evaluation-2025
-faq_file: ai-competency-evaluation-es
+faq_file: ai_competency_evaluation_es
 ---
 
 En [Voicit](https://voicit.com) generamos informes de entrevistas para procesos de selección. Una de nuestras funcionalidades más complejas es la **evaluación de competencias por incidentes críticos**: un sistema que analiza conversaciones y determina el nivel de competencia de un candidato en base a evidencias conductuales.

@@ -1,9 +1,9 @@
 {% if page.faq_file %}
   {% case page.faq_file %}
-    {% when 'ai-competency-evaluation-en' %}
-      {% assign faq_data = site.data.faqs.ai-competency-evaluation-en %}
-    {% when 'ai-competency-evaluation-es' %}
-      {% assign faq_data = site.data.faqs.ai-competency-evaluation-es %}
+    {% when 'ai_competency_evaluation_en' %}
+      {% assign faq_data = site.data.faqs.ai_competency_evaluation_en %}
+    {% when 'ai_competency_evaluation_es' %}
+      {% assign faq_data = site.data.faqs.ai_competency_evaluation_es %}
   {% endcase %}
   
   {% if faq_data %}

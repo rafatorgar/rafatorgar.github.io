@@ -1,5 +1,12 @@
-{% if page.faq_file %} {% assign faq_data = site.data.faqs[page.faq_file] %} {%
-if faq_data %}
+{% if page.faq_file %}
+  {% case page.faq_file %}
+    {% when 'ai-competency-evaluation-en' %}
+      {% assign faq_data = site.data.faqs.ai-competency-evaluation-en %}
+    {% when 'ai-competency-evaluation-es' %}
+      {% assign faq_data = site.data.faqs.ai-competency-evaluation-es %}
+  {% endcase %}
+  
+  {% if faq_data %}
 <div class="faq-section">
   <h2>FAQs</h2>
   <div class="faq-list">
@@ -24,4 +31,5 @@ if faq_data %}
     {% endfor %}
   </div>
 </div>
-{% endif %} {% endif %}
+  {% endif %}
+{% endif %}

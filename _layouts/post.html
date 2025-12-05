@@ -36,7 +36,10 @@ layout: compress
 
         <header class="header">
           {% if page.tags and page.tags != empty %}
-          {% include language-switcher.html %}
+          <div style="display: inline-flex; align-items: center;">
+            {% include language-switcher.html %}
+            {% include copy-link-button.html %}
+          </div>
           <div class="tags">
             {% assign tags = page.tags %}
             <span itemprop="keywords">
@@ -93,6 +96,7 @@ layout: compress
   </div>
 
   <script src="/assets/js/toc-floating.js"></script>
+  <script src="/assets/js/copy-link.js"></script>
 </body>
 
 </html>

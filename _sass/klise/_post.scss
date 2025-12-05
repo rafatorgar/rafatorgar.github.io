@@ -293,9 +293,6 @@
     backdrop-filter: blur(10px) !important;
     cursor: pointer !important;
     justify-content: center !important;
-    transition: opacity 0.3s ease, transform 0.3s ease !important;
-    opacity: 1 !important;
-    transform: scale(1) !important;
 
     .toc-line {
       height: 3px !important;
@@ -331,14 +328,15 @@
     margin-right: 16px !important;
     background: rgba(255, 255, 255, 0.97) !important;
     border: 1px solid rgba(128, 128, 128, 0.15) !important;
-    border-radius: 8px !important;
+    border-radius: 12px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
     backdrop-filter: blur(10px) !important;
     padding: 18px 22px !important;
     min-width: 200px !important;
     max-width: 280px !important;
+    visibility: hidden !important;
     opacity: 0 !important;
-    transition: opacity 0.3s ease !important;
+    transition: visibility 0s 0.3s, opacity 0.3s ease !important;
 
     .toc-list {
       list-style: none !important;
@@ -409,14 +407,13 @@
   &:hover {
     .toc-lines {
       display: none !important;
-      opacity: 0 !important;
-      transform: scale(0.95) !important;
-      pointer-events: none !important;
     }
 
     .toc-content {
       display: block !important;
+      visibility: visible !important;
       opacity: 1 !important;
+      transition: visibility 0s 0s, opacity 0.3s ease !important;
     }
   }
 }

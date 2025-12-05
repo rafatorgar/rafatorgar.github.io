@@ -268,20 +268,19 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
-  transition: all 0.3s ease;
   pointer-events: all;
 
   @include media-query($on-mobile) {
-    display: none;
+    display: none !important;
   }
 
   @media (max-width: 1400px) {
-    display: none;
+    display: none !important;
   }
 
   // Collapsed state - show lines only (default)
   .toc-lines {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 8px;
     padding: 12px 8px;
@@ -315,7 +314,7 @@
 
   // Expanded state - show full text (hidden by default)
   .toc-content {
-    display: none;
+    display: none !important;
     position: absolute;
     right: 100%;
     top: 0;
@@ -387,11 +386,11 @@
   // Hover state - swap visibility
   &:hover {
     .toc-lines {
-      display: none;
+      display: none !important;
     }
 
     .toc-content {
-      display: block;
+      display: block !important;
     }
   }
 }

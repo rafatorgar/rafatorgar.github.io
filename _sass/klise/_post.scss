@@ -267,8 +267,9 @@
   right: 2em;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100;
+  z-index: 1000;
   transition: all 0.3s ease;
+  pointer-events: all;
 
   @include media-query($on-mobile) {
     display: none;
@@ -278,7 +279,7 @@
     display: none;
   }
 
-  // Collapsed state - show lines only
+  // Collapsed state - show lines only (default)
   .toc-lines {
     display: flex;
     flex-direction: column;
@@ -288,6 +289,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    cursor: pointer;
 
     .toc-line {
       height: 2px;
@@ -311,7 +313,7 @@
     }
   }
 
-  // Expanded state - show full text
+  // Expanded state - show full text (hidden by default)
   .toc-content {
     display: none;
     position: absolute;
@@ -325,6 +327,7 @@
     padding: 16px 20px;
     min-width: 200px;
     max-width: 280px;
+    white-space: nowrap;
 
     .toc-list {
       list-style: none;
@@ -381,7 +384,7 @@
     }
   }
 
-  // Hover state
+  // Hover state - swap visibility
   &:hover {
     .toc-lines {
       display: none;

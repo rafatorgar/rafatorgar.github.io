@@ -293,37 +293,37 @@ body[data-theme="dark"] {
       background: rgba(30, 30, 30, 0.95) !important;
       border-color: rgba(180, 180, 180, 0.15) !important;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-      
+
       .toc-line {
         background: rgba(180, 180, 180, 0.45) !important;
-        
+
         &.active {
           background: rgba(200, 200, 200, 0.85) !important;
           box-shadow: 0 0 6px rgba(200, 200, 200, 0.3) !important;
         }
       }
     }
-    
+
     .toc-content {
       background: rgba(30, 30, 30, 0.97) !important;
       border-color: rgba(180, 180, 180, 0.15) !important;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-      
+
       .toc-list {
         .toc-item {
           a {
             color: rgba(180, 180, 180, 0.85) !important;
-            
+
             &:hover {
               background: rgba(180, 180, 180, 0.1) !important;
               color: rgba(220, 220, 220, 1) !important;
             }
           }
-          
+
           &.toc-item-h3 a {
             color: rgba(160, 160, 160, 0.75) !important;
           }
-          
+
           &.active a {
             color: rgba(200, 200, 200, 1) !important;
             background: rgba(180, 180, 180, 0.15) !important;

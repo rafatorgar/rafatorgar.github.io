@@ -288,7 +288,7 @@
     padding: 10px 8px !important;
     background: rgba(255, 255, 255, 0.95) !important;
     border: 1px solid rgba(128, 128, 128, 0.15) !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
     backdrop-filter: blur(10px) !important;
     cursor: pointer !important;
@@ -331,13 +331,12 @@
     margin-right: 16px !important;
     background: rgba(255, 255, 255, 0.97) !important;
     border: 1px solid rgba(128, 128, 128, 0.15) !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
     backdrop-filter: blur(10px) !important;
     padding: 18px 22px !important;
     min-width: 200px !important;
     max-width: 280px !important;
-    white-space: nowrap !important;
     opacity: 0 !important;
     transition: opacity 0.3s ease !important;
 
@@ -366,6 +365,9 @@
           border-radius: 6px !important;
           transition: all 0.25s ease !important;
           border-left: 0 !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
 
           &:hover {
             background: rgba(128, 128, 128, 0.08) !important;

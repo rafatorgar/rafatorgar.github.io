@@ -73,7 +73,14 @@ layout: compress
           </p>
           {% endif %}
         </div>
+
+        <!-- FAQs Section -->
+        {% include faqs.html %}
+
       </article>
+
+      <!-- Table of Contents -->
+      {% include toc.html %}
     
       {% if page.comments %}
         {% include comments.html %}
@@ -90,6 +97,10 @@ layout: compress
 
     {% include footer.html %}
   </div>
+
+  <script src="{{ "/assets/js/toc.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/copy-link.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/faqs.js" | relative_url }}"></script>
 </body>
 
 </html>

@@ -271,6 +271,8 @@
   pointer-events: all !important;
   margin: 0 !important;
   padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
 
   @include media-query($on-mobile) {
     display: none !important;
@@ -293,6 +295,8 @@
     backdrop-filter: blur(10px) !important;
     cursor: pointer !important;
     justify-content: center !important;
+    position: relative !important;
+    z-index: 2 !important;
 
     .toc-line {
       height: 3px !important;
@@ -321,11 +325,10 @@
   // Expanded state - show full text (hidden by default)
   .toc-content {
     display: none !important;
-    position: absolute !important;
-    right: 100% !important;
+    position: fixed !important;
+    right: calc(2rem + 46px) !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    margin-right: 16px !important;
     background: rgba(255, 255, 255, 0.97) !important;
     border: 1px solid rgba(128, 128, 128, 0.15) !important;
     border-radius: 12px !important;
@@ -334,9 +337,7 @@
     padding: 18px 22px !important;
     min-width: 200px !important;
     max-width: 280px !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    transition: visibility 0s 0.3s, opacity 0.3s ease !important;
+    z-index: 1 !important;
 
     .toc-list {
       list-style: none !important;
@@ -407,13 +408,12 @@
   &:hover {
     .toc-lines {
       display: none !important;
+      visibility: hidden !important;
     }
 
     .toc-content {
       display: block !important;
       visibility: visible !important;
-      opacity: 1 !important;
-      transition: visibility 0s 0s, opacity 0.3s ease !important;
     }
   }
 }

@@ -80,9 +80,6 @@ mark {
 // Language switcher
 .language-switcher {
   margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 
   .lang-switch-btn {
     display: inline-block;
@@ -103,39 +100,6 @@ mark {
       color: rgba(128, 128, 128, 1);
     }
   }
-
-  .copy-link-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    background-color: rgba(128, 128, 128, 0.1);
-    border-radius: 4px;
-    border: 1px solid rgba(128, 128, 128, 0.15);
-    color: rgba(128, 128, 128, 0.8);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    line-height: 0;
-
-    &:hover {
-      background-color: rgba(128, 128, 128, 0.15);
-      border-color: rgba(128, 128, 128, 0.25);
-      color: rgba(128, 128, 128, 1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-
-    svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .check-icon {
-      color: #22c55e;
-    }
-  }
 }
 
 // Dark mode language switcher
@@ -150,22 +114,6 @@ mark {
         background-color: rgba(180, 180, 180, 0.15);
         border-color: rgba(180, 180, 180, 0.25);
         color: rgba(180, 180, 180, 0.9);
-      }
-    }
-
-    .copy-link-btn {
-      background-color: rgba(180, 180, 180, 0.1);
-      border-color: rgba(180, 180, 180, 0.15);
-      color: rgba(180, 180, 180, 0.7);
-
-      &:hover {
-        background-color: rgba(180, 180, 180, 0.15);
-        border-color: rgba(180, 180, 180, 0.25);
-        color: rgba(180, 180, 180, 0.9);
-      }
-
-      .check-icon {
-        color: #22c55e;
       }
     }
   }

@@ -115,6 +115,8 @@ mark {
   transition: all 0.2s ease;
   margin-bottom: 8px;
   margin-left: 8px;
+  height: 23px;
+  line-height: 1;
 
   svg {
     width: 14px;
@@ -172,7 +174,7 @@ mark {
     border-color: rgba(180, 180, 180, 0.15);
 
     svg {
-      stroke: rgba(180, 180, 180, 0.7);
+      stroke: rgba(200, 200, 200, 0.8);
     }
 
     &:hover {
@@ -180,7 +182,7 @@ mark {
       border-color: rgba(180, 180, 180, 0.25);
 
       svg {
-        stroke: rgba(180, 180, 180, 0.9);
+        stroke: rgba(220, 220, 220, 1);
       }
     }
   }

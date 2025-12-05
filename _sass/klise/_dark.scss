@@ -286,4 +286,49 @@ body[data-theme="dark"] {
       transform: translateY(-1px);
     }
   }
+
+  // Floating TOC dark mode
+  .toc-floating {
+    .toc-lines {
+      background: rgba(30, 30, 30, 0.95);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+
+      .toc-line {
+        background: rgba(180, 180, 180, 0.3);
+
+        &.active {
+          background: $dark-text-link-secondary-active;
+          box-shadow: 0 0 8px rgba($dark-text-link-secondary-active, 0.4);
+        }
+      }
+    }
+
+    .toc-content {
+      background: rgba(30, 30, 30, 0.95);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+
+      .toc-list {
+        .toc-item {
+          a {
+            color: $dark-text-base-color;
+
+            &:hover {
+              background: rgba(180, 180, 180, 0.1);
+              color: $dark-text-link-secondary-active;
+            }
+          }
+
+          &.toc-item-h3 a {
+            color: $dark-gray;
+          }
+
+          &.active a {
+            color: $dark-text-link-secondary-active;
+            border-left-color: $dark-text-link-secondary-active;
+            background: rgba($dark-text-link-secondary-active, 0.15);
+          }
+        }
+      }
+    }
+  }
 }

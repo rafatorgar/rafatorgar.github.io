@@ -382,7 +382,7 @@
 
         &.toc-item-h2 {
           a {
-            font-size: 0.82em !important;
+            font-size: 0.8em !important;
           }
         }
 
@@ -390,8 +390,8 @@
           margin-left: 14px !important;
 
           a {
-            font-size: 0.76em !important;
-            color: rgba(120, 120, 120, 0.75) !important;
+            font-size: 0.8em !important;
+            color: rgba(100, 100, 100, 0.85) !important;
           }
         }
 
@@ -408,6 +408,7 @@
   // Hover state - swap visibility
   &:hover {
     .toc-lines {
+      display: none !important;
       opacity: 0 !important;
       transform: scale(0.95) !important;
       pointer-events: none !important;

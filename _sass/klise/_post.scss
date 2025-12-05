@@ -338,6 +338,18 @@
     min-width: 200px !important;
     max-width: 280px !important;
     z-index: 1 !important;
+    pointer-events: all !important;
+
+    // Invisible bridge to maintain hover
+    &::after {
+      content: "" !important;
+      position: absolute !important;
+      left: 100% !important;
+      top: 0 !important;
+      width: 10px !important;
+      height: 100% !important;
+      background: transparent !important;
+    }
 
     .toc-list {
       list-style: none !important;
@@ -405,15 +417,22 @@
   }
 
   // Hover state - swap visibility
-  &:hover {
+  &:hover,
+  .toc-content:hover {
     .toc-lines {
       display: none !important;
       visibility: hidden !important;
+      opacity: 0 !important;
     }
 
     .toc-content {
       display: block !important;
       visibility: visible !important;
     }
+  }
+
+  // Keep content visible when hovering it
+  .toc-content:hover ~ .toc-lines {
+    display: none !important;
   }
 }

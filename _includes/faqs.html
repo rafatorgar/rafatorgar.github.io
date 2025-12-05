@@ -1,6 +1,5 @@
-{% if page.faq_file %}
-  {% assign faq_data = site.data.faqs[page.faq_file] %}
-  {% if faq_data %}
+{% if page.faq_file %} {% assign faq_data = site.data.faqs[page.faq_file] %} {%
+if faq_data %}
 <div class="faq-section">
   <h2>FAQs</h2>
   <div class="faq-list">
@@ -8,16 +7,21 @@
     <div class="faq-item">
       <button class="faq-question" type="button" aria-expanded="false">
         <span class="faq-question-text">{{ faq.question }}</span>
-        <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          class="faq-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
-      <div class="faq-answer">
-        {{ faq.answer | markdownify }}
-      </div>
+      <div class="faq-answer">{{ faq.answer | markdownify }}</div>
     </div>
     {% endfor %}
   </div>
 </div>
-  {% endif %}
-{% endif %}
+{% endif %} {% endif %}

@@ -75,7 +75,7 @@ layout: compress
         </div>
 
         <!-- FAQs Section -->
-        {% include faqs.html %}
+        {% comment %}{% include faqs.html %}{% endcomment %}
 
       </article>
 
@@ -100,7 +100,7 @@ layout: compress
 
   <script src="{{ "/assets/js/toc.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/copy-link.js" | relative_url }}"></script>
-  <script src="{{ "/assets/js/faqs.js" | relative_url }}"></script>
+  {% comment %}<script src="{{ "/assets/js/faqs.js" | relative_url }}"></script>{% endcomment %}
 </body>
 
 </html>

@@ -1,12 +1,8 @@
-{% if page.faq_file %}
-  {% case page.faq_file %}
-    {% when 'ai_competency_evaluation_en' %}
-      {% assign faq_data = site.data.faqs.ai_competency_evaluation_en %}
-    {% when 'ai_competency_evaluation_es' %}
-      {% assign faq_data = site.data.faqs.ai_competency_evaluation_es %}
-  {% endcase %}
-  
-  {% if faq_data %}
+{% if page.faq_file %} {% case page.faq_file %} {% when
+'ai_competency_evaluation_en' %} {% assign faq_data =
+site.data.faqs.ai_competency_evaluation_en %} {% when
+'ai_competency_evaluation_es' %} {% assign faq_data =
+site.data.faqs.ai_competency_evaluation_es %} {% endcase %} {% if faq_data %}
 <div class="faq-section">
   <h2>FAQs</h2>
   <div class="faq-list">
@@ -31,5 +27,4 @@
     {% endfor %}
   </div>
 </div>
-  {% endif %}
-{% endif %}
+{% endif %} {% endif %}

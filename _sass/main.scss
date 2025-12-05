@@ -148,7 +148,7 @@ mark {
   &:hover:not(.copied) {
     background-color: rgba(128, 128, 128, 0.15);
     border-color: rgba(128, 128, 128, 0.25);
-    
+
     svg {
       fill: rgba(128, 128, 128, 1);
     }
@@ -182,7 +182,7 @@ mark {
     &.copied {
       background-color: rgba(120, 200, 120, 0.15);
       border-color: rgba(120, 200, 120, 0.25);
-      
+
       svg {
         fill: rgba(120, 200, 120, 0.9);
       }
@@ -191,7 +191,7 @@ mark {
     &:hover:not(.copied) {
       background-color: rgba(180, 180, 180, 0.15);
       border-color: rgba(180, 180, 180, 0.25);
-      
+
       svg {
         fill: rgba(180, 180, 180, 0.9);
       }

@@ -51,20 +51,35 @@ document.addEventListener("DOMContentLoaded", function () {
   let isExpanded = false;
 
   function expandToc() {
+    console.log("expandToc called, isExpanded:", isExpanded);
     if (isExpanded) return;
     isExpanded = true;
     tocLines.style.display = "none";
     tocContent.style.display = "block";
+    console.log(
+      "Expanded - lines display:",
+      tocLines.style.display,
+      "content display:",
+      tocContent.style.display
+    );
   }
 
   function collapseToc() {
+    console.log("collapseToc called, isExpanded:", isExpanded);
     if (!isExpanded) return;
     isExpanded = false;
     tocLines.style.display = "flex";
     tocContent.style.display = "none";
+    console.log(
+      "Collapsed - lines display:",
+      tocLines.style.display,
+      "content display:",
+      tocContent.style.display
+    );
   }
 
   // Use mouseenter/mouseleave on the container
+  console.log("Adding event listeners to:", tocFloating);
   tocFloating.addEventListener("mouseenter", expandToc);
   tocFloating.addEventListener("mouseleave", collapseToc);
 

@@ -78,11 +78,20 @@ mark {
 }
 
 // Language switcher
-.language-switcher {
+.post-actions {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
   margin-bottom: 8px;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
 
   .lang-switch-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 3px 8px;
     background-color: rgba(128, 128, 128, 0.1);
     border-radius: 4px;
@@ -113,10 +122,7 @@ mark {
   border: 1px solid rgba(128, 128, 128, 0.15);
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-bottom: 8px;
   margin-left: 8px;
-  height: 23px;
-  line-height: 1;
 
   svg {
     width: 14px;

@@ -361,6 +361,11 @@
         padding: 0 !important;
         list-style-type: none !important;
 
+        &::before {
+          content: none !important;
+          display: none !important;
+        }
+
         &:last-child {
           margin-bottom: 0 !important;
         }

@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const tocFloating = document.querySelector(".toc-floating");
   const tocLines = document.querySelector(".toc-lines");
   const tocList = document.querySelector(".toc-list");
+  const tocContent = document.querySelector(".toc-content");
 
-  if (!article || !tocFloating) return;
+  if (!article || !tocFloating || !tocLines || !tocContent) return;
 
   // Get all headings (h2, h3)
   const headings = article.querySelectorAll("h2, h3");
@@ -50,17 +51,20 @@ document.addEventListener("DOMContentLoaded", function () {
   let isExpanded = false;
 
   function expandToc() {
+    if (isExpanded) return;
     isExpanded = true;
     tocLines.style.display = "none";
-    document.querySelector(".toc-content").style.display = "block";
+    tocContent.style.display = "block";
   }
 
   function collapseToc() {
+    if (!isExpanded) return;
     isExpanded = false;
     tocLines.style.display = "flex";
-    document.querySelector(".toc-content").style.display = "none";
+    tocContent.style.display = "none";
   }
 
+  // Use mouseenter/mouseleave on the container
   tocFloating.addEventListener("mouseenter", expandToc);
   tocFloating.addEventListener("mouseleave", collapseToc);
 

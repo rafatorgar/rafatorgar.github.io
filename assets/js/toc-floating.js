@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("expandToc called, isExpanded:", isExpanded);
     if (isExpanded) return;
     isExpanded = true;
-    tocLines.style.display = "none";
-    tocContent.style.display = "block";
+    tocLines.style.setProperty("display", "none", "important");
+    tocContent.style.setProperty("display", "block", "important");
     console.log(
       "Expanded - lines display:",
       tocLines.style.display,
@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("collapseToc called, isExpanded:", isExpanded);
     if (!isExpanded) return;
     isExpanded = false;
-    tocLines.style.display = "flex";
-    tocContent.style.display = "none";
+    tocLines.style.setProperty("display", "flex", "important");
+    tocContent.style.setProperty("display", "none", "important");
     console.log(
       "Collapsed - lines display:",
       tocLines.style.display,

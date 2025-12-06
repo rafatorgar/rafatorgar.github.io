@@ -54,7 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("expandToc called, isExpanded:", isExpanded);
     if (isExpanded) return;
     isExpanded = true;
-    tocLines.style.setProperty("display", "none", "important");
+
+    // Hide each individual line
+    const lines = tocLines.querySelectorAll(".toc-line");
+    lines.forEach((line) => {
+      line.style.setProperty("display", "none", "important");
+    });
+
     tocContent.style.setProperty("display", "block", "important");
     console.log(
       "Expanded - lines display:",
@@ -68,7 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("collapseToc called, isExpanded:", isExpanded);
     if (!isExpanded) return;
     isExpanded = false;
-    tocLines.style.setProperty("display", "flex", "important");
+
+    // Show each individual line
+    const lines = tocLines.querySelectorAll(".toc-line");
+    lines.forEach((line) => {
+      line.style.setProperty("display", "block", "important");
+    });
+
     tocContent.style.setProperty("display", "none", "important");
     console.log(
       "Collapsed - lines display:",

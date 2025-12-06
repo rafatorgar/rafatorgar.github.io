@@ -1,0 +1,18 @@
+{% comment %}
+FAQ Component
+Usage:
+{% include faq.html 
+   question="Your question here?"
+   answer="Your answer here. Can include **markdown**."
+%}
+{% endcomment %}
+
+<div class="faq-item">
+  <div class="faq-question">
+    {{ include.question }}
+    <span class="faq-toggle">+</span>
+  </div>
+  <div class="faq-answer">
+    {{ include.answer | markdownify }}
+  </div>
+</div>

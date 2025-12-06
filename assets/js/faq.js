@@ -10,13 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
       // Close all other FAQs
       faqQuestions.forEach(function (q) {
         q.classList.remove("active");
-        q.nextElementSibling.classList.remove("active");
+        const otherAnswer = q.nextElementSibling;
+        otherAnswer.classList.remove("active");
+        otherAnswer.style.maxHeight = null;
       });
 
       // Toggle current FAQ
       if (!isActive) {
         this.classList.add("active");
         answer.classList.add("active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
       }
     });
   });

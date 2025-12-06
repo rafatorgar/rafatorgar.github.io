@@ -170,25 +170,6 @@ Para análisis conductual estructurado con frameworks claros (como el modelo SAR
 
 Esto fue contraintuitivo pero consistente en todas nuestras pruebas.
 
-## FAQs
-
-{% include faq.html 
-   question="¿La definición del mismo nivel de competencia puede variar entre candidatos?"
-   answer="No. La definición del nivel se mantiene fija, según el diccionario de competencias.
-
-Lo que sí varía es la justificación: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato."
-%}
-
-{% include faq.html 
-   question="¿Qué información se genera para una competencia?"
-   answer="Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
-
-- Nivel detectado y definición
-- Justificación del nivel detectado basada en incidentes críticos
-- Lista de evidencias
-- Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia"
-%}
-
 ## Resumen de implementación
 
 La sección de evaluación de competencia por incidentes críticos extrae **incidentes críticos** que incluyen: impacto, intensidad, razón de intensidad, situación, tarea, comportamiento, resultado, aprendizaje y referencias temporales.
@@ -214,6 +195,25 @@ La metodología (BEI, Técnica del Incidente Crítico) existía mucho antes de l
 4. **Aumento** - Dar a los consultores herramientas para tomar mejores decisiones más rápido
 
 La magia no está en la IA. Está en combinar metodología sólida con la capacidad de la IA para procesar y estructurar información a escala.
+
+## FAQs
+
+{% include faq.html
+question="¿La definición del mismo nivel de competencia puede variar entre candidatos?"
+answer="No. La definición del nivel se mantiene fija, según el diccionario de competencias.
+
+Lo que sí varía es la justificación: se adapta a los incidentes críticos y evidencias observadas en cada entrevista, que son únicos para cada candidato."
+%}
+
+{% include faq.html
+question="¿Qué información se genera para una competencia?"
+answer="Las competencias se analizan basándose en incidentes críticos mencionados en la conversación. De estos incidentes críticos extraemos:
+
+- Nivel detectado y definición
+- Justificación del nivel detectado basada en incidentes críticos
+- Lista de evidencias
+- Recomendaciones sobre qué puntos profundizar para mejorar la evaluación de la competencia"
+  %}
 
 ---
 

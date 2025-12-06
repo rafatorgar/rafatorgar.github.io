@@ -170,25 +170,6 @@ For structured behavioral analysis with clear frameworks (like SAR model and com
 
 This was counterintuitive but consistent across our testing.
 
-## FAQs
-
-{% include faq.html 
-   question="Can the definition of the same competency level vary between candidates?"
-   answer="No. The level definition remains fixed, according to the competency dictionary.
-
-What varies is the justification: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate."
-%}
-
-{% include faq.html 
-   question="What information is generated for a competency?"
-   answer="Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
-
-- Detected level and definition
-- Justification of detected level based on critical incidents
-- List of evidence
-- Recommendations on what points to probe further to improve competency evaluation"
-%}
-
 ## Implementation Summary
 
 The critical incident competency evaluation section extracts **critical incidents** that include: impact, intensity, intensity reason, situation, task, behavior, result, learning, and time references.
@@ -214,6 +195,25 @@ The methodology (BEI, Critical Incident Technique) existed long before LLMs. Wha
 4. **Augmentation** - Give consultants tools to make better decisions faster
 
 The magic isn't in the AI. It's in combining solid methodology with AI's ability to process and structure information at scale.
+
+## FAQs
+
+{% include faq.html
+question="Can the definition of the same competency level vary between candidates?"
+answer="No. The level definition remains fixed, according to the competency dictionary.
+
+What varies is the justification: it adapts to the critical incidents and evidence observed in each interview, which are unique for each candidate."
+%}
+
+{% include faq.html
+question="What information is generated for a competency?"
+answer="Competencies are analyzed based on critical incidents mentioned in the conversation. From these critical incidents we extract:
+
+- Detected level and definition
+- Justification of detected level based on critical incidents
+- List of evidence
+- Recommendations on what points to probe further to improve competency evaluation"
+  %}
 
 ---
 

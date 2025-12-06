@@ -47,47 +47,43 @@ document.addEventListener("DOMContentLoaded", function () {
     tocList.appendChild(li);
   });
 
+  // Store line data for recreation
+  const lineData = [];
+
   // Handle expand/collapse with mouse events
   let isExpanded = false;
 
   function expandToc() {
-    console.log("expandToc called, isExpanded:", isExpanded);
     if (isExpanded) return;
     isExpanded = true;
 
-    // Hide each individual line
+    // Store and remove all lines
     const lines = tocLines.querySelectorAll(".toc-line");
+    lineData.length = 0; // Clear array
     lines.forEach((line) => {
-      line.style.setProperty("display", "none", "important");
+      lineData.push({
+        className: line.className,
+        dataset: line.dataset.target,
+      });
+      line.remove();
     });
 
-    tocContent.style.setProperty("display", "block", "important");
-    console.log(
-      "Expanded - lines display:",
-      tocLines.style.display,
-      "content display:",
-      tocContent.style.display
-    );
+    tocContent.style.display = "block";
   }
 
   function collapseToc() {
-    console.log("collapseToc called, isExpanded:", isExpanded);
     if (!isExpanded) return;
     isExpanded = false;
 
-    // Show each individual line
-    const lines = tocLines.querySelectorAll(".toc-line");
-    lines.forEach((line) => {
-      line.style.setProperty("display", "block", "important");
+    // Recreate all lines
+    lineData.forEach((data) => {
+      const line = document.createElement("div");
+      line.className = data.className;
+      line.dataset.target = data.dataset;
+      tocLines.appendChild(line);
     });
 
-    tocContent.style.setProperty("display", "none", "important");
-    console.log(
-      "Collapsed - lines display:",
-      tocLines.style.display,
-      "content display:",
-      tocContent.style.display
-    );
+    tocContent.style.display = "none";
   }
 
   // Use mouseenter/mouseleave on the container

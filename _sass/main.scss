@@ -121,7 +121,7 @@ mark {
   svg {
     width: 14px;
     height: 14px;
-    stroke: rgba(128, 128, 128, 0.8);
+    color: rgba(128, 128, 128, 0.8);
     fill: none;
     transition: all 0.2s ease;
   }
@@ -148,7 +148,7 @@ mark {
     border-color: rgba(128, 128, 128, 0.25);
 
     svg {
-      stroke: rgba(128, 128, 128, 1);
+      color: rgba(128, 128, 128, 1);
     }
   }
 }
@@ -174,7 +174,7 @@ mark {
     border-color: rgba(180, 180, 180, 0.15);
 
     svg {
-      stroke: rgba(200, 200, 200, 0.8);
+      color: rgba(200, 200, 200, 0.8);
     }
 
     &:hover {
@@ -182,7 +182,7 @@ mark {
       border-color: rgba(180, 180, 180, 0.25);
 
       svg {
-        stroke: rgba(220, 220, 220, 1);
+        color: rgba(220, 220, 220, 1);
       }
     }
   }

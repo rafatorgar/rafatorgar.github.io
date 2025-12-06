@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Use mouseenter/mouseleave on the container
-  console.log("Adding event listeners to:", tocFloating);
   tocFloating.addEventListener("mouseenter", expandToc);
   tocFloating.addEventListener("mouseleave", collapseToc);
 

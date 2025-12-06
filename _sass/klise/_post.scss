@@ -415,24 +415,4 @@
       }
     }
   }
-
-  // Hover state - swap visibility
-  &:hover,
-  .toc-content:hover {
-    .toc-lines {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-    }
-
-    .toc-content {
-      display: block !important;
-      visibility: visible !important;
-    }
-  }
-
-  // Keep content visible when hovering it
-  .toc-content:hover ~ .toc-lines {
-    display: none !important;
-  }
 }

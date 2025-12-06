@@ -46,6 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
     tocList.appendChild(li);
   });
 
+  // Handle expand/collapse with mouse events
+  let isExpanded = false;
+
+  function expandToc() {
+    isExpanded = true;
+    tocLines.style.display = "none";
+    document.querySelector(".toc-content").style.display = "block";
+  }
+
+  function collapseToc() {
+    isExpanded = false;
+    tocLines.style.display = "flex";
+    document.querySelector(".toc-content").style.display = "none";
+  }
+
+  tocFloating.addEventListener("mouseenter", expandToc);
+  tocFloating.addEventListener("mouseleave", collapseToc);
+
   // Smooth scroll on click
   tocFloating.addEventListener("click", function (e) {
     if (e.target.tagName === "A") {

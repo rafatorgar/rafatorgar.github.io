@@ -2,10 +2,13 @@
   url: /
   external: false
 
+- title: servicios
+  url: /servicios/
+  external: false
+
 - title: archive
   url: /archive/
   external: false
-
 # - title: about
 #   url: /about/
 #   external: false # set true if you using external link, see below

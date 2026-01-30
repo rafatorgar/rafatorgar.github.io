@@ -1,0 +1,392 @@
+---
+layout: compress
+title: Servicios
+permalink: /servicios/
+---
+
+<!doctype html>
+<html lang="es">
+  {% include header.html %}
+
+  <body data-theme="{{ site.mode }}" class="notransition">
+    <script>
+      const body = document.body;
+      const data = body.getAttribute("data-theme");
+
+      const initTheme = (state) => {
+        if (state === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else if (state === "light") {
+          body.removeAttribute("data-theme");
+        } else {
+          localStorage.setItem("theme", data);
+        }
+      };
+
+      initTheme(localStorage.getItem("theme"));
+
+      setTimeout(() => body.classList.remove("notransition"), 75);
+    </script>
+
+    {% include navbar.html %}
+    <div class="wrapper">
+      <div class="services-page">
+        <div class="service-header">
+          <h1 class="service-title">🖨️ Diseño e Impresión 3D</h1>
+          <p class="service-location">📍 Figueras, Castropol, Asturias</p>
+        </div>
+
+        <div class="service-description">
+          <p>
+            Ofrezco servicios profesionales de
+            <strong>diseño e impresión 3D</strong> para particulares y empresas
+            en la zona de <strong>Castropol, Ribadeo y alrededores</strong>.
+          </p>
+
+          <div class="service-features">
+            <div class="feature">
+              <span class="feature-icon">✏️</span>
+              <span class="feature-text">Diseño CAD personalizado</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🖨️</span>
+              <span class="feature-text">Impresión 3D de alta calidad</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔧</span>
+              <span class="feature-text">Prototipos y piezas funcionales</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💡</span>
+              <span class="feature-text">Consultoría y asesoramiento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-social">
+          <h3 class="social-title">Mis trabajos en 3D</h3>
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/ratorgar/"
+              target="_blank"
+              rel="noopener"
+              class="social-link instagram"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://www.tiktok.com/@ratorgar"
+              target="_blank"
+              rel="noopener"
+              class="social-link tiktok"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
+                />
+              </svg>
+              <span>TikTok</span>
+            </a>
+            <a
+              href="https://cults3d.com/en/users/rafatorgar/3d-models"
+              target="_blank"
+              rel="noopener"
+              class="social-link cults"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span>Cults3D</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-cta">
+          <h3 class="cta-title">¿Tienes un proyecto en mente?</h3>
+          <p class="cta-subtitle">Contacta conmigo y hablemos de tu idea</p>
+          <div class="cta-buttons">
+            <a
+              href="https://wa.me/34695322753?text=Hola%20Rafa%2C%20me%20gustar%C3%ADa%20solicitar%20un%20proyecto%20de%20impresi%C3%B3n%203D"
+              target="_blank"
+              rel="noopener"
+              class="btn-cta btn-whatsapp"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+              WhatsApp
+            </a>
+            <a
+              href="mailto:hello@rafatorresgarcia.com?subject=Solicitud%20de%20proyecto%203D&body=Hola%20Rafa%2C%0A%0AMe%20gustar%C3%ADa%20solicitar%20un%20proyecto%20de%20dise%C3%B1o%20o%20impresi%C3%B3n%203D.%0A%0A"
+              class="btn-cta btn-email"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Email
+            </a>
+          </div>
+        </div>
+      </div>
+      {% include footer.html %}
+    </div>
+
+    <style>
+      .services-page {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .service-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .service-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+
+      .service-location {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-top: 0.5rem;
+      }
+
+      .service-description {
+        margin-bottom: 3rem;
+      }
+
+      .service-description p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .service-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        background: var(--code-bg);
+        border-radius: 8px;
+      }
+
+      .feature-icon {
+        font-size: 1.5rem;
+      }
+
+      .feature-text {
+        font-size: 0.95rem;
+      }
+
+      .service-social {
+        margin-bottom: 3rem;
+      }
+
+      .social-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--gray);
+        border-radius: 8px;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .social-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .social-link.instagram:hover {
+        border-color: #e1306c;
+        color: #e1306c;
+      }
+
+      .social-link.tiktok:hover {
+        border-color: #000000;
+      }
+
+      .social-link.cults:hover {
+        border-color: #ff6b35;
+        color: #ff6b35;
+      }
+
+      .service-cta {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: var(--code-bg);
+        border-radius: 12px;
+        margin-top: 3rem;
+      }
+
+      .cta-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cta-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-whatsapp {
+        background: #25d366;
+        color: white;
+      }
+
+      .btn-whatsapp:hover {
+        background: #20ba5a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      .btn-email {
+        background: var(--dark);
+        color: white;
+        border: 2px solid var(--gray);
+      }
+
+      .btn-email:hover {
+        background: var(--gray);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      [data-theme="dark"] .btn-email {
+        background: #2a2a2a;
+        border-color: #444;
+      }
+
+      [data-theme="dark"] .btn-email:hover {
+        background: #3a3a3a;
+      }
+
+      @media screen and (max-width: 640px) {
+        .service-title {
+          font-size: 2rem;
+        }
+
+        .service-features {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn-cta {
+          justify-content: center;
+        }
+      }
+    </style>
+  </body>
+</html>

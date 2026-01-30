@@ -1,8 +1,7 @@
 # Site settings
 title: Rafa Torres García # site title
 description: >- # site description
-  He's writing in Bahasa about web technology and experience as a journal 
-  for documentation things that he learned, meet him <a href="https://github.com/piharpi" target="_blank" rel="noopener">@github</a>.
+  Ingeniero creativo y Co-Fundador de Voicit. Ofrezco servicios de diseño e impresión 3D en Figueras, Castropol, Asturias y Ribadeo, Galicia. Blog sobre tecnología, desarrollo web y experiencias profesionales.
 lang: en-US # default lang
 timezone: Europe/Madrid # set your timezone
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
@@ -14,8 +13,10 @@ author:
   name: Rafa Torres García # author name
   bio: >- # tell to the world
     👋 Hi, I am Rafa, a creative engineer.<br>
-    <i>It is not how much you know, but how fast you learn</i>
+    <i>It is not how much you know, but how fast you learn</i><br>
     Co-Founder & CPTO at <a href="https://voicit.com" target="_blank" rel="noopener">@Voicit</a><br>
+    📍 Figueras, Castropol, Asturias<br>
+    🖨️ Servicios de Diseño e Impresión 3D
   username: rafatorgar # general username
   github: rafatorgar # github username
   twitter: rafatorresgar # twitter username

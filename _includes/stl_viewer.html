@@ -1,14 +1,14 @@
-{% comment %} STL Viewer Include Usage: {% include stl_viewer.html
-height="500" color="#00a8ff" autoRotate="true" %} Parameters: - height
-(optional): Height in pixels (default: 400) - color (optional): Model color in
-hex (default: #00a8ff) - autoRotate (optional): Enable auto-rotation (default:
-false) - showGrid (optional): Show grid helper (default: true) - id (optional):
-Custom container ID (default: auto-generated) Models are loaded from
-_data/stl_models.yml {% endcomment %} {% assign viewer_id = include.id |
-default: "stl-viewer-main" %} {% assign viewer_height = include.height |
-default: 400 %} {% assign model_color = include.color | default: "#00a8ff" %} {%
-assign auto_rotate = include.autoRotate | default: false %} {% assign show_grid
-= include.showGrid | default: true %}
+{% comment %} STL Viewer Include Usage: {% include stl_viewer.html height="500"
+color="#00a8ff" autoRotate="true" %} Parameters: - height (optional): Height in
+pixels (default: 400) - color (optional): Model color in hex (default: #00a8ff)
+- autoRotate (optional): Enable auto-rotation (default: false) - showGrid
+(optional): Show grid helper (default: true) - id (optional): Custom container
+ID (default: auto-generated) Models are loaded from _data/stl_models.yml {%
+endcomment %} {% assign viewer_id = include.id | default: "stl-viewer-main" %}
+{% assign viewer_height = include.height | default: 400 %} {% assign model_color
+= include.color | default: "#00a8ff" %} {% assign auto_rotate =
+include.autoRotate | default: false %} {% assign show_grid = include.showGrid |
+default: true %}
 
 <div class="stl-viewer-container">
   <!-- Model Selector -->
@@ -17,8 +17,17 @@ assign auto_rotate = include.autoRotate | default: false %} {% assign show_grid
     <label for="{{ viewer_id }}-select">Selecciona un modelo:</label>
     <select id="{{ viewer_id }}-select" class="model-select">
       {% for model in site.data.stl_models %}
-      <option value="{{ model.file }}" {% if forloop.first %}selected{% endif %}>
-        {{ model.name }}{% if model.description %} - {{ model.description }}{% endif %}
+      <option
+        value="{{ model.file }}"
+        {%
+        if
+        forloop.first
+        %}selected{%
+        endif
+        %}
+      >
+        {{ model.name }}{% if model.description %} - {{ model.description }}{%
+        endif %}
       </option>
       {% endfor %}
     </select>
@@ -39,7 +48,20 @@ assign auto_rotate = include.autoRotate | default: false %} {% assign show_grid
   </div>
 </div>
 
-<lin// Get first model from data
+<link rel="stylesheet" href="/assets/css/stl-viewer.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="/assets/js/stl-viewer.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert hex color to number
+    const colorHex = "{{ model_color }}".replace('#', '0x');
+    const colorNum = parseInt(colorHex, 16);
+
+    // Get first model from data
     {% if site.data.stl_models.size > 0 %}
       const firstModel = "{{ site.data.stl_models[0].file }}";
     {% else %}
@@ -60,19 +82,6 @@ assign auto_rotate = include.autoRotate | default: false %} {% assign show_grid
         const newModelPath = e.target.value;
         loadNewModel(viewerInstance, newModelPath, colorNum);
       });
-    } src="/assets/js/stl-viewer.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Convert hex color to number
-    const colorHex = "{{ model_color }}".replace('#', '0x');
-    const colorNum = parseInt(colorHex, 16);
-
-    initSTLViewer('{{ viewer_id }}', '{{ include.file }}', {
-      height: {{ viewer_height }},
-      modelColor: colorNum,
-      autoRotate: {{ auto_rotate }},
-      showGrid: {{ show_grid }}
-    });
+    }
   });
 </script>

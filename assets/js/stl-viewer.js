@@ -7,18 +7,20 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   const container = document.getElementById(containerId);
   if (!container) {
     console.error("Container not found:", containerId);
-    return;
+    return null;
   }
 
   // Default options
   const settings = {
     width: options.width || container.clientWidth,
     height: options.height || 400,
-    backgroundColor: options.backgroundColor || 0x1a1a1a,
+    backgroundColor: options.backgroundColor || 0x2a2a2a,
     modelColor: options.modelColor || 0x00a8ff,
     autoRotate: options.autoRotate || false,
     showGrid: options.showGrid !== false, // true by default
   };
+
+  console.log('Initializing STL Viewer:', { containerId, stlPath, settings });
 
   // Scene setup
   const scene = new THREE.Scene();
@@ -40,20 +42,20 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   container.appendChild(renderer.domElement);
 
   // Lights
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
 
   const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
   directionalLight1.position.set(1, 1, 1);
   scene.add(directionalLight1);
 
-  const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+  const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight2.position.set(-1, -1, -1);
   scene.add(directionalLight2);
 
   // Grid helper
   if (settings.showGrid) {
-    const gridHelper = new THREE.GridHelper(200, 20, 0x444444, 0x222222);
+    const gridHelper = new THREE.GridHelper(200, 20, 0x666666, 0x333333);
     scene.add(gridHelper);
   }
 
@@ -74,9 +76,14 @@ function initSTLViewer(containerId, stlPath, options = {}) {
     '<div class="spinner"></div><p>Cargando modelo 3D...</p>';
   container.appendChild(loadingDiv);
 
+  // Store current mesh reference
+  let currentMesh = null;
+
   loader.load(
     stlPath,
     function (geometry) {
+      console.log('STL geometry loaded successfully');
+      
       // Remove loading indicator
       loadingDiv.remove();
 
@@ -91,11 +98,11 @@ function initSTLViewer(containerId, stlPath, options = {}) {
       });
 
       // Create mesh
-      const mesh = new THREE.Mesh(geometry, material);
-      scene.add(mesh);
+      currentMesh = new THREE.Mesh(geometry, material);
+      scene.add(currentMesh);
 
       // Auto-scale to fit view
-      const boundingBox = new THREE.Box3().setFromObject(mesh);
+      const boundingBox = new THREE.Box3().setFromObject(currentMesh);
       const size = boundingBox.getSize(new THREE.Vector3());
       const maxDim = Math.max(size.x, size.y, size.z);
       const fov = camera.fov * (Math.PI / 180);
@@ -107,16 +114,23 @@ function initSTLViewer(containerId, stlPath, options = {}) {
       const center = boundingBox.getCenter(new THREE.Vector3());
       controls.target.copy(center);
       controls.update();
+      
+      console.log('Model rendered successfully');
     },
     function (xhr) {
       // Progress callback
-      const percentComplete = (xhr.loaded / xhr.total) * 100;
-      console.log("Cargando: " + Math.round(percentComplete) + "%");
+      if (xhr.lengthComputable) {
+        const percentComplete = (xhr.loaded / xhr.total) * 100;
+        console.log("Loading progress: " + Math.round(percentComplete) + "%");
+      }
     },
     function (error) {
-      console.error("Error cargando STL:", error);
+      console.error("Error loading STL:", error);
+      console.error("Attempted path:", stlPath);
       loadingDiv.innerHTML =
-        '<p style="color: #ff4444;">Error al cargar el modelo 3D</p>';
+        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' + 
+        stlPath + 
+        '</small></p>';
     },
   );
 
@@ -137,7 +151,7 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   });
 
   // Return controls for external manipulation if needed
-  return { scene, camera, renderer, controls, settings, container };
+  return { scene, camera, renderer, controls, settings, container, getCurrentMesh: () => currentMesh };
 }
 
 /**
@@ -154,21 +168,21 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
 
   const { scene, camera, controls, settings, container } = viewerInstance;
 
+  console.log('Loading new model:', stlPath);
+
   // Remove existing mesh
-  const existingMesh = scene.children.find(
-    (child) => child instanceof THREE.Mesh && child.geometry,
-  );
-  if (existingMesh) {
-    scene.remove(existingMesh);
-    existingMesh.geometry.dispose();
-    existingMesh.material.dispose();
+  const currentMesh = viewerInstance.getCurrentMesh();
+  if (currentMesh) {
+    scene.remove(currentMesh);
+    if (currentMesh.geometry) currentMesh.geometry.dispose();
+    if (currentMesh.material) currentMesh.material.dispose();
   }
 
   // Show loading indicator
   const loadingDiv = document.createElement("div");
   loadingDiv.className = "stl-loading";
   loadingDiv.innerHTML =
-    '<div class="spinner"></div><p>Cargando modelo 3D...</p>';
+    '<div class="spinner"></div><p>Cargando nuevo modelo...</p>';
   container.appendChild(loadingDiv);
 
   // Load new model
@@ -179,6 +193,8 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
   loader.load(
     stlPath,
     function (geometry) {
+      console.log('New model loaded successfully');
+      
       // Remove loading indicator
       loadingDiv.remove();
 
@@ -196,6 +212,9 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
       const mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
 
+      // Update the current mesh reference
+      viewerInstance.getCurrentMesh = () => mesh;
+
       // Auto-scale to fit view
       const boundingBox = new THREE.Box3().setFromObject(mesh);
       const size = boundingBox.getSize(new THREE.Vector3());
@@ -212,13 +231,18 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
     },
     function (xhr) {
       // Progress callback
-      const percentComplete = (xhr.loaded / xhr.total) * 100;
-      console.log("Cargando: " + Math.round(percentComplete) + "%");
+      if (xhr.lengthComputable) {
+        const percentComplete = (xhr.loaded / xhr.total) * 100;
+        console.log("Loading progress: " + Math.round(percentComplete) + "%");
+      }
     },
     function (error) {
-      console.error("Error cargando STL:", error);
+      console.error("Error loading new STL:", error);
+      console.error("Attempted path:", stlPath);
       loadingDiv.innerHTML =
-        '<p style="color: #ff4444;">Error al cargar el modelo 3D</p>';
+        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' + 
+        stlPath + 
+        '</small></p>';
     },
   );
 }

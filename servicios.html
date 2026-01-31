@@ -125,20 +125,19 @@ permalink: /services/impresion-3d-figueras-castropol-ribadeo/
 
         <!-- 3D Viewer Demo Section -->
         <div class="viewer-3d-section">
-          <h3 class="viewer-title">Ejemplo Interactivo 3D</h3>
+          <h3 class="viewer-title">Galería de Modelos 3D</h3>
           <p class="viewer-subtitle">
-            Explora uno de mis diseños 3D. Puedes rotar, hacer zoom y mover la cámara para verlo desde todos los ángulos.
+            Explora mis diseños 3D. Selecciona un modelo del menú, rótalo, haz
+            zoom y muévelo para verlo desde todos los ángulos.
           </p>
-          
-          {% include stl_viewer.html 
-             file="/assets/models/ejemplo.stl" 
-             height="450"
-             color="#00a8ff"
-             autoRotate="false"
-          %}
-          
+
+          {% include stl_viewer.html height="450" color="#00a8ff"
+          autoRotate="false" %}
+
           <p class="viewer-note">
-            💡 <strong>Nota:</strong> Sube tu archivo STL a <code>/assets/models/</code> para reemplazar este ejemplo.
+            💡 <strong>Tip:</strong> Añade más modelos en
+            <code>_data/stl_models.yml</code> y súbelos a
+            <code>/assets/models/</code>
           </p>
         </div>
 

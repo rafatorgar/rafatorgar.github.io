@@ -1,0 +1,18 @@
+# Lista de modelos 3D disponibles
+# Añade aquí todos tus archivos STL
+
+- name: "Ejemplo 1"
+  file: "/assets/models/ejemplo.stl"
+  description: "Modelo de ejemplo"
+# - name: "Mi Pieza Custom"
+#   file: "/assets/models/pieza-custom.stl"
+#   description: "Pieza personalizada para proyecto X"
+
+# - name: "Prototipo"
+#   file: "/assets/models/prototipo.stl"
+#   description: "Prototipo funcional"
+
+# Añade más modelos siguiendo el formato:
+# - name: "Nombre del modelo"
+#   file: "/assets/models/archivo.stl"
+#   description: "Descripción opcional"

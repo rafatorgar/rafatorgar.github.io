@@ -1,339 +1,555 @@
 ---
-layout: default
+layout: compress
 title: Galería de Modelos 3D
-permalink: /3d-models/
+permalink: /modelos-3d/
 ---
 
-<div class="models-gallery-page">
-  <header class="gallery-header">
-    <h1 class="gallery-title">Galería de Modelos 3D</h1>
-    <p class="gallery-description">
-      Explora mi colección de diseños 3D. Selecciona un modelo, rótalo, haz zoom
-      y examínalo desde todos los ángulos.
-    </p>
-  </header>
+<!doctype html>
+<html lang="es">
+  {% include header.html %}
 
-  <!-- 3D Viewer -->
-  <div class="viewer-section">
-    {% include stl_viewer.html height="550" color="#00a8ff" autoRotate="false"
-    %}
-  </div>
+  <body data-theme="{{ site.mode }}" class="notransition">
+    <script>
+      const body = document.body;
+      const data = body.getAttribute("data-theme");
 
-  <!-- Models Grid Info -->
-  <div class="models-info">
-    <h2>Accesorios Sistema Tisken de IKEA</h2>
-    <p>
-      Serie de accesorios funcionales diseñados para el sistema de organización
-      Tisken de IKEA. Estos diseños amplían las posibilidades del sistema
-      original, permitiendo mayor versatilidad y personalización.
-    </p>
+      const initTheme = (state) => {
+        if (state === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else if (state === "light") {
+          body.removeAttribute("data-theme");
+        } else {
+          localStorage.setItem("theme", data);
+        }
+      };
 
-    <div class="models-grid">
-      {% for model in site.data.stl_models %}
-      <div class="model-card">
-        <div class="model-icon">🔷</div>
-        <h3 class="model-name">{{ model.name }}</h3>
-        <p class="model-description">{{ model.description }}</p>
-        <div class="model-tags">
-          <span class="tag">Funcional</span>
-          <span class="tag">IKEA</span>
+      initTheme(localStorage.getItem("theme"));
+
+      setTimeout(() => body.classList.remove("notransition"), 75);
+    </script>
+
+    {% include navbar.html %}
+    
+    <div class="wrapper">
+      <div class="models-gallery-page">
+        <header class="gallery-header">
+          <h1 class="gallery-title">Galería de Modelos 3D</h1>
+          <p class="gallery-description">
+            Explora mi colección de diseños 3D. Selecciona un modelo, rótalo, haz zoom y examínalo desde todos los ángulos.
+          </p>
+        </header>
+
+        <!-- 3D Viewer -->
+        <div class="viewer-section">
+          <select id="model-selector" class="model-selector">
+            {% for model in site.data.stl_models %}
+            <option value="{{ model.file }}" {% if forloop.first %}selected{% endif %}>
+              {{ model.name }}{% if model.description %} - {{ model.description }}{% endif %}
+            </option>
+            {% endfor %}
+          </select>
+          
+          <div id="viewer-container" class="viewer-container"></div>
+          
+          <div class="viewer-controls">
+            <p>🖱️ Clic izquierdo: Rotar | 🖱️ Clic derecho: Mover | 🔄 Scroll: Zoom</p>
+          </div>
+        </div>
+
+        <!-- Models Grid Info -->
+        <div class="models-info">
+          <h2>Accesorios Sistema Tisken de IKEA</h2>
+          <p>
+            Serie de accesorios funcionales diseñados para el sistema de organización Tisken de IKEA. 
+            Estos diseños amplían las posibilidades del sistema original, permitiendo mayor versatilidad y personalización.
+          </p>
+          
+          <div class="models-grid">
+            {% for model in site.data.stl_models %}
+            <div class="model-card">
+              <div class="model-icon">🔷</div>
+              <h3 class="model-name">{{ model.name }}</h3>
+              <p class="model-description">{{ model.description }}</p>
+              <div class="model-tags">
+                <span class="tag">Funcional</span>
+                <span class="tag">IKEA</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+          <h2>Descarga los Modelos</h2>
+          <p>Todos mis diseños están disponibles de forma gratuita en:</p>
+          <div class="download-links">
+            <a href="https://cults3d.com/en/users/rafatorgar/3d-models" target="_blank" rel="noopener" class="download-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              Ver en Cults3D
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <h3>¿Necesitas un diseño personalizado?</h3>
+          <p>Puedo crear modelos 3D a medida para tu proyecto</p>
+          <a href="/services/impresion-3d-figueras-castropol-ribadeo/" class="cta-btn">
+            Ver Servicios de Diseño 3D
+          </a>
         </div>
       </div>
-      {% endfor %}
+      {% include footer.html %}
     </div>
-  </div>
 
-  <!-- Download Section -->
-  <div class="download-section">
-    <h2>Descarga los Modelos</h2>
-    <p>Todos mis diseños están disponibles de forma gratuita en:</p>
-    <div class="download-links">
-      <a
-        href="https://cults3d.com/en/users/rafatorgar/3d-models"
-        target="_blank"
-        rel="noopener"
-        class="download-btn"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-          ></path>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-          <line x1="12" y1="22.08" x2="12" y2="12"></line>
-        </svg>
-        Ver en Cults3D
-      </a>
-      <a
-        href="https://www.thingiverse.com"
-        target="_blank"
-        rel="noopener"
-        class="download-btn"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        Ver en Thingiverse
-      </a>
-    </div>
-  </div>
+    <style>
+      .models-gallery-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
 
-  <!-- CTA Section -->
-  <div class="cta-section">
-    <h3>¿Necesitas un diseño personalizado?</h3>
-    <p>Puedo crear modelos 3D a medida para tu proyecto</p>
-    <a
-      href="/services/impresion-3d-figueras-castropol-ribadeo/"
-      class="cta-btn"
-    >
-      Ver Servicios de Diseño 3D
-    </a>
-  </div>
-</div>
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
 
-<style>
-  .models-gallery-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
+      .gallery-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
 
-  .gallery-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+      .gallery-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-  .gallery-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
+      .viewer-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: rgba(245, 245, 245, 0.3);
+        border-radius: 12px;
+        border: 1px solid rgba(128, 128, 128, 0.1);
+      }
 
-  .gallery-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--gray);
-    max-width: 600px;
-    margin: 0 auto;
-  }
+      [data-theme="dark"] .viewer-section {
+        background: rgba(40, 40, 40, 0.3);
+        border-color: rgba(180, 180, 180, 0.1);
+      }
 
-  .viewer-section {
-    margin: 3rem 0;
-    padding: 2rem;
-    background: rgba(245, 245, 245, 0.3);
-    border-radius: 12px;
-    border: 1px solid rgba(128, 128, 128, 0.1);
-  }
+      .model-selector {
+        width: 100%;
+        padding: 12px 16px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 2px solid #444;
+        background: #2a2a2a;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
 
-  [data-theme="dark"] .viewer-section {
-    background: rgba(40, 40, 40, 0.3);
-    border-color: rgba(180, 180, 180, 0.1);
-  }
+      .model-selector:hover {
+        border-color: #00a8ff;
+      }
 
-  .models-info {
-    margin: 3rem 0;
-  }
+      .model-selector:focus {
+        outline: none;
+        border-color: #00a8ff;
+        box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.1);
+      }
 
-  .models-info h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
+      body:not([data-theme="dark"]) .model-selector {
+        background: #fff;
+        color: #333;
+        border-color: #ccc;
+      }
 
-  .models-info > p {
-    text-align: center;
-    color: var(--gray);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
+      .viewer-container {
+        width: 100%;
+        height: 550px;
+        background: #2a2a2a;
+        border: 2px solid #444;
+        border-radius: 8px;
+        position: relative;
+      }
 
-  .models-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+      body:not([data-theme="dark"]) .viewer-container {
+        background: #e8e8e8;
+        border-color: #ccc;
+      }
 
-  .model-card {
-    padding: 1.5rem;
-    background: rgba(245, 245, 245, 0.5);
-    border: 1px solid rgba(128, 128, 128, 0.15);
-    border-radius: 10px;
-    transition: all 0.2s ease;
-  }
+      .viewer-controls {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
 
-  .model-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: rgba(128, 128, 128, 0.3);
-  }
+      .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+      }
 
-  [data-theme="dark"] .model-card {
-    background: rgba(40, 40, 40, 0.4);
-    border-color: rgba(180, 180, 180, 0.15);
-  }
+      body:not([data-theme="dark"]) .loading {
+        color: #333;
+      }
 
-  [data-theme="dark"] .model-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border-color: rgba(180, 180, 180, 0.3);
-  }
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-left-color: #00a8ff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px;
+      }
 
-  .model-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
+      body:not([data-theme="dark"]) .spinner {
+        border-color: rgba(0, 0, 0, 0.1);
+        border-left-color: #00a8ff;
+      }
 
-  .model-name {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
 
-  .model-description {
-    font-size: 0.9rem;
-    color: var(--gray);
-    line-height: 1.4;
-    margin-bottom: 1rem;
-  }
+      .models-info {
+        margin: 3rem 0;
+      }
 
-  .model-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
+      .models-info h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
 
-  .tag {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    background-color: rgba(128, 128, 128, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    color: var(--gray);
-  }
+      .models-info > p {
+        text-align: center;
+        color: var(--gray);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
 
-  .download-section {
-    margin: 3rem 0;
-    padding: 2rem;
-    text-align: center;
-    background: rgba(0, 168, 255, 0.05);
-    border: 1px solid rgba(0, 168, 255, 0.2);
-    border-radius: 12px;
-  }
+      .models-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
 
-  .download-section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-  }
+      .model-card {
+        padding: 1.5rem;
+        background: rgba(245, 245, 245, 0.5);
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 10px;
+        transition: all 0.2s ease;
+      }
 
-  .download-section > p {
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-  }
+      .model-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: rgba(128, 128, 128, 0.3);
+      }
 
-  .download-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+      [data-theme="dark"] .model-card {
+        background: rgba(40, 40, 40, 0.4);
+        border-color: rgba(180, 180, 180, 0.15);
+      }
 
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background-color: rgba(0, 168, 255, 0.1);
-    border: 1px solid rgba(0, 168, 255, 0.3);
-    border-radius: 6px;
-    text-decoration: none;
-    color: #00a8ff;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
+      [data-theme="dark"] .model-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border-color: rgba(180, 180, 180, 0.3);
+      }
 
-  .download-btn:hover {
-    background-color: rgba(0, 168, 255, 0.2);
-    border-color: rgba(0, 168, 255, 0.5);
-    transform: translateY(-1px);
-  }
+      .model-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
 
-  .cta-section {
-    margin: 3rem 0;
-    padding: 2.5rem;
-    text-align: center;
-    background: rgba(245, 245, 245, 0.5);
-    border-radius: 12px;
-    border: 1px solid rgba(128, 128, 128, 0.15);
-  }
+      .model-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
 
-  [data-theme="dark"] .cta-section {
-    background: rgba(40, 40, 40, 0.4);
-    border-color: rgba(180, 180, 180, 0.15);
-  }
+      .model-description {
+        font-size: 0.9rem;
+        color: var(--gray);
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
 
-  .cta-section h3 {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-  }
+      .model-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
 
-  .cta-section p {
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-  }
+      .tag {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        color: var(--gray);
+      }
 
-  .cta-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: rgba(128, 128, 128, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    border-radius: 6px;
-    text-decoration: none;
-    color: inherit;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
+      .download-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        text-align: center;
+        background: rgba(0, 168, 255, 0.05);
+        border: 1px solid rgba(0, 168, 255, 0.2);
+        border-radius: 12px;
+      }
 
-  .cta-btn:hover {
-    background-color: rgba(128, 128, 128, 0.2);
-    border-color: rgba(128, 128, 128, 0.3);
-    transform: translateY(-1px);
-  }
+      .download-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
 
-  @media screen and (max-width: 640px) {
-    .gallery-title {
-      font-size: 2rem;
-    }
+      .download-section > p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
 
-    .models-grid {
-      grid-template-columns: 1fr;
-    }
+      .download-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-    .download-links {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  }
-</style>
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background-color: rgba(0, 168, 255, 0.1);
+        border: 1px solid rgba(0, 168, 255, 0.3);
+        border-radius: 6px;
+        text-decoration: none;
+        color: #00a8ff;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .download-btn:hover {
+        background-color: rgba(0, 168, 255, 0.2);
+        border-color: rgba(0, 168, 255, 0.5);
+        transform: translateY(-1px);
+      }
+
+      .cta-section {
+        margin: 3rem 0;
+        padding: 2.5rem;
+        text-align: center;
+        background: rgba(245, 245, 245, 0.5);
+        border-radius: 12px;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+      }
+
+      [data-theme="dark"] .cta-section {
+        background: rgba(40, 40, 40, 0.4);
+        border-color: rgba(180, 180, 180, 0.15);
+      }
+
+      .cta-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cta-section p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        border-radius: 6px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .cta-btn:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        border-color: rgba(128, 128, 128, 0.3);
+        transform: translateY(-1px);
+      }
+
+      @media screen and (max-width: 640px) {
+        .gallery-title {
+          font-size: 2rem;
+        }
+
+        .models-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .download-links {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .viewer-container {
+          height: 400px;
+        }
+      }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    
+    <script>
+      const container = document.getElementById('viewer-container');
+      
+      // Scene setup
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x2a2a2a);
+      
+      // Camera
+      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / 550, 0.1, 1000);
+      camera.position.z = 100;
+      
+      // Renderer
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, 550);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+      
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+      
+      const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+      light1.position.set(1, 1, 1);
+      scene.add(light1);
+      
+      const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+      light2.position.set(-1, -1, -1);
+      scene.add(light2);
+      
+      // Grid
+      const gridHelper = new THREE.GridHelper(200, 20, 0x666666, 0x333333);
+      scene.add(gridHelper);
+      
+      // Controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      
+      // Animation
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+      
+      // Load model
+      let currentMesh = null;
+      
+      function loadModel(path) {
+        console.log('Loading model:', path);
+        
+        // Show loading
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'loading';
+        loadingDiv.innerHTML = '<div class="spinner"></div><p>Cargando modelo...</p>';
+        container.appendChild(loadingDiv);
+        
+        if (currentMesh) {
+          scene.remove(currentMesh);
+          if (currentMesh.geometry) currentMesh.geometry.dispose();
+          if (currentMesh.material) currentMesh.material.dispose();
+        }
+        
+        const loader = new THREE.STLLoader();
+        
+        loader.load(
+          path,
+          function(geometry) {
+            console.log('✓ Model loaded successfully!');
+            if (loadingDiv.parentNode) loadingDiv.remove();
+            
+            geometry.center();
+            
+            const material = new THREE.MeshPhongMaterial({
+              color: 0x00a8ff,
+              specular: 0x111111,
+              shininess: 200
+            });
+            
+            currentMesh = new THREE.Mesh(geometry, material);
+            scene.add(currentMesh);
+            
+            // Auto-scale
+            const box = new THREE.Box3().setFromObject(currentMesh);
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = camera.fov * (Math.PI / 180);
+            const cameraZ = Math.abs(maxDim / Math.sin(fov / 2)) * 1.5;
+            camera.position.z = cameraZ;
+            
+            const center = box.getCenter(new THREE.Vector3());
+            controls.target.copy(center);
+            controls.update();
+          },
+          function(xhr) {
+            if (xhr.lengthComputable) {
+              const percent = (xhr.loaded / xhr.total * 100).toFixed(0);
+              console.log('Loading: ' + percent + '%');
+            }
+          },
+          function(error) {
+            console.error('✗ Error loading model:', error);
+            if (loadingDiv.parentNode) {
+              loadingDiv.innerHTML = '<p style="color: #ff4444;">❌ Error al cargar</p>';
+            }
+          }
+        );
+      }
+      
+      // Load first model
+      const firstModel = "{{ site.data.stl_models[0].file }}";
+      loadModel(firstModel);
+      
+      // Model selector
+      document.getElementById('model-selector').addEventListener('change', function(e) {
+        loadModel(e.target.value);
+      });
+      
+      // Resize handler
+      window.addEventListener('resize', function() {
+        const width = container.clientWidth;
+        camera.aspect = width / 550;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, 550);
+      });
+    </script>
+  </body>
+</html>

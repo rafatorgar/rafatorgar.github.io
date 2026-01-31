@@ -1,0 +1,339 @@
+---
+layout: default
+title: Galería de Modelos 3D
+permalink: /3d-models/
+---
+
+<div class="models-gallery-page">
+  <header class="gallery-header">
+    <h1 class="gallery-title">Galería de Modelos 3D</h1>
+    <p class="gallery-description">
+      Explora mi colección de diseños 3D. Selecciona un modelo, rótalo, haz zoom
+      y examínalo desde todos los ángulos.
+    </p>
+  </header>
+
+  <!-- 3D Viewer -->
+  <div class="viewer-section">
+    {% include stl_viewer.html height="550" color="#00a8ff" autoRotate="false"
+    %}
+  </div>
+
+  <!-- Models Grid Info -->
+  <div class="models-info">
+    <h2>Accesorios Sistema Tisken de IKEA</h2>
+    <p>
+      Serie de accesorios funcionales diseñados para el sistema de organización
+      Tisken de IKEA. Estos diseños amplían las posibilidades del sistema
+      original, permitiendo mayor versatilidad y personalización.
+    </p>
+
+    <div class="models-grid">
+      {% for model in site.data.stl_models %}
+      <div class="model-card">
+        <div class="model-icon">🔷</div>
+        <h3 class="model-name">{{ model.name }}</h3>
+        <p class="model-description">{{ model.description }}</p>
+        <div class="model-tags">
+          <span class="tag">Funcional</span>
+          <span class="tag">IKEA</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Download Section -->
+  <div class="download-section">
+    <h2>Descarga los Modelos</h2>
+    <p>Todos mis diseños están disponibles de forma gratuita en:</p>
+    <div class="download-links">
+      <a
+        href="https://cults3d.com/en/users/rafatorgar/3d-models"
+        target="_blank"
+        rel="noopener"
+        class="download-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+          ></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+        Ver en Cults3D
+      </a>
+      <a
+        href="https://www.thingiverse.com"
+        target="_blank"
+        rel="noopener"
+        class="download-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Ver en Thingiverse
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h3>¿Necesitas un diseño personalizado?</h3>
+    <p>Puedo crear modelos 3D a medida para tu proyecto</p>
+    <a
+      href="/services/impresion-3d-figueras-castropol-ribadeo/"
+      class="cta-btn"
+    >
+      Ver Servicios de Diseño 3D
+    </a>
+  </div>
+</div>
+
+<style>
+  .models-gallery-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .gallery-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .viewer-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(245, 245, 245, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.1);
+  }
+
+  [data-theme="dark"] .viewer-section {
+    background: rgba(40, 40, 40, 0.3);
+    border-color: rgba(180, 180, 180, 0.1);
+  }
+
+  .models-info {
+    margin: 3rem 0;
+  }
+
+  .models-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .models-info > p {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .model-card {
+    padding: 1.5rem;
+    background: rgba(245, 245, 245, 0.5);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .model-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(128, 128, 128, 0.3);
+  }
+
+  [data-theme="dark"] .model-card {
+    background: rgba(40, 40, 40, 0.4);
+    border-color: rgba(180, 180, 180, 0.15);
+  }
+
+  [data-theme="dark"] .model-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: rgba(180, 180, 180, 0.3);
+  }
+
+  .model-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .model-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .model-description {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .model-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    color: var(--gray);
+  }
+
+  .download-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0, 168, 255, 0.05);
+    border: 1px solid rgba(0, 168, 255, 0.2);
+    border-radius: 12px;
+  }
+
+  .download-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .download-section > p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .download-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: rgba(0, 168, 255, 0.1);
+    border: 1px solid rgba(0, 168, 255, 0.3);
+    border-radius: 6px;
+    text-decoration: none;
+    color: #00a8ff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .download-btn:hover {
+    background-color: rgba(0, 168, 255, 0.2);
+    border-color: rgba(0, 168, 255, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .cta-section {
+    margin: 3rem 0;
+    padding: 2.5rem;
+    text-align: center;
+    background: rgba(245, 245, 245, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+  }
+
+  [data-theme="dark"] .cta-section {
+    background: rgba(40, 40, 40, 0.4);
+    border-color: rgba(180, 180, 180, 0.15);
+  }
+
+  .cta-section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-section p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+    border-color: rgba(128, 128, 128, 0.3);
+    transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 640px) {
+    .gallery-title {
+      font-size: 2rem;
+    }
+
+    .models-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .download-links {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

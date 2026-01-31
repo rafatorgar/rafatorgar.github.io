@@ -5,6 +5,10 @@
 - title: archive
   url: /archive/
   external: false
+
+- title: 3D
+  url: /3d-models/
+  external: false
 # - title: about
 #   url: /about/
 #   external: false # set true if you using external link, see below

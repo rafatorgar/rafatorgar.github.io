@@ -123,18 +123,6 @@ permalink: /services/impresion-3d-figueras-castropol-ribadeo/
           </div>
         </div>
 
-        <!-- 3D Viewer Demo Section -->
-        <div class="viewer-3d-section">
-          <h3 class="viewer-title">Galería de Modelos 3D</h3>
-          <p class="viewer-subtitle">
-            Explora mis diseños 3D. Selecciona un modelo del menú, rótalo, haz
-            zoom y muévelo para verlo desde todos los ángulos.
-          </p>
-
-          {% include stl_viewer.html height="450" color="#00a8ff"
-          autoRotate="false" %}
-        </div>
-
         <!-- Social Links -->
         <div class="service-social">
           <div class="social-links">
@@ -506,67 +494,6 @@ permalink: /services/impresion-3d-figueras-castropol-ribadeo/
         background-color: rgba(180, 180, 180, 0.15);
         border-color: rgba(180, 180, 180, 0.25);
         color: rgba(180, 180, 180, 0.9);
-      }
-
-      /* 3D Viewer Section */
-      .viewer-3d-section {
-        margin: 3rem 0;
-        padding: 2rem 1.5rem;
-        background: rgba(245, 245, 245, 0.3);
-        border-radius: 12px;
-        border: 1px solid rgba(128, 128, 128, 0.1);
-        min-height: 500px;
-      }
-
-      [data-theme="dark"] .viewer-3d-section {
-        background: rgba(40, 40, 40, 0.3);
-        border-color: rgba(180, 180, 180, 0.1);
-      }
-
-      .viewer-title {
-        font-size: 1.6rem;
-        margin-bottom: 0.5rem;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      .viewer-subtitle {
-        text-align: center;
-        color: var(--gray);
-        margin-bottom: 1.5rem;
-        font-size: 1rem;
-      }
-
-      .viewer-note {
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-        color: var(--gray);
-      }
-
-      .viewer-note code {
-        background: rgba(128, 128, 128, 0.15);
-        padding: 2px 6px;
-        border-radius: 3px;
-        font-size: 0.85rem;
-      }
-
-      /* Ensure viewer container is visible */
-      .viewer-3d-section .stl-viewer-container {
-        width: 100%;
-      }
-
-      .viewer-3d-section .stl-viewer {
-        width: 100% !important;
-        min-height: 450px !important;
-        background: #2a2a2a !important;
-        border: 2px solid #444 !important;
-      }
-
-      .viewer-3d-section .stl-viewer canvas {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
       }
 
       /* FAQs Section */

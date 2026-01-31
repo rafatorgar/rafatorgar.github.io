@@ -123,6 +123,25 @@ permalink: /services/impresion-3d-figueras-castropol-ribadeo/
           </div>
         </div>
 
+        <!-- 3D Viewer Demo Section -->
+        <div class="viewer-3d-section">
+          <h3 class="viewer-title">Ejemplo Interactivo 3D</h3>
+          <p class="viewer-subtitle">
+            Explora uno de mis diseños 3D. Puedes rotar, hacer zoom y mover la cámara para verlo desde todos los ángulos.
+          </p>
+          
+          {% include stl_viewer.html 
+             file="/assets/models/ejemplo.stl" 
+             height="450"
+             color="#00a8ff"
+             autoRotate="false"
+          %}
+          
+          <p class="viewer-note">
+            💡 <strong>Nota:</strong> Sube tu archivo STL a <code>/assets/models/</code> para reemplazar este ejemplo.
+          </p>
+        </div>
+
         <!-- Social Links -->
         <div class="service-social">
           <div class="social-links">
@@ -494,6 +513,48 @@ permalink: /services/impresion-3d-figueras-castropol-ribadeo/
         background-color: rgba(180, 180, 180, 0.15);
         border-color: rgba(180, 180, 180, 0.25);
         color: rgba(180, 180, 180, 0.9);
+      }
+
+      /* 3D Viewer Section */
+      .viewer-3d-section {
+        margin: 3rem 0;
+        padding: 2rem 1.5rem;
+        background: rgba(245, 245, 245, 0.3);
+        border-radius: 12px;
+        border: 1px solid rgba(128, 128, 128, 0.1);
+      }
+
+      [data-theme="dark"] .viewer-3d-section {
+        background: rgba(40, 40, 40, 0.3);
+        border-color: rgba(180, 180, 180, 0.1);
+      }
+
+      .viewer-title {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .viewer-subtitle {
+        text-align: center;
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .viewer-note {
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .viewer-note code {
+        background: rgba(128, 128, 128, 0.15);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.85rem;
       }
 
       /* FAQs Section */

@@ -1,0 +1,48 @@
+{% comment %}
+  STL Viewer Include
+  Usage: {% include stl_viewer.html file="/assets/models/model.stl" height="500" color="#00a8ff" autoRotate="true" %}
+  
+  Parameters:
+  - file (required): Path to the STL file
+  - height (optional): Height in pixels (default: 400)
+  - color (optional): Model color in hex (default: #00a8ff)
+  - autoRotate (optional): Enable auto-rotation (default: false)
+  - showGrid (optional): Show grid helper (default: true)
+  - id (optional): Custom container ID (default: auto-generated)
+{% endcomment %}
+
+{% assign viewer_id = include.id | default: "stl-viewer-" | append: include.file | remove: "/" | remove: "." | remove: "-" %}
+{% assign viewer_height = include.height | default: 400 %}
+{% assign model_color = include.color | default: "#00a8ff" %}
+{% assign auto_rotate = include.autoRotate | default: false %}
+{% assign show_grid = include.showGrid | default: true %}
+
+<div class="stl-viewer-container">
+  <div id="{{ viewer_id }}" class="stl-viewer" style="width: 100%; height: {{ viewer_height }}px; border-radius: 8px; overflow: hidden; margin: 20px 0;"></div>
+  
+  <div class="stl-viewer-controls" style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #888;">
+    <p>🖱️ Clic izquierdo: Rotar | 🖱️ Clic derecho: Mover | 🔄 Scroll: Zoom</p>
+  </div>
+</div>
+
+<link rel="stylesheet" href="/assets/css/stl-viewer.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="/assets/js/stl-viewer.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Convert hex color to number
+    const colorHex = "{{ model_color }}".replace('#', '0x');
+    const colorNum = parseInt(colorHex, 16);
+    
+    initSTLViewer('{{ viewer_id }}', '{{ include.file }}', {
+      height: {{ viewer_height }},
+      modelColor: colorNum,
+      autoRotate: {{ auto_rotate }},
+      showGrid: {{ show_grid }}
+    });
+  });
+</script>

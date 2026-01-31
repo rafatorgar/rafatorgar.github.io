@@ -1,18 +1,18 @@
 # Lista de modelos 3D disponibles
 # Añade aquí todos tus archivos STL
 
-- name: "Ejemplo 1"
-  file: "/assets/models/ejemplo.stl"
-  description: "Modelo de ejemplo"
-# - name: "Mi Pieza Custom"
-#   file: "/assets/models/pieza-custom.stl"
-#   description: "Pieza personalizada para proyecto X"
+- name: "Accesorio Circular Tisken"
+  file: "/assets/models/tisken_accesory_circle_v1.STL"
+  description: "Accesorio circular para sistema Tisken de IKEA"
 
-# - name: "Prototipo"
-#   file: "/assets/models/prototipo.stl"
-#   description: "Prototipo funcional"
+- name: "Accesorio Rectangular Horizontal Tisken"
+  file: "/assets/models/tisken_accesory_horiz-rectang_v1.STL"
+  description: "Accesorio rectangular horizontal para sistema Tisken"
 
-# Añade más modelos siguiendo el formato:
-# - name: "Nombre del modelo"
-#   file: "/assets/models/archivo.stl"
-#   description: "Descripción opcional"
+- name: "Accesorio Triangular Tisken"
+  file: "/assets/models/tisken_accesory_triangle_v1.STL"
+  description: "Accesorio triangular para sistema Tisken"
+
+- name: "Accesorio en X Tisken"
+  file: "/assets/models/tisken_accesory_x_v1.STL"
+  description: "Accesorio en forma de X para sistema Tisken"

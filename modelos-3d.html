@@ -1,11 +1,11 @@
 ---
 layout: compress
-title: Galería de Modelos 3D
-permalink: /modelos-3d/
+title: 3D Models Gallery
+permalink: /3d-models/
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   {% include header.html %}
 
   <body data-theme="{{ site.mode }}" class="notransition">
@@ -33,56 +33,62 @@ permalink: /modelos-3d/
     <div class="wrapper">
       <div class="models-gallery-page">
         <header class="gallery-header">
-          <h1 class="gallery-title">Galería de Modelos 3D</h1>
+          <h1 class="gallery-title">3D Models Gallery</h1>
           <p class="gallery-description">
-            Explora mi colección de diseños 3D. Selecciona un modelo, rótalo, haz zoom y examínalo desde todos los ángulos.
+            Explore my collection of 3D designs. Click "View 3D" to see the interactive model or "Download" to get the STL file from Cults3D.
           </p>
         </header>
 
-        <!-- 3D Viewer -->
-        <div class="viewer-section">
-          <select id="model-selector" class="model-selector">
-            {% for model in site.data.stl_models %}
-            <option value="{{ model.file }}" {% if forloop.first %}selected{% endif %}>
-              {{ model.name }}{% if model.description %} - {{ model.description }}{% endif %}
-            </option>
-            {% endfor %}
-          </select>
-          
-          <div id="viewer-container" class="viewer-container"></div>
-          
-          <div class="viewer-controls">
-            <p>🖱️ Clic izquierdo: Rotar | 🖱️ Clic derecho: Mover | 🔄 Scroll: Zoom</p>
-          </div>
-        </div>
-
-        <!-- Models Grid Info -->
-        <div class="models-info">
-          <h2>Accesorios Sistema Tisken de IKEA</h2>
-          <p>
-            Serie de accesorios funcionales diseñados para el sistema de organización Tisken de IKEA. 
-            Estos diseños amplían las posibilidades del sistema original, permitiendo mayor versatilidad y personalización.
-          </p>
-          
-          <div class="models-grid">
-            {% for model in site.data.stl_models %}
-            <div class="model-card">
-              <div class="model-icon">🔷</div>
-              <h3 class="model-name">{{ model.name }}</h3>
-              <p class="model-description">{{ model.description }}</p>
-              <div class="model-tags">
-                <span class="tag">Funcional</span>
-                <span class="tag">IKEA</span>
-              </div>
+        <!-- Models Grid -->
+        <div class="models-grid">
+          {% for model in site.data.stl_models %}
+          <div class="model-card">
+            <div class="model-icon">🔷</div>
+            <h3 class="model-name">{{ model.name }}</h3>
+            <p class="model-description">{{ model.description }}</p>
+            <div class="model-tags">
+              <span class="tag">Functional</span>
+              <span class="tag">IKEA</span>
             </div>
-            {% endfor %}
+            <div class="model-actions">
+              <button class="btn-view" onclick="viewModel('{{ model.file }}', '{{ model.name }}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                View 3D
+              </button>
+              <a href="#" class="btn-download" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- 3D Viewer Modal -->
+        <div id="viewer-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modal-title">3D Model Viewer</h2>
+              <button class="modal-close" onclick="closeViewer()">&times;</button>
+            </div>
+            <div id="viewer-container" class="viewer-container"></div>
+            <div class="viewer-controls">
+              <p>🖱️ Left click: Rotate | 🖱️ Right click: Pan | 🔄 Scroll: Zoom</p>
+            </div>
           </div>
         </div>
 
-        <!-- Download Section -->
+        <!-- Download All Section -->
         <div class="download-section">
-          <h2>Descarga los Modelos</h2>
-          <p>Todos mis diseños están disponibles de forma gratuita en:</p>
+          <h2>Download All Models</h2>
+          <p>All my designs are available for free on:</p>
           <div class="download-links">
             <a href="https://cults3d.com/en/users/rafatorgar/3d-models" target="_blank" rel="noopener" class="download-btn">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -90,22 +96,23 @@ permalink: /modelos-3d/
                 <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
-              Ver en Cults3D
+              View on Cults3D
             </a>
           </div>
         </div>
 
         <!-- CTA Section -->
         <div class="cta-section">
-          <h3>¿Necesitas un diseño personalizado?</h3>
-          <p>Puedo crear modelos 3D a medida para tu proyecto</p>
-          <a href="/services/impresion-3d-figueras-castropol-ribadeo/" class="cta-btn">
-            Ver Servicios de Diseño 3D
+          <h3>Need a custom design?</h3>
+          <p>I can create custom 3D models for your project</p>
+          <a href="/servicios/" class="cta-btn">
+            View 3D Design Services
           </a>
         </div>
       </div>
       {% include footer.html %}
     </div>
+
 
     <style>
       .models-gallery-page {
@@ -134,123 +141,11 @@ permalink: /modelos-3d/
         margin: 0 auto;
       }
 
-      .viewer-section {
-        margin: 3rem 0;
-        padding: 2rem;
-        background: rgba(245, 245, 245, 0.3);
-        border-radius: 12px;
-        border: 1px solid rgba(128, 128, 128, 0.1);
-      }
-
-      [data-theme="dark"] .viewer-section {
-        background: rgba(40, 40, 40, 0.3);
-        border-color: rgba(180, 180, 180, 0.1);
-      }
-
-      .model-selector {
-        width: 100%;
-        padding: 12px 16px;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        border: 2px solid #444;
-        background: #2a2a2a;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .model-selector:hover {
-        border-color: #00a8ff;
-      }
-
-      .model-selector:focus {
-        outline: none;
-        border-color: #00a8ff;
-        box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.1);
-      }
-
-      body:not([data-theme="dark"]) .model-selector {
-        background: #fff;
-        color: #333;
-        border-color: #ccc;
-      }
-
-      .viewer-container {
-        width: 100%;
-        height: 550px;
-        background: #2a2a2a;
-        border: 2px solid #444;
-        border-radius: 8px;
-        position: relative;
-      }
-
-      body:not([data-theme="dark"]) .viewer-container {
-        background: #e8e8e8;
-        border-color: #ccc;
-      }
-
-      .viewer-controls {
-        text-align: center;
-        margin-top: 15px;
-        font-size: 0.9rem;
-        color: var(--gray);
-      }
-
-      .loading {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: #fff;
-      }
-
-      body:not([data-theme="dark"]) .loading {
-        color: #333;
-      }
-
-      .spinner {
-        border: 4px solid rgba(255, 255, 255, 0.1);
-        border-left-color: #00a8ff;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 10px;
-      }
-
-      body:not([data-theme="dark"]) .spinner {
-        border-color: rgba(0, 0, 0, 0.1);
-        border-left-color: #00a8ff;
-      }
-
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-
-      .models-info {
-        margin: 3rem 0;
-      }
-
-      .models-info h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-
-      .models-info > p {
-        text-align: center;
-        color: var(--gray);
-        margin-bottom: 2rem;
-        line-height: 1.6;
-      }
-
       .models-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
-        margin-top: 2rem;
+        margin: 3rem 0;
       }
 
       .model-card {
@@ -259,6 +154,8 @@ permalink: /modelos-3d/
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 10px;
         transition: all 0.2s ease;
+        display: flex;
+        flex-direction: column;
       }
 
       .model-card:hover {
@@ -293,12 +190,14 @@ permalink: /modelos-3d/
         color: var(--gray);
         line-height: 1.4;
         margin-bottom: 1rem;
+        flex-grow: 1;
       }
 
       .model-tags {
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
       }
 
       .tag {
@@ -310,6 +209,194 @@ permalink: /modelos-3d/
         background-color: rgba(128, 128, 128, 0.1);
         border: 1px solid rgba(128, 128, 128, 0.2);
         color: var(--gray);
+      }
+
+      .model-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-view, .btn-download {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+
+      .btn-view {
+        background-color: rgba(0, 168, 255, 0.1);
+        border: 1px solid rgba(0, 168, 255, 0.3);
+        color: #00a8ff;
+      }
+
+      .btn-view:hover {
+        background-color: rgba(0, 168, 255, 0.2);
+        border-color: rgba(0, 168, 255, 0.5);
+        transform: translateY(-1px);
+      }
+
+      .btn-download {
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        color: var(--dark);
+      }
+
+      [data-theme="dark"] .btn-download {
+        color: var(--white);
+      }
+
+      .btn-download:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        border-color: rgba(128, 128, 128, 0.3);
+        transform: translateY(-1px);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .modal-content {
+        background-color: #2a2a2a;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        animation: slideUp 0.3s ease;
+      }
+
+      body:not([data-theme="dark"]) .modal-content {
+        background-color: #f5f5f5;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--gray);
+        line-height: 1;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      .modal-close:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        color: var(--dark);
+      }
+
+      [data-theme="dark"] .modal-close:hover {
+        color: var(--white);
+      }
+
+      .viewer-container {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        background: #2a2a2a;
+      }
+
+      body:not([data-theme="dark"]) .viewer-container {
+        background: #e8e8e8;
+      }
+
+      .viewer-controls {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+      }
+
+      .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+      }
+
+      body:not([data-theme="dark"]) .loading {
+        color: #333;
+      }
+
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-left-color: #00a8ff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px;
+      }
+
+      body:not([data-theme="dark"]) .spinner {
+        border-color: rgba(0, 0, 0, 0.1);
+        border-left-color: #00a8ff;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
 
       .download-section {
@@ -409,13 +496,17 @@ permalink: /modelos-3d/
           grid-template-columns: 1fr;
         }
 
-        .download-links {
-          flex-direction: column;
-          align-items: stretch;
+        .modal-content {
+          width: 95%;
+          max-height: 95vh;
         }
 
         .viewer-container {
           height: 400px;
+        }
+
+        .model-actions {
+          flex-direction: column;
         }
       }
     </style>
@@ -425,61 +516,111 @@ permalink: /modelos-3d/
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
     
     <script>
-      const container = document.getElementById('viewer-container');
+      let scene, camera, renderer, controls, currentMesh;
       
-      // Scene setup
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x2a2a2a);
-      
-      // Camera
-      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / 550, 0.1, 1000);
-      camera.position.z = 100;
-      
-      // Renderer
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, 550);
-      renderer.setPixelRatio(window.devicePixelRatio);
-      container.appendChild(renderer.domElement);
-      
-      // Lights
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambientLight);
-      
-      const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
-      light1.position.set(1, 1, 1);
-      scene.add(light1);
-      
-      const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
-      light2.position.set(-1, -1, -1);
-      scene.add(light2);
-      
-      // Grid
-      const gridHelper = new THREE.GridHelper(200, 20, 0x666666, 0x333333);
-      scene.add(gridHelper);
-      
-      // Controls
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-      
-      // Animation
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
+      function viewModel(modelPath, modelName) {
+        const modal = document.getElementById('viewer-modal');
+        const container = document.getElementById('viewer-container');
+        const title = document.getElementById('modal-title');
+        
+        // Update title
+        title.textContent = modelName;
+        
+        // Show modal
+        modal.classList.add('active');
+        
+        // Clear previous viewer
+        container.innerHTML = '';
+        
+        // Initialize Three.js
+        initViewer(container, modelPath);
       }
-      animate();
       
-      // Load model
-      let currentMesh = null;
+      function closeViewer() {
+        const modal = document.getElementById('viewer-modal');
+        modal.classList.remove('active');
+        
+        // Cleanup
+        if (renderer) {
+          renderer.dispose();
+          renderer = null;
+        }
+        if (currentMesh) {
+          if (currentMesh.geometry) currentMesh.geometry.dispose();
+          if (currentMesh.material) currentMesh.material.dispose();
+          currentMesh = null;
+        }
+        scene = null;
+        camera = null;
+        controls = null;
+      }
+      
+      function initViewer(container, modelPath) {
+        // Scene setup
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x2a2a2a);
+        
+        // Camera
+        camera = new THREE.PerspectiveCamera(75, container.clientWidth / 500, 0.1, 1000);
+        camera.position.z = 100;
+        
+        // Renderer
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, 500);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+        
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        
+        const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        light1.position.set(1, 1, 1);
+        scene.add(light1);
+        
+        const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+        light2.position.set(-1, -1, -1);
+        scene.add(light2);
+        
+        // Grid
+        const gridHelper = new THREE.GridHelper(200, 20, 0x666666, 0x333333);
+        scene.add(gridHelper);
+        
+        // Controls
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        
+        // Animation loop
+        function animate() {
+          if (!renderer) return;
+          requestAnimationFrame(animate);
+          controls.update();
+          renderer.render(scene, camera);
+        }
+        animate();
+        
+        // Load model
+        loadModel(modelPath);
+        
+        // Resize handler
+        const resizeHandler = function() {
+          if (!camera || !renderer || !container) return;
+          const width = container.clientWidth;
+          camera.aspect = width / 500;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, 500);
+        };
+        window.addEventListener('resize', resizeHandler);
+      }
       
       function loadModel(path) {
-        console.log('Loading model:', path);
+        const container = document.getElementById('viewer-container');
         
         // Show loading
         const loadingDiv = document.createElement('div');
         loadingDiv.className = 'loading';
-        loadingDiv.innerHTML = '<div class="spinner"></div><p>Cargando modelo...</p>';
+        loadingDiv.innerHTML = '<div class="spinner"></div><p>Loading model...</p>';
         container.appendChild(loadingDiv);
         
         if (currentMesh) {
@@ -493,7 +634,6 @@ permalink: /modelos-3d/
         loader.load(
           path,
           function(geometry) {
-            console.log('✓ Model loaded successfully!');
             if (loadingDiv.parentNode) loadingDiv.remove();
             
             geometry.center();
@@ -526,29 +666,27 @@ permalink: /modelos-3d/
             }
           },
           function(error) {
-            console.error('✗ Error loading model:', error);
+            console.error('Error loading model:', error);
             if (loadingDiv.parentNode) {
-              loadingDiv.innerHTML = '<p style="color: #ff4444;">❌ Error al cargar</p>';
+              loadingDiv.innerHTML = '<p style="color: #ff4444;">❌ Error loading model</p>';
             }
           }
         );
       }
       
-      // Load first model
-      const firstModel = "{{ site.data.stl_models[0].file }}";
-      loadModel(firstModel);
-      
-      // Model selector
-      document.getElementById('model-selector').addEventListener('change', function(e) {
-        loadModel(e.target.value);
+      // Close modal when clicking outside
+      document.addEventListener('click', function(e) {
+        const modal = document.getElementById('viewer-modal');
+        if (e.target === modal) {
+          closeViewer();
+        }
       });
       
-      // Resize handler
-      window.addEventListener('resize', function() {
-        const width = container.clientWidth;
-        camera.aspect = width / 550;
-        camera.updateProjectionMatrix();
-        renderer.setSize(width, 550);
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeViewer();
+        }
       });
     </script>
   </body>

@@ -37,8 +37,25 @@ default: true %}
   <div
     id="{{ viewer_id }}"
     class="stl-viewer"
-    style="width: 100%; height: {{ viewer_height }}px; border-radius: 8px; overflow: hidden; margin: 20px 0;"
-  ></div>
+    style="width: 100%; height: {{ viewer_height }}px; border-radius: 8px; margin: 20px 0; position: relative;"
+  >
+    <!-- Debug marker -->
+    <div
+      style="
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #00ff00;
+        z-index: 999;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px;
+        border-radius: 3px;
+      "
+    >
+      🔄 Viewer Container: {{ viewer_id }}
+    </div>
+  </div>
 
   <div
     class="stl-viewer-controls"

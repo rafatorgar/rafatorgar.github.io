@@ -20,7 +20,7 @@ function initSTLViewer(containerId, stlPath, options = {}) {
     showGrid: options.showGrid !== false, // true by default
   };
 
-  console.log('Initializing STL Viewer:', { containerId, stlPath, settings });
+  console.log("Initializing STL Viewer:", { containerId, stlPath, settings });
 
   // Scene setup
   const scene = new THREE.Scene();
@@ -40,6 +40,14 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   renderer.setSize(settings.width, settings.height);
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
+
+  console.log("Renderer size:", settings.width, "x", settings.height);
+  console.log(
+    "Container size:",
+    container.clientWidth,
+    "x",
+    container.clientHeight,
+  );
 
   // Lights
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -82,8 +90,8 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   loader.load(
     stlPath,
     function (geometry) {
-      console.log('STL geometry loaded successfully');
-      
+      console.log("STL geometry loaded successfully");
+
       // Remove loading indicator
       loadingDiv.remove();
 
@@ -114,8 +122,8 @@ function initSTLViewer(containerId, stlPath, options = {}) {
       const center = boundingBox.getCenter(new THREE.Vector3());
       controls.target.copy(center);
       controls.update();
-      
-      console.log('Model rendered successfully');
+
+      console.log("Model rendered successfully");
     },
     function (xhr) {
       // Progress callback
@@ -128,9 +136,9 @@ function initSTLViewer(containerId, stlPath, options = {}) {
       console.error("Error loading STL:", error);
       console.error("Attempted path:", stlPath);
       loadingDiv.innerHTML =
-        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' + 
-        stlPath + 
-        '</small></p>';
+        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' +
+        stlPath +
+        "</small></p>";
     },
   );
 
@@ -151,7 +159,15 @@ function initSTLViewer(containerId, stlPath, options = {}) {
   });
 
   // Return controls for external manipulation if needed
-  return { scene, camera, renderer, controls, settings, container, getCurrentMesh: () => currentMesh };
+  return {
+    scene,
+    camera,
+    renderer,
+    controls,
+    settings,
+    container,
+    getCurrentMesh: () => currentMesh,
+  };
 }
 
 /**
@@ -168,7 +184,7 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
 
   const { scene, camera, controls, settings, container } = viewerInstance;
 
-  console.log('Loading new model:', stlPath);
+  console.log("Loading new model:", stlPath);
 
   // Remove existing mesh
   const currentMesh = viewerInstance.getCurrentMesh();
@@ -193,8 +209,8 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
   loader.load(
     stlPath,
     function (geometry) {
-      console.log('New model loaded successfully');
-      
+      console.log("New model loaded successfully");
+
       // Remove loading indicator
       loadingDiv.remove();
 
@@ -240,9 +256,9 @@ function loadNewModel(viewerInstance, stlPath, modelColor) {
       console.error("Error loading new STL:", error);
       console.error("Attempted path:", stlPath);
       loadingDiv.innerHTML =
-        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' + 
-        stlPath + 
-        '</small></p>';
+        '<p style="color: #ff4444; padding: 20px; text-align: center;">❌ Error al cargar el modelo 3D<br><small style="font-size: 0.8em;">Ruta: ' +
+        stlPath +
+        "</small></p>";
     },
   );
 }

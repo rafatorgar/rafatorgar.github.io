@@ -559,8 +559,7 @@ permalink: /3d-models/
         }
 
         // Write HTML content to popup
-        popup.document.write(`
-<!DOCTYPE html>
+        const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -591,7 +590,140 @@ permalink: /3d-models/
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
-ntrols
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+    }
+    
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    .close-btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    #viewer-container {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      width: 100%;
+    }
+    
+    .controls-info {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: rgba(26, 26, 26, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .loading-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+    
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-left-color: #00a8ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .error {
+      color: #ff4444;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>${modelName}</h1>
+    <button class="close-btn" onclick="window.close()">Close</button>
+  </div>
+  
+  <div id="viewer-container"></div>
+  
+  <div class="controls-info">
+    🖱️ Left click + drag to rotate • Right click + drag to pan • Scroll to zoom
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+  
+  <script>
+    const container = document.getElementById('viewer-container');
+    
+    // Loading indicator
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'loading-overlay';
+    loadingDiv.innerHTML = '<div class="spinner"></div><div>Loading 3D model...</div>';
+    container.appendChild(loadingDiv);
+    
+    // Three.js setup
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1a1a1a);
+    
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      10000
+    );
+    camera.position.set(0, 0, 100);
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    
+    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight1.position.set(1, 1, 1);
+    scene.add(directionalLight1);
+    
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+    directionalLight2.position.set(-1, -1, -1);
+    scene.add(directionalLight2);
+    
+    // Controls
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
@@ -648,9 +780,9 @@ ntrols
     
     // Resize handler
     window.addEventListener('resize', function() {
-      camera.aspect = window.innerWidth / (window.innerHeight - 110);
+      camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight - 110);
+      renderer.setSize(container.clientWidth, container.clientHeight);
     });
     
     // Close with ESC key
@@ -662,8 +794,9 @@ ntrols
   </script>
 </body>
 </html>
-        `);
+`;
         
+        popup.document.write(html);
         popup.document.close();
       }
     </script>

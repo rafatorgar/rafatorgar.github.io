@@ -549,12 +549,16 @@ permalink: /3d-models/
     <script>
       function viewModel(modelPath, modelName) {
         console.log("Opening viewer for:", modelName);
-        
+
         // Open popup window
-        const popup = window.open('', '_blank', 'width=1200,height=800,menubar=no,toolbar=no,location=no,status=no');
-        
+        const popup = window.open(
+          "",
+          "_blank",
+          "width=1200,height=800,menubar=no,toolbar=no,location=no,status=no",
+        );
+
         if (!popup) {
-          alert('Please allow popups to view 3D models');
+          alert("Please allow popups to view 3D models");
           return;
         }
 
@@ -681,9 +685,9 @@ permalink: /3d-models/
     🖱️ Left click + drag to rotate • Right click + drag to pan • Scroll to zoom
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"><\/script>
   
   <script>
     const container = document.getElementById('viewer-container');
@@ -791,11 +795,11 @@ permalink: /3d-models/
         window.close();
       }
     });
-  </script>
+  <\/script>
 </body>
 </html>
 `;
-        
+
         popup.document.write(html);
         popup.document.close();
       }

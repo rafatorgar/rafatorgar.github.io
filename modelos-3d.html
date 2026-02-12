@@ -44,6 +44,7 @@ permalink: /3d-models/
         <div class="models-grid">
           {% for model in site.data.stl_models %}
           <div class="model-card">
+            <div class="model-preview" data-stl="{{ model.file }}" aria-hidden="true"></div>
             <div class="model-icon">🔷</div>
             <h3 class="model-name">{{ model.name }}</h3>
             <p class="model-description">{{ model.description }}</p>
@@ -201,6 +202,30 @@ permalink: /3d-models/
       .model-icon {
         font-size: 2rem;
         margin-bottom: 0.5rem;
+      }
+
+      .model-preview {
+        width: 100%;
+        height: 140px;
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+        overflow: hidden;
+      }
+
+      .model-preview canvas,
+      .model-preview img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .preview-error {
+        color: var(--gray);
+        font-size: 0.9rem;
       }
 
       .model-name {
@@ -547,8 +572,9 @@ permalink: /3d-models/
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
 
     <script>
-      function viewModel(modelPath, modelName) {
+      window.viewModel = function(modelPath, modelName) {
         console.log("Opening viewer for:", modelName);
+        console.log("Model path:", modelPath);
 
         // Open popup window
         const popup = window.open(
@@ -556,6 +582,8 @@ permalink: /3d-models/
           "_blank",
           "width=1200,height=800,menubar=no,toolbar=no,location=no,status=no",
         );
+
+        console.log("Popup opened:", popup);
 
         if (!popup) {
           alert("Please allow popups to view 3D models");
@@ -803,6 +831,80 @@ permalink: /3d-models/
         popup.document.write(html);
         popup.document.close();
       }
+    </script>
+
+    <script>
+      (function renderSTLPreviews() {
+        const previews = document.querySelectorAll('.model-preview');
+        if (!previews.length || typeof THREE === 'undefined' || !THREE.STLLoader) return;
+        const loader = new THREE.STLLoader();
+
+        previews.forEach((container) => {
+          const src = container.getAttribute('data-stl');
+          if (!src) return;
+
+          const width = Math.max(200, Math.min(360, container.clientWidth));
+          const height = 140;
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000);
+          const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+          renderer.setSize(width, height);
+          renderer.setPixelRatio(window.devicePixelRatio);
+          container.innerHTML = '';
+          container.appendChild(renderer.domElement);
+
+          // lights
+          scene.add(new THREE.AmbientLight(0xffffff, 0.85));
+          const dl = new THREE.DirectionalLight(0xffffff, 0.6);
+          dl.position.set(1, 1, 1);
+          scene.add(dl);
+
+          loader.load(
+            src,
+            (geometry) => {
+              try {
+                if (geometry.center) geometry.center();
+                const material = new THREE.MeshPhongMaterial({ color: 0x999999, specular: 0x111111, shininess: 60 });
+                const mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+
+                // auto scale & position
+                const box = new THREE.Box3().setFromObject(mesh);
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const fov = camera.fov * (Math.PI / 180);
+                const cameraZ = Math.abs(maxDim / Math.sin(fov / 2)) * 1.2;
+                camera.position.set(cameraZ, cameraZ * 0.6, cameraZ);
+                camera.lookAt(box.getCenter(new THREE.Vector3()));
+
+                renderer.render(scene, camera);
+
+                // convert canvas to img to free GL resources
+                try {
+                  const img = new Image();
+                  img.src = renderer.domElement.toDataURL('image/png');
+                  img.alt = '3D preview';
+                  img.loading = 'lazy';
+                  img.style.width = '100%';
+                  container.innerHTML = '';
+                  container.appendChild(img);
+                } catch (err) {
+                  // keep canvas if conversion fails
+                } finally {
+                  if (renderer.forceContextLoss) renderer.forceContextLoss();
+                }
+              } catch (err) {
+                container.innerHTML = '<div class="preview-error">⚠️ preview failed</div>';
+              }
+            },
+            undefined,
+            () => {
+              container.innerHTML = '<div class="preview-error">⚠️ preview failed</div>';
+            }
+          );
+        });
+      })();
     </script>
   </body>
 </html>

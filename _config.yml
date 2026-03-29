@@ -97,6 +97,8 @@ exclude:
   - klise.gemspec
   - vendor
   - .bundle
+  - CLAUDE.md
+  - context
 
 # Plugins
 plugins:

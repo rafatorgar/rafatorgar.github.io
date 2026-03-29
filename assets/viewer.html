@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      overflow: hidden;
+    }
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+    }
+    .header h1 { font-size: 1.2rem; font-weight: 600; }
+    .close-btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    #viewer-container {
+      position: fixed;
+      top: 60px; left: 0; right: 0; bottom: 50px;
+      width: 100%;
+    }
+    .controls-info {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 50px;
+      background: rgba(26, 26, 26, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .loading-overlay {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-left-color: #00a8ff;
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error { color: #ff4444; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 id="model-title">3D Viewer</h1>
+    <button class="close-btn" onclick="window.close()">Close</button>
+  </div>
+
+  <div id="viewer-container"></div>
+
+  <div class="controls-info">
+    Left click + drag to rotate &bull; Right click + drag to pan &bull; Scroll to zoom
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+
+  <script>
+    // Read parameters from URL
+    var params = new URLSearchParams(window.location.search);
+    var modelPath = params.get('model');
+    var modelName = params.get('name') || '3D Viewer';
+
+    document.getElementById('model-title').textContent = modelName;
+    document.title = modelName + ' - 3D Viewer';
+
+    var container = document.getElementById('viewer-container');
+
+    // Loading indicator
+    var loadingDiv = document.createElement('div');
+    loadingDiv.className = 'loading-overlay';
+    loadingDiv.innerHTML = '<div class="spinner"></div><div>Loading 3D model...</div>';
+    container.appendChild(loadingDiv);
+
+    // Three.js setup
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1a1a1a);
+
+    var camera = new THREE.PerspectiveCamera(
+      45,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      10000
+    );
+    camera.position.set(0, 0, 100);
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    // Lights
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    var dl1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl1.position.set(1, 1, 1);
+    scene.add(dl1);
+    var dl2 = new THREE.DirectionalLight(0xffffff, 0.4);
+    dl2.position.set(-1, -1, -1);
+    scene.add(dl2);
+
+    // Controls
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Load model
+    if (modelPath) {
+      var loader = new THREE.STLLoader();
+      loader.load(
+        modelPath,
+        function(geometry) {
+          loadingDiv.remove();
+          geometry.center();
+
+          var material = new THREE.MeshPhongMaterial({
+            color: 0x00a8ff,
+            specular: 0x111111,
+            shininess: 200
+          });
+
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+          // Auto-scale and center
+          var box = new THREE.Box3().setFromObject(mesh);
+          var size = box.getSize(new THREE.Vector3());
+          var maxDim = Math.max(size.x, size.y, size.z);
+          var fov = camera.fov * (Math.PI / 180);
+          var cameraZ = Math.abs(maxDim / Math.sin(fov / 2)) * 1.5;
+          camera.position.z = cameraZ;
+
+          var center = box.getCenter(new THREE.Vector3());
+          controls.target.copy(center);
+          controls.update();
+        },
+        function(xhr) {
+          if (xhr.lengthComputable) {
+            var percent = (xhr.loaded / xhr.total * 100).toFixed(0);
+            console.log('Loading: ' + percent + '%');
+          }
+        },
+        function(error) {
+          console.error('Error loading model:', error);
+          loadingDiv.innerHTML = '<div class="error">Error loading 3D model. Please try again.</div>';
+        }
+      );
+    } else {
+      loadingDiv.innerHTML = '<div class="error">No model specified.</div>';
+    }
+
+    // Resize handler
+    window.addEventListener('resize', function() {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    // Close with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.close();
+    });
+  </script>
+</body>
+</html>

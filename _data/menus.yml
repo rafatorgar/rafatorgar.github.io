@@ -6,8 +6,12 @@
   url: /archive/
   external: false
 
-- title: 3D models
+- title: design & engineering
   url: /3d-models/
+  external: false
+
+- title: software products
+  url: /software-products/
   external: false
 # - title: about
 #   url: /about/

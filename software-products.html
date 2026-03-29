@@ -1,0 +1,269 @@
+---
+layout: compress
+title: Software Products
+permalink: /software-products/
+---
+
+<!doctype html>
+<html lang="en">
+  {% include header.html %}
+
+  <body data-theme="{{ site.mode }}" class="notransition">
+    <script>
+      const body = document.body;
+      const data = body.getAttribute("data-theme");
+
+      const initTheme = (state) => {
+        if (state === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else if (state === "light") {
+          body.removeAttribute("data-theme");
+        } else {
+          localStorage.setItem("theme", data);
+        }
+      };
+
+      initTheme(localStorage.getItem("theme"));
+
+      setTimeout(() => body.classList.remove("notransition"), 75);
+    </script>
+
+    {% include navbar.html %}
+
+    <div class="wrapper">
+      <div class="products-page">
+        <header class="products-header">
+          <h1 class="products-title">Software Products</h1>
+          <p class="products-description">
+            Tools and platforms I've built to solve real problems.
+          </p>
+        </header>
+
+        <div class="products-grid">
+          <!-- Voicit -->
+          <div class="product-card">
+            <div class="product-badge">Co-Founder & CPTO</div>
+            <h2 class="product-name">Voicit</h2>
+            <p class="product-tagline">AI-powered meeting intelligence</p>
+            <p class="product-description">
+              Voicit turns meetings into actionable reports automatically. On the HR side,
+              it empowers recruitment consultants during candidate evaluation, streamlining
+              the entire selection process.
+            </p>
+            <div class="product-actions">
+              <a href="https://voicit.com" class="product-btn" target="_blank" rel="noopener">
+                Visit voicit.com
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Destinos Oposiciones -->
+          <div class="product-card">
+            <div class="product-badge">Creator</div>
+            <h2 class="product-name">Destinos Oposiciones</h2>
+            <p class="product-tagline">Smart placement sorting for civil service candidates</p>
+            <p class="product-description">
+              Free tool that helps civil service exam candidates organize their job placement
+              options. Upload your Excel file and get all positions automatically sorted by
+              real driving distance from your home, visualized on a map.
+            </p>
+            <div class="product-actions">
+              <a href="https://destinosoposiciones.rafatorresgarcia.com/" class="product-btn" target="_blank" rel="noopener">
+                Try it free
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="products-cta">
+          <h3>Have an idea for a product?</h3>
+          <p>I'm always open to new challenges and collaborations</p>
+          <a href="mailto:hello@rafatorresgarcia.com" class="products-cta-btn">Get in touch</a>
+        </div>
+      </div>
+      {% include footer.html %}
+    </div>
+
+    <style>
+      .products-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .products-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .products-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .products-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .product-card {
+        padding: 2rem;
+        background: rgba(245, 245, 245, 0.5);
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: rgba(128, 128, 128, 0.3);
+      }
+
+      [data-theme="dark"] .product-card {
+        background: rgba(40, 40, 40, 0.4);
+        border-color: rgba(180, 180, 180, 0.15);
+      }
+
+      [data-theme="dark"] .product-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border-color: rgba(180, 180, 180, 0.3);
+      }
+
+      .product-badge {
+        display: inline-block;
+        width: fit-content;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      .product-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .product-tagline {
+        font-size: 0.95rem;
+        color: var(--gray);
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .product-description {
+        font-size: 0.9rem;
+        color: var(--gray);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .product-actions {
+        margin-top: auto;
+      }
+
+      .product-btn {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        color: var(--dark);
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      [data-theme="dark"] .product-btn {
+        color: var(--white);
+      }
+
+      .product-btn:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        border-color: rgba(128, 128, 128, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .products-cta {
+        margin: 3rem 0;
+        padding: 2.5rem;
+        text-align: center;
+        background: rgba(245, 245, 245, 0.5);
+        border-radius: 12px;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+      }
+
+      [data-theme="dark"] .products-cta {
+        background: rgba(40, 40, 40, 0.4);
+        border-color: rgba(180, 180, 180, 0.15);
+      }
+
+      .products-cta h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .products-cta p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      .products-cta-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        border-radius: 6px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .products-cta-btn:hover {
+        background-color: rgba(128, 128, 128, 0.2);
+        border-color: rgba(128, 128, 128, 0.3);
+        transform: translateY(-1px);
+      }
+
+      @media screen and (max-width: 640px) {
+        .products-title {
+          font-size: 2rem;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </body>
+</html>

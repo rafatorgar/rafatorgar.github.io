@@ -367,40 +367,58 @@ mark,
   }
 }
 
-// Author tags - Minimalist outlined style (moved here for better priority)
+// Author category links
+.author-categories {
+  display: flex !important;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.category-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #333 !important;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  background-color: rgba(128, 128, 128, 0.05);
+  transition: all 0.2s ease-in-out;
+
+  .category-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    border-color: rgba(128, 128, 128, 0.6);
+    background-color: rgba(128, 128, 128, 0.1);
+    transform: translateY(-1px);
+  }
+}
+
+// Author tags - Minimalist skill indicators
 .author-tags {
   display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 6px;
+  margin-top: 14px;
 }
 
 .love-tag {
   display: inline-block !important;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 400;
   text-decoration: none;
   background-color: transparent !important;
-  border: 1px solid rgba(128, 128, 128, 0.3) !important;
-  color: #434648 !important;
+  border: 1px solid rgba(128, 128, 128, 0.2) !important;
+  color: #888 !important;
   transition: all 0.2s ease-in-out;
-
-  &:hover {
-    border-color: rgba(128, 128, 128, 0.6) !important;
-    background-color: rgba(128, 128, 128, 0.05) !important;
-  }
-
-  // Clickable tags styling
-  &.clickable-tag {
-    cursor: pointer;
-
-    &:hover {
-      border-color: rgba(128, 128, 128, 0.8) !important;
-      background-color: rgba(128, 128, 128, 0.1) !important;
-      transform: translateY(-1px);
-    }
-  }
 }

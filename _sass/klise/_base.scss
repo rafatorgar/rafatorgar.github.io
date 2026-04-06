@@ -423,3 +423,36 @@ a.category-link {
   color: #888 !important;
   transition: all 0.2s ease-in-out;
 }
+
+.author-services {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.services-label {
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+.service-link {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: rgba(128, 128, 128, 0.08);
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  color: #666;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(128, 128, 128, 0.12);
+    color: #444;
+  }
+}

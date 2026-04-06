@@ -19,7 +19,8 @@ Personal portfolio and blog of Rafa Torres García — creative engineer, Co-Fou
 /archive/                  → Blog post archive
 /3d-models/                → Design & Engineering (IKEA Tisken 3D collection)
 /software-products/        → Software Products (Voicit, Destinos Oposiciones)
-/services/impresion-3d-*   → SEO landing page for 3D printing services in Asturias
+/services/impresion-3d-asturias/        → SEO landing page for 3D printing services
+/services/desarrollo-web-asturias/      → SEO landing page for web development services
 /assets/viewer.html        → Standalone 3D model viewer (no Jekyll processing)
 ```
 
@@ -34,6 +35,7 @@ Personal portfolio and blog of Rafa Torres García — creative engineer, Co-Fou
 - `modelos-3d.html` — 3D models page with embedded Three.js viewers
 - `software-products.html` — Software products page
 - `servicios.html` — 3D printing services SEO page (Spanish)
+- `servicios-software.html` — Software development services SEO page (Spanish)
 
 ## Development
 

@@ -275,6 +275,18 @@ body[data-theme="dark"] {
     color: #999 !important;
   }
 
+  .service-link {
+    background-color: rgba(180, 180, 180, 0.08);
+    border-color: rgba(180, 180, 180, 0.2);
+    color: #aaa;
+
+    &:hover {
+      border-color: rgba(180, 180, 180, 0.4);
+      background-color: rgba(180, 180, 180, 0.12);
+      color: #ccc;
+    }
+  }
+
   // Floating TOC dark mode
   .toc-floating {
     .toc-lines {

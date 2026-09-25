@@ -29,6 +29,7 @@ Personal portfolio and blog of Rafa Torres García — creative engineer, Co-Fou
 - `_config.yml` — Site config, author info, plugins
 - `_data/menus.yml` — Navigation menu items
 - `_data/stl_models.yml` — 3D model definitions (name, file path, description)
+- `_data/software_products.yml` — Software products shown in the floating arc (name, role, logo, url; `status: soon` for placeholders)
 - `_includes/author.html` — Author bio + category links + skill tags (shown on homepage)
 - `_sass/klise/_base.scss` — Main styles including author categories and tags
 - `_sass/klise/_dark.scss` — Dark theme overrides

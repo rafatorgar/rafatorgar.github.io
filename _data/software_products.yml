@@ -1,0 +1,50 @@
+# Software products shown in the floating arc on /software-products/.
+# Order = position in the arc, left to right.
+# `status: soon` shows a "Coming soon" badge and hides the button; without a logo it
+# renders a dashed placeholder. When the app launches, add `url`/`cta` and remove `status`.
+# `logo_fit: cover` makes a full-bleed app icon fill the tile (no white frame/padding).
+
+- name: Voicit
+  role: Co-Founder & CPTO
+  tagline: AI-powered meeting intelligence
+  description: >-
+    Voicit turns meetings into actionable reports automatically. On the HR side,
+    it empowers recruitment consultants during candidate evaluation, streamlining
+    the entire selection process.
+  url: https://voicit.com
+  cta: Visit voicit.com
+  logo: /assets/img/products/voicit.png
+
+- name: Destinos Oposiciones
+  role: Creator
+  tagline: Smart placement sorting for civil service candidates
+  description: >-
+    Free tool that helps civil service exam candidates organize their job placement
+    options. Upload your Excel file and get all positions automatically sorted by
+    real driving distance from your home, visualized on a map.
+  url: https://destinosoposiciones.rafatorresgarcia.com/
+  cta: Try it free
+  logo: /assets/img/products/destinos-oposiciones.svg
+
+- name: Iterare
+  role: Creator
+  tagline: Visual trip planning where the map is the editor
+  description: >-
+    Plan trips directly on the map. Save places before you even know where you're
+    going, turn them into days and routes, and see at a glance what's close to what
+    and how many kilometres each day adds up to.
+  url: https://iterare.app
+  cta: Visit iterare.app
+  logo: /assets/img/products/iterare.png
+  logo_fit: cover
+
+- name: Cesta
+  role: Creator
+  status: soon
+  tagline: Voice-first shopping list for iPhone
+  description: >-
+    Say what you need in one go and Cesta splits it into items, merges them with
+    your list and groups them by supermarket aisle. Works offline, with optional AI
+    using your own API key.
+  logo: /assets/img/products/cesta.png
+  logo_fit: cover

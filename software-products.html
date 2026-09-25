@@ -39,43 +39,55 @@ permalink: /software-products/
           </p>
         </header>
 
-        <div class="products-grid">
-          <!-- Voicit -->
-          <div class="product-card">
-            <div class="product-badge">Co-Founder & CPTO</div>
-            <h2 class="product-name">Voicit</h2>
-            <p class="product-tagline">AI-powered meeting intelligence</p>
-            <p class="product-description">
-              Voicit turns meetings into actionable reports automatically. On the HR side,
-              it empowers recruitment consultants during candidate evaluation, streamlining
-              the entire selection process.
-            </p>
-            <div class="product-actions">
-              <a href="https://voicit.com" class="product-btn" target="_blank" rel="noopener">
-                Visit voicit.com
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
+        {% assign products = site.data.software_products %}
+        {% assign last_index = products.size | minus: 1 %}
+        {% if last_index > 0 %}{% assign arc_step = 140.0 | divided_by: last_index %}{% else %}{% assign arc_step = 0 %}{% endif %}
+        <section class="orbit" id="orbit" aria-label="Software products">
+          <div class="orbit-arc">
+            <div class="orbit-guide" aria-hidden="true"></div>
+            {% for product in products %}
+              {% if last_index > 0 %}{% assign angle = forloop.index0 | times: arc_step | minus: 160 %}{% else %}{% assign angle = -90 %}{% endif %}
+              <button type="button"
+                class="orbit-item{% unless product.logo %} is-placeholder{% endunless %}"
+                style="--a: {{ angle }}deg;"
+                data-index="{{ forloop.index0 }}"
+                aria-controls="orbit-panel-{{ forloop.index0 }}"
+                aria-expanded="false">
+                <span class="orbit-float">
+                  <span class="orbit-logo{% if product.logo_fit == 'cover' %} is-cover{% endif %}">
+                    {% if product.logo %}
+                      <img src="{{ product.logo | relative_url }}" alt="" width="64" height="64" loading="lazy">
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    {% endif %}
+                  </span>
+                </span>
+                <span class="orbit-label">{{ product.name }}</span>
+              </button>
+            {% endfor %}
           </div>
 
-          <!-- Destinos Oposiciones -->
-          <div class="product-card">
-            <div class="product-badge">Creator</div>
-            <h2 class="product-name">Destinos Oposiciones</h2>
-            <p class="product-tagline">Smart placement sorting for civil service candidates</p>
-            <p class="product-description">
-              Free tool that helps civil service exam candidates organize their job placement
-              options. Upload your Excel file and get all positions automatically sorted by
-              real driving distance from your home, visualized on a map.
-            </p>
-            <div class="product-actions">
-              <a href="https://destinosoposiciones.rafatorresgarcia.com/" class="product-btn" target="_blank" rel="noopener">
-                Try it free
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
+          <div class="orbit-panels">
+            <p class="orbit-hint">Hover over an app to learn more</p>
+            {% for product in products %}
+              <article class="orbit-panel" id="orbit-panel-{{ forloop.index0 }}" aria-hidden="true">
+                <div class="product-badges">
+                  {% if product.role %}<span class="product-badge">{{ product.role }}</span>{% endif %}
+                  {% if product.status == 'soon' %}<span class="product-badge is-soon">Coming soon</span>{% endif %}
+                </div>
+                <h2 class="product-name">{{ product.name }}</h2>
+                <p class="product-tagline">{{ product.tagline }}</p>
+                <p class="product-description">{{ product.description }}</p>
+                {% if product.url %}
+                  <a href="{{ product.url }}" class="product-btn" target="_blank" rel="noopener">
+                    {{ product.cta | default: "Visit" }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                {% endif %}
+              </article>
+            {% endfor %}
           </div>
-        </div>
+        </section>
 
         <!-- CTA Section -->
         <div class="products-cta">
@@ -114,37 +126,229 @@ permalink: /software-products/
         margin: 0 auto;
       }
 
-      .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin: 3rem 0;
+      .orbit {
+        --r: min(370px, calc(50vw - 3rem));
+        --size: 64px;
+        --lift: 0.66;
+        --grow: 1.4;
+        margin: 2rem 0 3rem;
       }
 
-      .product-card {
-        padding: 2rem;
-        background: rgba(245, 245, 245, 0.5);
+      .orbit-arc {
+        position: relative;
+        height: calc(var(--r) * 0.92 + var(--size) * 0.5 + 1.5rem);
+        width: calc(var(--r) * 2 + var(--size) * 1.5);
+        margin-left: calc(50% - var(--r) - var(--size) * 0.75);
+      }
+
+      .orbit-guide {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: calc(var(--r) * 2);
+        height: var(--r);
+        margin-left: calc(var(--r) * -1);
+        border: 1px dashed rgba(128, 128, 128, 0.25);
+        border-bottom: none;
+        border-radius: var(--r) var(--r) 0 0;
+        pointer-events: none;
+      }
+
+      .orbit-item {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: var(--size);
+        height: var(--size);
+        margin: 0 0 calc(var(--size) * -0.5) calc(var(--size) * -0.5);
+        padding: 0;
+        border: none;
+        background: none;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(var(--a) * -1));
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .orbit-item:focus {
+        outline: none;
+      }
+
+      .orbit-item.is-active {
+        z-index: 2;
+        transform: translateY(calc(var(--r) * var(--lift) * -1)) scale(var(--grow));
+      }
+
+      .orbit-float {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .orbit-item.is-active .orbit-float {
+        animation: orbit-float 3s ease-in-out 0.6s infinite;
+      }
+
+      @keyframes orbit-float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-6px) rotate(-1.5deg); }
+        50% { transform: translateY(-12px) rotate(0deg); }
+        75% { transform: translateY(-6px) rotate(1.5deg); }
+      }
+
+      .orbit-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 14%;
+        border-radius: 26%;
+        background: #fff;
         border: 1px solid rgba(128, 128, 128, 0.15);
-        border-radius: 12px;
-        transition: all 0.2s ease;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      }
+
+      .orbit-logo.is-cover {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .orbit-logo.is-cover img {
+        object-fit: cover;
+      }
+
+      .orbit-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .orbit-item.is-placeholder .orbit-logo {
+        background: transparent;
+        border: 1.5px dashed rgba(128, 128, 128, 0.45);
+        box-shadow: none;
+        color: var(--gray);
+      }
+
+      .orbit-item:hover .orbit-logo,
+      .orbit-item:focus-visible .orbit-logo {
+        transform: scale(1.08);
+      }
+
+      .orbit-item.is-active .orbit-logo {
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14), 0 4px 10px rgba(0, 0, 0, 0.06);
+      }
+
+      .orbit-item:focus-visible .orbit-logo {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+      }
+
+      .orbit-item.is-placeholder:hover .orbit-logo,
+      .orbit-item.is-placeholder.is-active .orbit-logo {
+        box-shadow: none;
+        border-color: rgba(128, 128, 128, 0.7);
+      }
+
+      .orbit.has-active .orbit-item:not(.is-active) {
+        opacity: 0.45;
+      }
+
+      .orbit-label {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--gray);
+        transition: opacity 0.2s ease;
+      }
+
+      .orbit-item.is-active .orbit-label {
+        opacity: 0;
+      }
+
+      .orbit-panels {
+        display: grid;
+        position: relative;
+        max-width: calc(var(--r) * 1.3);
+        margin: calc(var(--r) * -0.4) auto 0;
+        text-align: center;
+      }
+
+      .orbit-panels > * {
+        grid-area: 1 / 1;
+      }
+
+      .orbit-hint {
+        align-self: start;
+        margin: 1.5rem 0 0;
+        font-size: 0.95rem;
+        color: var(--gray);
+        transition: opacity 0.3s ease;
+      }
+
+      .orbit.has-active .orbit-hint {
+        opacity: 0;
+      }
+
+      .orbit-panel {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
       }
 
-      .product-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: rgba(128, 128, 128, 0.3);
+      .orbit-panel.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s, visibility 0s;
       }
 
-      [data-theme="dark"] .product-card {
-        background: rgba(40, 40, 40, 0.4);
-        border-color: rgba(180, 180, 180, 0.15);
+      [data-theme="dark"] .orbit-logo {
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
       }
 
-      [data-theme="dark"] .product-card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        border-color: rgba(180, 180, 180, 0.3);
+      [data-theme="dark"] .orbit-item.is-placeholder .orbit-logo {
+        border-color: rgba(180, 180, 180, 0.35);
+      }
+
+      [data-theme="dark"] .orbit-guide {
+        border-color: rgba(180, 180, 180, 0.18);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .orbit-item .orbit-float {
+          animation: none !important;
+        }
+
+        .orbit-item {
+          transition: opacity 0.3s ease;
+        }
+      }
+
+      .product-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .product-badge.is-soon {
+        border-style: dashed;
       }
 
       .product-badge {
@@ -157,19 +361,18 @@ permalink: /software-products/
         background-color: rgba(128, 128, 128, 0.1);
         border: 1px solid rgba(128, 128, 128, 0.2);
         color: var(--gray);
-        margin-bottom: 1rem;
       }
 
       .product-name {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 0.25rem;
+        margin: 0 0 0.25rem;
       }
 
       .product-tagline {
         font-size: 0.95rem;
         color: var(--gray);
-        margin-bottom: 1rem;
+        margin: 0 0 0.75rem;
         font-style: italic;
       }
 
@@ -178,16 +381,10 @@ permalink: /software-products/
         color: var(--gray);
         line-height: 1.6;
         margin-bottom: 1.5rem;
-        flex-grow: 1;
-      }
-
-      .product-actions {
-        margin-top: auto;
       }
 
       .product-btn {
-        display: flex;
-        width: 100%;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 6px;
@@ -260,10 +457,58 @@ permalink: /software-products/
           font-size: 2rem;
         }
 
-        .products-grid {
-          grid-template-columns: 1fr;
+        .orbit {
+          --r: calc(50vw - 3rem);
+          --size: 46px;
+          --lift: 0.6;
+          --grow: 1.3;
+        }
+
+        .orbit-label {
+          font-size: 0.7rem;
+        }
+
+        .orbit-arc {
+          margin-bottom: 2.5rem;
+        }
+
+        .orbit-panels {
+          max-width: none;
+          margin-top: 0;
         }
       }
     </style>
+    <script>
+      (function () {
+        var orbit = document.getElementById("orbit");
+        if (!orbit) return;
+        var items = orbit.querySelectorAll(".orbit-item");
+        var panels = orbit.querySelectorAll(".orbit-panel");
+
+        function setActive(index) {
+          orbit.classList.toggle("has-active", index !== null);
+          for (var k = 0; k < items.length; k++) {
+            var on = String(k) === index;
+            items[k].classList.toggle("is-active", on);
+            items[k].setAttribute("aria-expanded", on ? "true" : "false");
+            panels[k].classList.toggle("is-active", on);
+            panels[k].setAttribute("aria-hidden", on ? "false" : "true");
+          }
+        }
+
+        for (var i = 0; i < items.length; i++) {
+          (function (item) {
+            var index = item.getAttribute("data-index");
+            item.addEventListener("mouseenter", function () { setActive(index); });
+            item.addEventListener("focus", function () { setActive(index); });
+            item.addEventListener("click", function () { setActive(index); });
+          })(items[i]);
+        }
+
+        orbit.addEventListener("mouseleave", function () {
+          if (!orbit.contains(document.activeElement)) setActive(null);
+        });
+      })();
+    </script>
   </body>
 </html>
